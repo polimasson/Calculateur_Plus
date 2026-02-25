@@ -1,0 +1,18 @@
+/* Curseur par défaut */
+* {
+    cursor: url(cursor/normal_select.cur), default;
+}
+input[type="checkbox"],button {
+    cursor: url(cursor/alternate_select.cur), text;
+}
+
+/* Curseur pour le texte sélectionné */
+input, textarea, .text-select {
+    cursor: url(cursor/text_select.cur), text;
+}
+
+
+/* Curseur pour les liens */
+a {
+    cursor: url(cursor/link_select.cur), pointer;
+}

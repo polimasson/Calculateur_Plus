@@ -1,0 +1,53 @@
+.weather-builder {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #111;
+    color: #eee;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.config-section {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+}
+
+.config-section h3 { margin-top: 0; color: #00d1b2; font-size: 1.1rem; border-bottom: 1px solid #333; padding-bottom: 5px; }
+
+/* Position & Dates */
+.location-controls, .date-controls { display: flex; gap: 15px; align-items: center; flex-wrap: wrap; }
+input[type="text"], input[type="number"], input[type="date"] {
+    background: #000; color: #fff; border: 1px solid #444; padding: 8px; border-radius: 5px;
+}
+
+/* Auto-complétion */
+.search-box { position: relative; flex: 1; min-width: 250px; }
+.search-box input { width: 100%; box-sizing: border-box; }
+.suggestions {
+    position: absolute; top: 100%; left: 0; right: 0; background: #222; border: 1px solid #444;
+    max-height: 200px; overflow-y: auto; z-index: 10; border-radius: 5px;
+}
+.suggestion-item { padding: 10px; cursor: pointer; border-bottom: 1px solid #333; font-size: 0.9rem; }
+.suggestion-item:hover { background: #00d1b2; color: #000; }
+
+.coords-box { display: flex; gap: 5px; }
+#geo-btn { background: #333; border: 1px solid #555; color: white; cursor: pointer; padding: 8px 12px; border-radius: 5px; }
+#geo-btn:hover { background: #00d1b2; }
+
+/* Variables */
+.variables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.var-group h4 { margin: 0 0 10px 0; color: #aaa; font-size: 0.9rem; }
+.var-group label { display: block; font-size: 0.85rem; margin-bottom: 5px; cursor: pointer; }
+
+/* Bouton & Résultats */
+.action-btn { width: 100%; background: #00d1b2; color: #000; font-weight: bold; border: none; padding: 15px; border-radius: 8px; cursor: pointer; margin-bottom: 20px; font-size: 1.1rem; }
+.results-section { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; height: 500px; }
+.panel { background: #000; border: 1px solid #333; padding: 15px; border-radius: 8px; display: flex; flex-direction: column; overflow: hidden;}
+.panel h4 { margin-top: 0; color: #888; }
+#json-raw, #visual-render { flex: 1; overflow-y: auto; font-family: monospace; font-size: 0.8rem; color: #00ff41; margin: 0; }
+#visual-render { color: #fff; }
+.hidden { display: none; }

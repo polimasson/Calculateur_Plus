@@ -1,0 +1,20 @@
+<h2>Convertisseur de Volumes</h2>
+<label for="vol-input">Valeur: </label>
+<input type="number" id="vol-input" placeholder="Valeur">
+<br>
+<label for="vol-from">Unité: </label>
+<select id="vol-from"></select>
+<span>→</span>
+<select id="vol-to"></select>
+<br><br>
+<div id="precision-options">
+    <label for="vol-precision"> Précision : </label>
+    <span class="tooltip">(?)
+            <span class="tooltip-text">(chiffres après la virgule)</span>
+        </span>
+        : </label>
+    <input type="number" id="vol-precision" value="10" min="0">
+</div>
+<br>
+<button id="btn-convert-vol">Convertir</button>
+<p id="vol-result"></p>

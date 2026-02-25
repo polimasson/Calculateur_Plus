@@ -1,0 +1,45 @@
+#module {
+    padding: 20px;
+}
+body {
+    background: #e0f0f0;
+}
+#module h2 {
+    color: darkred;
+}
+
+#module button {
+    background-color: orange;
+}
+
+#precision-options {
+    margin-top: 10px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 150px;
+    background-color: #e0f0f0;
+    color: black;
+    text-align: center;
+    padding: 5px;
+    border: 1rem ridge rgba(211, 220, 50, .6);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}

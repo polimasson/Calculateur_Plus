@@ -1,0 +1,24 @@
+<h2 id="module-title">Convertisseur</h2>
+
+<label>Valeur: </label>
+<input type="number" class="module-input" placeholder="Valeur">
+<br>
+
+<label>Unité: </label>
+<select class="module-from"></select>
+<span>→</span>
+<select class="module-to"></select>
+<br><br>
+
+<div class="module-precision-box">
+    <label> Précision
+        <span class="tooltip">(?)
+            <span class="tooltip-text">(chiffres après la virgule)</span>
+        </span>
+        : </label>
+    <input type="number" class="module-precision" value="10" min="0">
+</div>
+<br>
+
+<button class="module-btn-convert">Convertir</button>
+<p class="module-result"></p>

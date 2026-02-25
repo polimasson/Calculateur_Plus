@@ -1,0 +1,121 @@
+/* Reset & Base */
+@import url('cursor.css');
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+#menu, #content {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    /*border-radius: 12px;*/
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.hidden { display: none ; }
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+.filter-zone {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#searchInput {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #3498db;
+}
+
+#tagFilters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-btn {
+    padding: 6px 12px;
+    border: 1px solid #3498db;
+    background: transparent;
+    color: #3498db;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.tag-btn:hover {
+    background: #ebf5fb;
+}
+
+.tag-btn.active {
+    background: #3498db;
+    color: white;
+}
+#moduleList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.module-item {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.module-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    border-color: #3498db;
+}
+
+.module-item a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.module-item .version {
+    font-size: 11px;
+    background: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #666;
+}
+
+.module-item .tags small {
+    color: #999;
+    margin-right: 5px;
+    font-style: italic;
+}
+#module {
+    box-sizing: border-box;
+}

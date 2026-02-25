@@ -1,0 +1,20 @@
+   <h2>Convertisseur de Surfaces</h2>
+    <label for="area-input">Valeur: </label>
+    <input type="number" id="area-input" placeholder="Valeur">
+    <br>
+    <label for="area-from">Unité: </label>
+    <select id="area-from"></select>
+    <span>→</span>
+    <select id="area-to"></select>
+    <br><br>
+    <div id="precision-options">
+        <label for="area-precision"> Précision : </label>
+        <span class="tooltip">(?)
+            <span class="tooltip-text">(chiffres après la virgule)</span>
+        </span>
+        : </label>
+        <input type="number" id="area-precision" value="10" min="0">
+    </div>
+    <br>
+    <button id="btn-convert-area">Convertir</button>
+    <p id="area-result"></p>

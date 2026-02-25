@@ -1,0 +1,61 @@
+<div class="weather-builder">
+    <div class="config-section">
+        <h3>📍 Position</h3>
+        <div class="location-controls">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Rechercher une ville...">
+                <div id="autocomplete-results" class="suggestions hidden"></div>
+            </div>
+            <div class="coords-box">
+                <input type="number" id="lat-input" placeholder="Latitude" step="0.0001">
+                <input type="number" id="lon-input" placeholder="Longitude" step="0.0001">
+                <button id="geo-btn" title="Utiliser ma position GPS">🎯</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="config-section">
+        <h3>📅 Intervalle de temps</h3>
+        <div class="date-controls">
+            <label>Du : <input type="date" id="start-date"></label>
+            <label>Au : <input type="date" id="end-date"></label>
+        </div>
+    </div>
+
+    <div class="config-section">
+        <h3>⚙️ Variables à extraire</h3>
+        <div class="variables-grid">
+            <div class="var-group">
+                <h4>Actuelles (Current)</h4>
+                <label><input type="checkbox" class="var-current" value="temperature_2m" checked> Température</label>
+                <label><input type="checkbox" class="var-current" value="wind_speed_10m"> Vitesse Vent</label>
+                <label><input type="checkbox" class="var-current" value="is_day" checked> Jour/Nuit</label>
+            </div>
+            <div class="var-group">
+                <h4>Par Heure (Hourly)</h4>
+                <label><input type="checkbox" class="var-hourly" value="temperature_2m"> Température</label>
+                <label><input type="checkbox" class="var-hourly" value="precipitation_probability"> Proba. Pluie</label>
+                <label><input type="checkbox" class="var-hourly" value="cloud_cover"> Nuages (%)</label>
+            </div>
+            <div class="var-group">
+                <h4>Par Jour (Daily)</h4>
+                <label><input type="checkbox" class="var-daily" value="temperature_2m_max" checked> Temp Max</label>
+                <label><input type="checkbox" class="var-daily" value="temperature_2m_min" checked> Temp Min</label>
+                <label><input type="checkbox" class="var-daily" value="sunrise"> Lever du soleil</label>
+            </div>
+        </div>
+    </div>
+
+    <button id="fetch-btn" class="action-btn">GÉNÉRER LA REQUÊTE 🚀</button>
+
+    <div class="results-section">
+        <div class="panel">
+            <h4>JSON Brut (Pour debug)</h4>
+            <pre id="json-raw">En attente...</pre>
+        </div>
+        <div class="panel">
+            <h4>Aperçu Visuel (À designer)</h4>
+            <div id="visual-render">Ici, tu pourras boucler sur tes variables...</div>
+        </div>
+    </div>
+</div>

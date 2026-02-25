@@ -1,0 +1,97 @@
+<div class="calculator">
+  <div id="in">
+    <h2>Calculatrice scientifique à précision arbitraire et variable</h2>
+    
+    <input type="text" id="expression" placeholder="Saisir une expression" autofocus>
+    <input type="number" id="precision" min="0" max="999" value="100" placeholder="Précision">
+    <select id="format">
+      <option value="---">--- [Affichage brut] (.toString)</option>
+      <option value="toFixed">Fixe [Arrondi décimal] (.toFixed)</option>
+      <option value="toSignificantDigits" selected>Auto [Chiffres significatifs] (.toSignificantDigits)</option>
+      <option value="toExponential">Scientifique [Notation exposant] (.toExponential)</option>
+      <option value="toFraction">Fraction [Ex: 2/3]</option>
+      <option value="toBinary">Binaire [Base 2] (.toString(2))</option>
+      <option value="toHex">Hexadécimal [Base 16] (.toString(16))</option>
+      <option value="toPercent">Pourcentage [x100 + %]</option>
+    </select>
+    <p id="result"></p>
+  </div>
+  <div class="grid">
+    <button class="action" onclick="clearDisplay()">C (Reset)</button>
+    <button class="action" onclick="delChar()">Supprimer</button>
+    <button class="action" onclick="clearVariables()">Reset var</button>
+    <button class="other-operator" onclick="appendToExpression('()')">()</button>
+    <button class="digit" onclick="appendToExpression('7')">7</button>
+    <button class="digit" onclick="appendToExpression('8')">8</button>
+    <button class="digit" onclick="appendToExpression('9')">9</button>
+    <button class="operator" onclick="appendToExpression('/')">÷</button>
+    <button class="digit" onclick="appendToExpression('4')">4</button>
+    <button class="digit" onclick="appendToExpression('5')">5</button>
+    <button class="digit" onclick="appendToExpression('6')">6</button>
+    <button class="operator" onclick="appendToExpression('*')">×</button>
+    <button class="digit" onclick="appendToExpression('1')">1</button>
+    <button class="digit" onclick="appendToExpression('2')">2</button>
+    <button class="digit" onclick="appendToExpression('3')">3</button>
+    <button class="operator" onclick="appendToExpression('-')">−</button>
+    <button class="digit" onclick="appendToExpression('.')">.</button>
+    <button class="digit" onclick="appendToExpression('0')">0</button>
+    <button class="action" onclick="calculate()">↩</button>
+    <button class="operator" onclick="appendToExpression('+')">+</button>
+    <!-- Boutons supplémentaires -->
+    <button class="operator" onclick="appendToExpression('*10^')">×10ⁿ</button>
+    <button class="operator" onclick="appendToExpression('^2')">x²</button>
+    <button class="operator" onclick="appendToExpression('^')">xⁿ</button>
+
+    <!-- Nouveaux opérateurs de comparaison -->
+    <button class="percent" onclick="appendToExpression('%')">%</button>
+    <button class="operator" onclick="appendToExpression('<')">&lt;</button>
+    <button class="operator" onclick="appendToExpression('=')">=</button>
+    <button class="operator" onclick="appendToExpression('>')">&gt;</button>
+
+    <!-- Fonctions supplémentaires -->
+    <button class="function" onclick="appendFunction('root')">root(x,b)</button>
+    <button class="function" onclick="appendFunction('sqrt')">sqrt[√]</button>
+    <button class="function" onclick="appendFunction('abs')">abs[||]</button>
+    <button class="function" onclick="appendFunction('ln')">ln</button>
+    <button class="function" onclick="appendFunction('log')">log(10)</button>
+    <button class="function" onclick="appendFunction('logb')">logb(x,b)</button>
+    <button class="function" onclick="appendFunction('exp')">exp</button>
+    <button class="function" onclick="appendFunction('fact')">fact{!}</button>
+    <button class="function" onclick="appendFunction('nCr')">nCr</button>
+    <button class="function" onclick="appendFunction('nPr')">nPr</button>
+    <button class="function" onclick="appendFunction('sin')">sin</button>
+    <button class="function" onclick="appendFunction('cos')">cos</button>
+    <button class="function" onclick="appendFunction('tan')">tan</button>
+    <button class="function" onclick="appendFunction('asin')">asin</button>
+    <button class="function" onclick="appendFunction('acos')">acos</button>
+    <button class="function" onclick="appendFunction('atan')">atan</button>
+    <button class="function" onclick="appendFunction('atan2')">atan2(x,y)</button>
+    <button class="function" onclick="appendFunction('sinh')">sinh</button>
+    <button class="function" onclick="appendFunction('cosh')">cosh</button>
+    <button class="function" onclick="appendFunction('tanh')">tanh</button>
+    <button class="function" onclick="appendFunction('asinh')">asinh</button>
+    <button class="function" onclick="appendFunction('acosh')">acosh</button>
+    <button class="function" onclick="appendFunction('atanh')">atanh</button>
+    <!-- Fonctions d'arrondi et random -->
+    <button class="function" onclick="appendFunction('round')">round</button>
+    <button class="function" onclick="appendFunction('floor')">floor</button>
+    <button class="function" onclick="appendFunction('ceil')">ceil</button>
+    <button class="function" onclick="appendFunction('trunc')">trunc</button>
+    <button class="function" onclick="appendFunction('toNearest')">toNearest(x,y)</button>
+    <button class="function" onclick="appendFunction('decimalPlaces')">decimalPlaces(x,n)</button>
+    <button class="function" onclick="appendFunction('random')">random(n)</button>
+    <button class="var" onclick="appendToExpression('pi')">pi(π)</button>
+    <button class="var" onclick="appendToExpression('e')">e</button>
+    <button class="var" onclick="appendToExpression('ans')">Ans</button>
+    <button class="navigation" onclick="moveCursorToStart()"><<-</button>
+    <button class="navigation" onclick="moveCursor(-1)"><-</button>
+    <button class="navigation" onclick="moveCursor(1)">-></button>
+    <button class="navigation" onclick="moveCursorToEnd()">->></button>
+  </div>
+  <small>Vous pouvez aussi définir des variables (ex: x=2, y=3) avant de saisir une expression et utiliser ces variables dans l'expression.</small><br>
+  <small>Vous pouver comparer des nombres (ex: 2 < 3)</small>
+  <br>
+  <small>Le résultat de la dernière expression calculée est stocké dans la variable spéciale "Ans".</small>
+  <br>
+  <small>La précision par défaut est de 100 chiffres, mais vous pouvez la modifier en saisissant une valeur dans le champ "Précision", Veuillez noter que les valeurs de précision supérieures à 999 ne sont pas recommandées.</small>
+</div>

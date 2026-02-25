@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur Plus!</title>
+    <link href="src/style/style.css" rel="stylesheet"/>
+    <link rel="icon" type="image/png" href="favicon.png"/>
+    <script defer src="src/script.js"></script>
+</head>
+<body>
+    <div id="menu">
+        <div id="category">
+            <h1>§Calculateur Plus!§ (Bêta)</h1>
+            <h2 onclick="loadModule('info')">Plus d'info</h2>
+            
+            <div class="filter-zone">
+                <input type="text" id="searchInput" placeholder="Rechercher un module..." onkeyup="filterModules()">
+                <div id="tagFilters">
+                    </div>
+            </div>
+
+            <ul id="moduleList">
+                </ul>
+        </div>
+    </div>
+
+<div id="content" class="hidden">
+    <button onclick="goBack()">↩ Retour au menu</button>
+    <div id="module-info"></div> 
+    
+    <div id="module"></div>
+</div>
+</body>
+</html>

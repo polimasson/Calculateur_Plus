@@ -1,0 +1,141 @@
+[
+  {
+    "id": "standard_calculator",
+    "name": "Calculatrice Standard",
+    "version": "1.0.0",
+    "tags": ["math"]
+  },
+  {
+    "id": "arbitrary_and_variable_precision_scientific_calculator",
+    "name": "Calculatrice scientifique à précision arbitraire et variable",
+    "version": "1.4.0",
+    "tags": ["math"]
+  },
+  {
+    "id": "length",
+    "name": "Convertisseur de Longueur",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "weight",
+    "name": "Convertisseur de Poids",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "time",
+    "name": "Convertisseur de Temps",
+    "version": "1.0.0",
+    "tags": ["conversion", "temps"]
+  },
+  {
+    "id": "temperature",
+    "name": "Convertisseur de Température",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "amount_of_substance",
+    "name": "Convertisseur de Quantité de matière",
+    "version": "1.1.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "speed",
+    "name": "Convertisseur de Vitesse",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "data",
+    "name": "Convertisseur de Données",
+    "version": "1.0.0",
+    "tags": ["conversion", "informatique"]
+  },
+  {
+    "id": "data-transfer",
+    "name": "Convertisseur de Transfert de données",
+    "version": "1.0.0",
+    "tags": ["conversion", "informatique"]
+  },
+  {
+    "id": "stopwatch",
+    "name": "Chronomètre",
+    "version": "1.0.0",
+    "tags": ["temps", "outil"]
+  },
+  {
+    "id": "info",
+    "name": "Plus d'info",
+    "visibility": "off",
+    "version": "0.0.0",
+    "tags": ["outil"]
+  },
+  {
+    "id": "resolution_ratio",
+    "name": "Calculateur de Ratio de résolution",
+    "version": "1.0.0",
+    "tags": ["math", "informatique"]
+  },
+  {
+    "id": "meteo",
+    "name": "Chaîne météo",
+    "version": "1.1.0",
+    "tags": ["outil", "API"]
+  },
+  {
+    "id": "area",
+    "name": "Convertisseur de Surface",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "volume",
+    "name": "Convertisseur de Volume",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "energy",
+    "name": "Convertisseur d'Énergie",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "power",
+    "name": "Convertisseur de Puissance",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "pressure",
+    "name": "Convertisseur de Pression",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "force",
+    "name": "Convertisseur de Force",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "frequency",
+    "name": "Convertisseur de Fréquence",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  },
+  {
+    "id": "angle",
+    "name": "Convertisseur d'Angle",
+    "version": "1.0.0",
+    "tags": ["conversion", "math"]
+  },
+  {
+    "id": "luminescence",
+    "name": "Convertisseur de Luminescence (Éclairement)",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"]
+  }
+]

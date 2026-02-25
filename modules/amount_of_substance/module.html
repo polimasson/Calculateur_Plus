@@ -1,0 +1,25 @@
+<h2>Convertisseur de Quantité de Matière</h2>
+
+<label for="mol-input">Valeur : </label>
+<input type="number" id="mol-input" placeholder="Valeur">
+<br>
+
+<label for="mol-from">Unité : </label>
+<select id="mol-from"></select>
+<span> → </span>
+<select id="mol-to"></select>
+
+<br><br>
+
+<div class="precision-zone">
+    <label for="mol-precision"> Précision : </label>
+    <input type="number" id="mol-precision" value="10" min="0">
+</div>
+
+<br>
+
+<div class="actions">
+    <button id="btn-convert-mol">Convertir</button>
+</div>
+
+<p id="mol-result"></p>

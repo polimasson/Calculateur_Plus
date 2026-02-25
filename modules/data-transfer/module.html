@@ -1,0 +1,17 @@
+<h2>Convertisseur de Transfert de Données</h2>
+<label for="input">Valeur: </label>
+<input type="number" id="input" placeholder="Valeur">
+<br>
+<div class="selection-container">
+    <select id="from"></select> / <select id="from-time"></select>
+    <span class="arrow">→</span>
+    <select id="to"></select> / <select id="to-time"></select>
+</div>
+<br>
+<div id="precision-options">
+    <label for="precision-input"> Précision : </label>
+    <input type="number" id="precision-input" value="10" min="0">
+</div>
+<br>
+<button id="btn-convert">Convertir</button>
+<p id="result"></p>

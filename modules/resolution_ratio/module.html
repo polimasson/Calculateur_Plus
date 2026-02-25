@@ -1,0 +1,91 @@
+<div class="ratio-tool">
+    <h2>Calculateur de Ratio</h2>
+
+    <div class="tool-grid">
+        <div class="controls-side">
+            <div class="lock-control">
+                <span>Adapter selon le ratio :</span>
+                <label class="switch">
+                    <input type="checkbox" id="lock-ratio">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div id="ratio-config" class="ratio-selector disabled-area">
+                <label class="field-label">Ratio Cible</label>
+                <select id="ratio-preset">
+                    <optgroup label="Standards Web & TV">
+                        <option value="16/9">16:9 - Haute Définition (HDTV)</option>
+                        <option value="4/3">4:3 - Télévision Standard (SD/Tube)</option>
+                        <option value="1/1">1:1 - Carré (Instagram/Profil)</option>
+                    </optgroup>
+
+                    <optgroup label="Cinéma (Historique & Moderne)">
+                        <option value="1.37/1">1.37:1 - Format Académie (Pré-1953)</option>
+                        <option value="1.66/1">1.66:1 - Standard Européen</option>
+                        <option value="1.85/1">1.85:1 - Panoramique US (Flat)</option>
+                        <option value="2.39/1">2.39:1 - CinemaScope / Anamorphique</option>
+                        <option value="2.76/1">2.76:1 - Ultra Panavision 70 (Hateful Eight)</option>
+                        <option value="1.43/1">1.43:1 - IMAX (Natif)</option>
+                    </optgroup>
+
+                    <optgroup label="Informatique & Gaming">
+                        <option value="16/10">16:10 - Moniteur Pro (WUXGA)</option>
+                        <option value="21/9">21:9 - UltraWide (2.33:1)</option>
+                        <option value="32/9">32:9 - Super UltraWide (Dual Monitor)</option>
+                        <option value="5/4">5:4 - Bureautique ancien (1280x1024)</option>
+                    </optgroup>
+
+                    <optgroup label="Smartphones & Digital">
+                        <option value="18/9">18:9 (2:1) - Univisium (Smartphones modernes)</option>
+                        <option value="19.5/9">19.5:9 - iPhone récent (Encoche)</option>
+                        <option value="20/9">20:9 - Android long</option>
+                        <option value="9/16">9:16 - Portrait (Story / TikTok)</option>
+                    </optgroup>
+
+                    <optgroup label="Photo & Arts">
+                        <option value="3/2">3:2 - Plein Format (35mm / DSLR)</option>
+                        <option value="1.618/1">1.618:1 - Nombre d'Or</option>
+                        <option value="3/1">3:1 - Panoramique extrême</option>
+                    </optgroup>
+
+                    <option value="custom">-- 🛠️ Personnalisé --</option>
+                </select>
+
+                <div id="custom-ratio-inputs" class="input-group hidden">
+                    <input type="number" id="ratio-w-part" value="16" step="0.01">
+                    <span class="separator">/</span>
+                    <input type="number" id="ratio-h-part" value="9" step="0.01">
+                </div>
+            </div>
+
+            <div class="dimensions-group">
+                <div class="field">
+                    <label>Largeur (px)</label>
+                    <input type="number" id="res-width" value="1920">
+                </div>
+                <div class="field">
+                    <label>Hauteur (px)</label>
+                    <input type="number" id="res-height" value="1080">
+                </div>
+            </div>
+        </div>
+
+        <div class="display-side">
+            <div class="preview-box">
+                <div id="ratio-preview">Aperçu</div>
+            </div>
+
+            <div class="ratio-results">
+                <div class="result-card">
+                    <span class="label">Rapport décimal</span>
+                    <span id="ratio-decimal" class="value">1.78</span>
+                </div>
+                <div class="result-card">
+                    <span class="label">Simplification</span>
+                    <span id="ratio-fraction" class="value">16:9</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
