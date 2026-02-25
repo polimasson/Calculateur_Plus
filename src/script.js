@@ -81,7 +81,7 @@ async function loadModule(moduleId) {
     menu.classList.add("hidden");
     content.classList.remove("hidden");
     moduleContainer.innerHTML = "<p>Chargement...</p>";
-
+    await new Promise(r => setTimeout(r, 900)); // Simuler un délai de chargement pour la transition
     try {
         // Chargement CSS
         const cssId = `css-${moduleId}`;
@@ -99,7 +99,7 @@ async function loadModule(moduleId) {
         console.log("Contenu injecté dans #module :", moduleContainer.innerHTML);
         // Informations du module (version, dates)
         document.getElementById('module-info').innerHTML = `
-            <small>Version: ${meta.version} | Modifié le: ${meta.modified}</small>
+            <small>Nom: ${meta.name} | Version: ${meta.version} | Modifié le: ${meta.modified}</small>
         `;
 
         // Chargement JS (ES Modules)

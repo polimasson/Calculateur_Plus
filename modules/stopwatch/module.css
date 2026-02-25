@@ -1,31 +1,41 @@
+/* --- Tes styles de base (inchangés ou légèrement ajustés) --- */
 .chrono-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box; /* Pour éviter que le padding n'élargisse le conteneur */
 }
 
 #chrono-display {
-    font-size: 4rem;
+    /* On utilise clamp() pour une taille de police fluide */
+    /* (Taille min, Taille préférée, Taille max) */
+    font-size: clamp(2.5rem, 10vw, 4rem); 
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     color: #2c3e50;
     background: #ecf0f1;
-    padding: 20px 40px;
+    padding: 20px clamp(10px, 5vw, 40px);
     border-radius: 15px;
     box-shadow: inset 0 2px 10px rgba(0,0,0,0.1);
     margin-bottom: 30px;
     letter-spacing: 2px;
+    text-align: center;
+    max-width: 100%;
 }
 
 #chrono-display span {
-    font-size: 2rem;
+    font-size: 0.5em; /* Utilisation de em pour rester proportionnel au parent */
     color: #7f8c8d;
 }
 
 .chrono-controls {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap; /* Permet aux boutons de passer à la ligne si besoin */
+    justify-content: center;
+    width: 100%;
 }
 
 .chrono-controls button {
@@ -37,14 +47,15 @@
     transition: all 0.2s;
     text-transform: uppercase;
     font-size: 0.9rem;
+    /* On s'assure que les boutons ne soient pas trop petits au clic sur mobile */
+    min-width: 100px; 
 }
 
+/* --- Styles des boutons (inchangés) --- */
 .btn-main { background: #27ae60; color: white; }
 .btn-main:hover { background: #2ecc71; transform: scale(1.05); }
-
 .btn-warn { background: #f39c12; color: white; }
 .btn-warn:hover { background: #f1c40f; transform: scale(1.05); }
-
 .btn-danger { background: #e74c3c; color: white; }
 .btn-danger:hover { background: #c0392b; transform: scale(1.05); }
 
@@ -52,4 +63,17 @@ button:disabled {
     background: #bdc3c7;
     cursor: not-allowed;
     transform: none !important;
+}
+
+/* --- Media Query pour les petits écrans (Mobile) --- */
+@media (max-width: 480px) {
+    .chrono-controls {
+        gap: 10px;
+    }
+
+    .chrono-controls button {
+        flex: 1 1 40%; /* Les boutons prennent de la place de manière équilibrée */
+        padding: 15px 10px; /* Plus facile de cliquer avec le pouce */
+        font-size: 0.8rem;
+    }
 }
