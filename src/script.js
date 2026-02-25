@@ -75,7 +75,7 @@ async function loadModule(moduleId) {
     const oldStyle = document.querySelector('link[id^="css-"]');
     if (oldStyle) oldStyle.remove();
     const meta = allModules.find(m => m.id === moduleId);
-    const path = `/modules/${moduleId}/`;
+    const path = `/Calculateur_Plus/modules/${moduleId}/`;
 
     // UI transition
     menu.classList.add("hidden");
