@@ -3,12 +3,12 @@
         <h3>📍 Position</h3>
         <div class="location-controls">
             <div class="search-box">
-                <input type="text" id="search-input" placeholder="Rechercher une ville...">
+                <input type="text" id="search-input" placeholder="Rechercher une ville..." value="Alger">
                 <div id="autocomplete-results" class="suggestions hidden"></div>
             </div>
             <div class="coords-box">
-                <input type="number" id="lat-input" placeholder="Latitude" step="0.0001">
-                <input type="number" id="lon-input" placeholder="Longitude" step="0.0001">
+                <input type="number" id="lat-input" placeholder="Latitude" step="0.0001" value="36,73225">
+                <input type="number" id="lon-input" placeholder="Longitude" step="0.0001" value="3,08746">
                 <button id="geo-btn" title="Utiliser ma position GPS">🎯</button>
             </div>
         </div>
@@ -25,33 +25,61 @@
     <div class="config-section">
         <h3>⚙️ Variables à extraire</h3>
         <div class="variables-grid">
-            <div class="var-group">
-                <h4>Actuelles (Current)</h4>
-                <label><input type="checkbox" class="var-current" value="temperature_2m" checked> Température</label>
-                <label><input type="checkbox" class="var-current" value="apparent_temperature"> Ressenti</label>
-                <label><input type="checkbox" class="var-current" value="relative_humidity_2m"> Humidité</label>
-                <label><input type="checkbox" class="var-current" value="wind_speed_10m"> Vitesse Vent</label>
-                <label><input type="checkbox" class="var-current" value="weather_code"> Code Météo</label>
-                <label><input type="checkbox" class="var-current" value="is_day" checked> Jour/Nuit</label>
-            </div>
-            <div class="var-group">
-                <h4>Par Heure (Hourly)</h4>
-                <label><input type="checkbox" class="var-hourly" value="temperature_2m"> Température</label>
-                <label><input type="checkbox" class="var-hourly" value="apparent_temperature"> Ressenti</label>
-                <label><input type="checkbox" class="var-hourly" value="precipitation_probability"> Proba. Pluie</label>
-                <label><input type="checkbox" class="var-hourly" value="cloud_cover"> Nuages (%)</label>
-                <label><input type="checkbox" class="var-hourly" value="wind_speed_10m"> Vitesse Vent</label>
-            </div>
-            <div class="var-group">
-                <h4>Par Jour (Daily)</h4>
-                <label><input type="checkbox" class="var-daily" value="temperature_2m_max" checked> Temp Max</label>
-                <label><input type="checkbox" class="var-daily" value="temperature_2m_min" checked> Temp Min</label>
-                <label><input type="checkbox" class="var-daily" value="precipitation_sum"> Total Pluie</label>
-                <label><input type="checkbox" class="var-daily" value="wind_gusts_10m_max"> Rafales Max</label>
-                <label><input type="checkbox" class="var-daily" value="sunrise"> Lever du soleil</label>
-                <label><input type="checkbox" class="var-daily" value="sunset"> Coucher du soleil</label>
-            </div>
-        </div>
+    <div class="var-group">
+        <h4>📍 Actuel (Current)</h4>
+        <label><input type="checkbox" class="var-current" value="temperature_2m" checked> Température (2m)</label>
+        <label><input type="checkbox" class="var-current" value="apparent_temperature"> Ressenti</label>
+        <label><input type="checkbox" class="var-current" value="relative_humidity_2m"> Humidité</label>
+        <label><input type="checkbox" class="var-current" value="is_day" checked> Jour/Nuit</label>
+        <label><input type="checkbox" class="var-current" value="weather_code"> Code Météo</label>
+        <label><input type="checkbox" class="var-current" value="pressure_msl"> Pression (Mer)</label>
+        <label><input type="checkbox" class="var-current" value="wind_speed_10m"> Vent (10m)</label>
+        <label><input type="checkbox" class="var-current" value="wind_gusts_10m"> Rafales</label>
+    </div>
+
+    <div class="var-group">
+        <h4>⏱️ Horaire (Hourly)</h4>
+        <div class="sub-category">-- Air --</div>
+        <label><input type="checkbox" class="var-hourly" value="temperature_2m"> Température (2m)</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_2m"> Point de rosée</label>
+        <label><input type="checkbox" class="var-hourly" value="precipitation_probability"> Proba. Pluie</label>
+        <label><input type="checkbox" class="var-hourly" value="visibility"> Visibilité</label>
+        
+        <div class="sub-category">-- Ciel --</div>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover"> Nuages (Total)</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_low"> Nuages (Bas)</label>
+        <label><input type="checkbox" class="var-hourly" value="uv_index"> Indice UV</label>
+        
+        <div class="sub-category">-- Vent --</div>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_10m"> Vent 10m</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_80m"> Vent 80m</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_180m"> Vent 180m</label>
+        
+        <div class="sub-category">-- Sol --</div>
+        <label><input type="checkbox" class="var-hourly" value="soil_temperature_0cm"> Temp. Surface</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_moisture_0_to_1cm"> Humidité Sol</label>
+    </div>
+
+    <div class="var-group">
+        <h4>📅 Quotidien (Daily)</h4>
+        <div class="sub-category">-- Températures --</div>
+        <label><input type="checkbox" class="var-daily" value="temperature_2m_max" checked> Max (2m)</label>
+        <label><input type="checkbox" class="var-daily" value="temperature_2m_min" checked> Min (2m)</label>
+        <label><input type="checkbox" class="var-daily" value="apparent_temperature_max"> Ressenti Max</label>
+        
+        <div class="sub-category">-- Soleil --</div>
+        <label><input type="checkbox" class="var-daily" value="sunrise"> Lever soleil</label>
+        <label><input type="checkbox" class="var-daily" value="sunset"> Coucher soleil</label>
+        <label><input type="checkbox" class="var-daily" value="daylight_duration"> Durée Jour</label>
+        <label><input type="checkbox" class="var-daily" value="uv_index_max"> UV Max</label>
+        
+        <div class="sub-category">-- Précipitations --</div>
+        <label><input type="checkbox" class="var-daily" value="precipitation_sum"> Total Pluie</label>
+        <label><input type="checkbox" class="var-daily" value="rain_sum"> Pluie seule</label>
+        <label><input type="checkbox" class="var-daily" value="snowfall_sum"> Neige</label>
+        <label><input type="checkbox" class="var-daily" value="precipitation_hours"> Heures de pluie</label>
+    </div>
+</div>
     </div>
 
     <button id="fetch-btn" class="action-btn">GÉNÉRER LA REQUÊTE 🚀</button>
