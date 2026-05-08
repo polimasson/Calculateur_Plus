@@ -1,0 +1,106 @@
+<div class="shoe-size-converter">
+    <h3 class="module-title">Convertisseur de Pointures</h3>
+    
+    <div class="input-section">
+        <div class="input-group">
+            <label>Type de chaussure</label>
+            <select id="shoeType">
+                <option value="adult">Adulte</option>
+                <option value="child">Enfant</option>
+                <option value="baby">Bébé</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label>Genre</label>
+            <select id="shoeGender">
+                <option value="unisex">Unisexe</option>
+                <option value="women">Femme</option>
+                <option value="men">Homme</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label>Pointure à convertir</label>
+            <div class="size-row">
+                <input type="number" id="shoeSizeInput" placeholder="Pointure" step="0.5" min="0">
+                <select id="shoeSizeFrom">
+                    <option value="eu">EU (France)</option>
+                    <option value="us">US</option>
+                    <option value="uk">UK</option>
+                    <option value="cm">Longueur (cm)</option>
+                    <option value="in">Longueur (pouces)</option>
+                    <option value="mondo">Mondo (mm)</option>
+                </select>
+            </div>
+        </div>
+        
+        <button class="btn-convert" id="convertShoe">Convertir</button>
+        
+        <div class="quick-results" id="quickResults">
+            <div class="result-card">
+                <span class="system">EU</span>
+                <span class="value" id="resultEU">-</span>
+            </div>
+            <div class="result-card">
+                <span class="system">US</span>
+                <span class="value" id="resultUS">-</span>
+            </div>
+            <div class="result-card">
+                <span class="system">UK</span>
+                <span class="value" id="resultUK">-</span>
+            </div>
+            <div class="result-card">
+                <span class="system">CM</span>
+                <span class="value" id="resultCM">-</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="size-tables">
+        <h4>Tableaux de correspondance</h4>
+        
+        <div class="table-tabs">
+            <button class="table-tab active" data-table="adult">Adulte</button>
+            <button class="table-tab" data-table="child">Enfant</button>
+            <button class="table-tab" data-table="baby">Bébé</button>
+        </div>
+        
+        <div class="table-content active" id="table-adult">
+            <table class="size-table">
+                <thead>
+                    <tr><th>EU</th><th>US Femme</th><th>US Homme</th><th>UK</th><th>CM</th></tr>
+                </thead>
+                <tbody id="adultTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="table-content" id="table-child">
+            <table class="size-table">
+                <thead>
+                    <tr><th>EU</th><th>US</th><th>UK</th><th>CM</th><th>Âge approx.</th></tr>
+                </thead>
+                <tbody id="childTableBody"></tbody>
+            </table>
+        </div>
+        
+        <div class="table-content" id="table-baby">
+            <table class="size-table">
+                <thead>
+                    <tr><th>EU</th><th>US</th><th>UK</th><th>CM</th><th>Âge</th></tr>
+                </thead>
+                <tbody id="babyTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+    
+    <div class="tips-section">
+        <h4>Conseils</h4>
+        <ul>
+            <li>Mesurez votre pied le soir, quand il est le plus gonflé</li>
+            <li>Ajoutez 0,5 à 1 cm pour le confort</li>
+            <li>Les pointures varient selon les marques</li>
+            <li>Pour les enfants, prévoyez une marge de croissance</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+@import url('../../src/conv_base.css');
+
+:root {
+    --conv-bg-color: #fff8e1;
+    --conv-title-color: #e65100;
+    --conv-btn-bg: #e67e22;
+    --conv-btn-hover: #d35400;
+    --conv-tooltip-bg: #ffe0b2;
+    --conv-tooltip-border: rgba(230, 126, 34, 0.5);
+}

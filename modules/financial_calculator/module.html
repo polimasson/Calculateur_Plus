@@ -1,0 +1,188 @@
+<div class="financial-calculator">
+    <div class="calc-tabs">
+        <button class="tab-btn active" data-tab="loan">Prêt</button>
+        <button class="tab-btn" data-tab="interest">Intérêts</button>
+        <button class="tab-btn" data-tab="investment">Investissement</button>
+        <button class="tab-btn" data-tab="vat">TVA</button>
+    </div>
+
+    <!-- LOAN TAB -->
+    <div class="tab-content active" id="tab-loan">
+        <div class="input-group">
+            <label>Montant du prêt (¤)</label>
+            <input type="number" id="loanAmount" min="0" step="100" placeholder="200000">
+        </div>
+        <div class="input-group">
+            <label>Taux d'intérêt annuel (%)</label>
+            <input type="number" id="loanRate" min="0" max="100" step="0.01" placeholder="3.5">
+        </div>
+        <div class="input-group">
+            <label>Durée (années)</label>
+            <input type="number" id="loanYears" min="1" max="50" placeholder="20">
+        </div>
+        <button class="btn-calculate" data-calc="loan">Calculer</button>
+        
+        <div class="result-box hidden" id="loanResult">
+            <div class="result-row">
+                <span>Mensualité:</span>
+                <strong id="loanMonthly">-</strong>
+            </div>
+            <div class="result-row">
+                <span>Coût total:</span>
+                <strong id="loanTotal">-</strong>
+            </div>
+            <div class="result-row">
+                <span>Intérêts payés:</span>
+                <strong id="loanInterest">-</strong>
+            </div>
+        </div>
+
+        <button class="btn-toggle hidden" id="toggleAmortization">📊 Voir le tableau d'amortissement</button>
+        
+        <div class="amortization-container hidden" id="amortizationContainer">
+            <div class="amortization-header">
+                <h4>Tableau d'Amortissement</h4>
+                <button class="btn-load-all hidden" id="loadAllBtn">📋 Voir tout</button>
+            </div>
+            <div class="amortization-table-wrapper">
+                <table class="amortization-table" id="amortizationTable">
+                    <thead>
+                        <tr>
+                            <th>Mois</th>
+                            <th>Capital restant</th>
+                            <th>Mensualité</th>
+                            <th>Intérêts</th>
+                            <th>Capital</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="amortization-summary">
+                <div class="summary-row">
+                    <span>Total intérêts (année 1):</span>
+                    <strong id="year1Interest">-</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- INTEREST TAB -->
+    <div class="tab-content" id="tab-interest">
+        <div class="input-group">
+            <label>Capital initial (¤)</label>
+            <input type="number" id="interestPrincipal" min="0" step="100" placeholder="10000">
+        </div>
+        <div class="input-group">
+            <label>Taux d'intérêt (%)</label>
+            <input type="number" id="interestRate" min="0" max="100" step="0.01" placeholder="5">
+        </div>
+        <div class="input-group">
+            <label>Durée (années)</label>
+            <input type="number" id="interestYears" min="1" placeholder="10">
+        </div>
+        <div class="input-group">
+            <label>Fréquence de capitalisation</label>
+            <select id="interestFreq">
+                <option value="1">Annuelle</option>
+                <option value="4">Trimestrielle</option>
+                <option value="12" selected>Mensuelle</option>
+                <option value="365">Quotidienne</option>
+            </select>
+        </div>
+        <button class="btn-calculate" data-calc="interest">Calculer</button>
+        
+        <div class="result-box hidden" id="interestResult">
+            <div class="result-row">
+                <span>Montant final:</span>
+                <strong id="interestFinal">-</strong>
+            </div>
+            <div class="result-row">
+                <span>Intérêts gagnés:</span>
+                <strong id="interestEarned">-</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- INVESTMENT TAB -->
+    <div class="tab-content" id="tab-investment">
+        <div class="input-group">
+            <label>Versement initial (¤)</label>
+            <input type="number" id="invInitial" min="0" step="100" placeholder="5000">
+        </div>
+        <div class="input-group">
+            <label>Versement mensuel (¤)</label>
+            <input type="number" id="invMonthly" min="0" step="10" placeholder="200">
+        </div>
+        <div class="input-group">
+            <label>Rendement annuel (%)</label>
+            <input type="number" id="invRate" min="0" max="100" step="0.01" placeholder="7">
+        </div>
+        <div class="input-group">
+            <label>Durée (années)</label>
+            <input type="number" id="invYears" min="1" placeholder="20">
+        </div>
+        <button class="btn-calculate" data-calc="investment">Calculer</button>
+        
+        <div class="result-box hidden" id="invResult">
+            <div class="result-row">
+                <span>Valeur finale:</span>
+                <strong id="invFinal">-</strong>
+            </div>
+            <div class="result-row">
+                <span>Versements totaux:</span>
+                <strong id="invContributed">-</strong>
+            </div>
+            <div class="result-row">
+                <span>Intérêts gagnés:</span>
+                <strong id="invInterest">-</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- VAT TAB -->
+    <div class="tab-content" id="tab-vat">
+        <div class="input-group">
+            <label>Montant (¤)</label>
+            <input type="number" id="vatAmount" min="0" step="0.01" placeholder="100">
+        </div>
+        <div class="input-group">
+            <label>Taux TVA (%)</label>
+            <select id="vatRate">
+                <option value="20" selected>20% (standard)</option>
+                <option value="10">10% (intermédiaire)</option>
+                <option value="5.5">5.5% (réduit)</option>
+                <option value="2.1">2.1% (super réduit)</option>
+                <option value="0">0% (exonéré)</option>
+                <option value="custom">Personnalisé</option>
+            </select>
+            <input type="number" id="vatCustomRate" class="hidden" min="0" max="100" step="0.01" placeholder="Taux personnalisé %">
+        </div>
+        <div class="vat-direction">
+            <label class="radio-label">
+                <input type="radio" name="vatDir" value="add" checked>
+                <span>HT → TTC (+TVA)</span>
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="vatDir" value="remove">
+                <span>TTC → HT (-TVA)</span>
+            </label>
+        </div>
+        <button class="btn-calculate" data-calc="vat">Calculer</button>
+        
+        <div class="result-box hidden" id="vatResult">
+            <div class="result-row">
+                <span id="vatLabel1">Montant HT:</span>
+                <strong id="vatBase">-</strong>
+            </div>
+            <div class="result-row">
+                <span>Montant TVA:</span>
+                <strong id="vatTax">-</strong>
+            </div>
+            <div class="result-row">
+                <span id="vatLabel2">Montant TTC:</span>
+                <strong id="vatTotal">-</strong>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+{
+  "short_name": "Calculateur+",
+  "name": "Calculateur Plus!",
+  "description": "Calculateur Plus! est une application web qui permet de faire des calculs complexes en utilisant des modules.",
+  "icons": [
+    {
+      "src": "src/icon/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "src/icon/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "src/icon/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "src/icon/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "src/icon/favicon-32x32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "src/icon/favicon-16x16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "src/icon/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "16x16"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "display_override": ["window-controls-overlay"],
+  "theme_color": "#1a1a1a",
+  "background_color": "#1a1a1a",
+  "orientation": "portrait-primary",
+  "categories": ["utilities", "productivity"]
+}

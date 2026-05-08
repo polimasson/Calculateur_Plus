@@ -1,0 +1,226 @@
+#module {
+  padding: 10px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.calculator {
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px #ddd;
+  max-width: 100%;
+}
+
+#in {
+  padding: 10px;
+}
+
+#in h2 {
+  font-size: 1.1rem;
+  margin: 0 0 10px 0;
+}
+
+.calc-options {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 481px) {
+  .calc-options {
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 6px;
+  }
+}
+
+.digit {
+  background: linear-gradient(to bottom right, #800000, #b22222);
+  color: #ddd;
+}
+
+.operator {
+  background: linear-gradient(to bottom right, #ffa500, #ff8c00);
+  color: #fff;
+}
+
+.percent {
+  background:
+    radial-gradient(circle at 50% 0,
+      rgba(255, 0, 0, 0.5),
+      rgba(255, 0, 0, 0) 70.71%),
+    radial-gradient(circle at 6.7% 75%,
+      rgba(0, 0, 255, 0.5),
+      rgba(0, 0, 255, 0) 70.71%),
+    radial-gradient(circle at 93.3% 75%,
+      rgba(0, 255, 0, 0.5),
+      rgba(0, 255, 0, 0) 70.71%) beige;
+  color: #fff;
+}
+
+.function {
+  background: linear-gradient(to bottom right, #ffff66, #ffeb3b);
+  color: #000;
+}
+
+.other {
+  background: linear-gradient(to bottom right, #006400, #228b22);
+  color: #eee;
+}
+
+.other-operator {
+  background: linear-gradient(to bottom right, #ff4500, #e63900);
+  color: #fff;
+}
+
+.action {
+  background: linear-gradient(to bottom right, #000000, #333333);
+  color: pink;
+}
+
+.var {
+  background: linear-gradient(to bottom right, #00ffff, #66ffff);
+  color: #000;
+}
+
+.navigation {
+  background: linear-gradient(to bottom right, #0000cd, #1e90ff);
+  color: #fff;
+}
+
+p {
+  min-height: 40px;
+  max-height: 80px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-break: break-all;
+  margin: 8px 0;
+  padding: 5px;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  margin: 4px 0;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px 4px;
+  margin: 2px 0;
+  font-size: 14px;
+  font-weight: 500;
+  box-sizing: border-box;
+  cursor: pointer;
+  min-height: 44px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.grid {
+  padding: 8px;
+  background-color: gray;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+#expression {
+  font-size: 16px;
+  font-family: 'Courier New', monospace;
+}
+
+#result {
+  font-size: 18px;
+  font-weight: bold;
+  min-height: 24px;
+}
+
+/* Tablette */
+@media (min-width: 481px) {
+  .calculator {
+    max-width: 500px;
+  }
+  
+  #in {
+    padding: 15px;
+  }
+  
+  #in h2 {
+    font-size: 1.3rem;
+  }
+  
+  button {
+    padding: 10px 6px;
+    font-size: 15px;
+  }
+  
+  .grid {
+    padding: 12px;
+    gap: 5px;
+  }
+  
+  #result {
+    font-size: 20px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 769px) {
+  .calculator {
+    max-width: 550px;
+  }
+  
+  #in {
+    padding: 20px;
+  }
+  
+  #in h2 {
+    font-size: 1.5rem;
+  }
+  
+  button {
+    padding: 10px 8px;
+    font-size: 16px;
+  }
+  
+  .grid {
+    padding: 15px;
+    gap: 6px;
+  }
+  
+  input, select {
+    padding: 10px;
+    font-size: 18px;
+  }
+  
+  #result {
+    font-size: 22px;
+  }
+}
+
+/* Petit mobile */
+@media (max-width: 360px) {
+  button {
+    font-size: 12px;
+    padding: 10px 2px;
+  }
+  
+  .grid {
+    gap: 3px;
+    padding: 5px;
+  }
+}

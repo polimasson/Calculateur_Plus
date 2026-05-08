@@ -1,0 +1,174 @@
+<div class="prayer-times">
+    <div class="prayer-header">
+        <h4>Horaires de Prière</h4>
+        <div class="current-date" id="currentDate">-</div>
+    </div>
+
+    <div class="location-section">
+        <div class="input-group search-group">
+            <label>Rechercher une ville</label>
+            <div class="search-wrapper">
+                <input type="text" id="city-search" placeholder="Ex: Paris, Alger, Mekkah..." autocomplete="off">
+                <div id="city-suggestions" class="suggestions hidden"></div>
+            </div>
+            <small class="api-note">🌐 La recherche de villes utilise l'API Open-Meteo (géocodage)</small>
+        </div>
+        <div class="input-group">
+            <label>Latitude</label>
+            <input type="number" id="latitude" step="0.001" placeholder="36.7538 (Alger)" value="36.7538">
+        </div>
+        <div class="input-group">
+            <label>Longitude</label>
+            <input type="number" id="longitude" step="0.001" placeholder="3.0588 (Alger)" value="3.0588">
+        </div>
+        <div class="input-group">
+            <label>Fuseau horaire</label>
+            <select id="timezone">
+                <option value="auto" selected>Automatique (détecté)</option>
+                <optgroup label="Europe">
+                    <option value="Europe/Paris">Paris</option>
+                    <option value="Europe/London">Londres</option>
+                    <option value="Europe/Berlin">Berlin</option>
+                    <option value="Europe/Madrid">Madrid</option>
+                    <option value="Europe/Rome">Rome</option>
+                    <option value="Europe/Amsterdam">Amsterdam</option>
+                    <option value="Europe/Brussels">Bruxelles</option>
+                    <option value="Europe/Zurich">Zurich</option>
+                    <option value="Europe/Vienna">Vienne</option>
+                    <option value="Europe/Stockholm">Stockholm</option>
+                    <option value="Europe/Oslo">Oslo</option>
+                    <option value="Europe/Copenhagen">Copenhague</option>
+                    <option value="Europe/Helsinki">Helsinki</option>
+                    <option value="Europe/Warsaw">Varsovie</option>
+                    <option value="Europe/Prague">Prague</option>
+                    <option value="Europe/Budapest">Budapest</option>
+                    <option value="Europe/Moscow">Moscou</option>
+                    <option value="Europe/Istanbul">Istanbul</option>
+                </optgroup>
+                <optgroup label="Amériques">
+                    <option value="America/New_York">New York</option>
+                    <option value="America/Los_Angeles">Los Angeles</option>
+                    <option value="America/Chicago">Chicago</option>
+                    <option value="America/Toronto">Toronto</option>
+                    <option value="America/Vancouver">Vancouver</option>
+                    <option value="America/Mexico_City">Mexico</option>
+                    <option value="America/Sao_Paulo">São Paulo</option>
+                    <option value="America/Buenos_Aires">Buenos Aires</option>
+                    <option value="America/Santiago">Santiago</option>
+                </optgroup>
+                <optgroup label="Moyen-Orient">
+                    <option value="Asia/Dubai">Dubai</option>
+                    <option value="Asia/Riyadh">Riyad</option>
+                    <option value="Asia/Kuwait">Koweït</option>
+                    <option value="Asia/Qatar">Qatar</option>
+                    <option value="Asia/Bahrain">Bahreïn</option>
+                    <option value="Asia/Muscat">Mascate</option>
+                </optgroup>
+                <optgroup label="Afrique">
+                    <option value="Africa/Casablanca">Casablanca</option>
+                    <option value="Africa/Algiers">Alger</option>
+                    <option value="Africa/Tunis">Tunis</option>
+                    <option value="Africa/Cairo">Le Caire</option>
+                    <option value="Africa/Khartoum">Khartoum</option>
+                    <option value="Africa/Tripoli">Tripoli</option>
+                    <option value="Africa/Lagos">Lagos</option>
+                    <option value="Africa/Johannesburg">Johannesburg</option>
+                    <option value="Africa/Nairobi">Nairobi</option>
+                    <option value="Africa/Addis_Ababa">Addis Abeba</option>
+                    <option value="Africa/Dakar">Dakar</option>
+                </optgroup>
+                <optgroup label="Asie">
+                    <option value="Asia/Karachi">Karachi</option>
+                    <option value="Asia/Lahore">Lahore</option>
+                    <option value="Asia/Dhaka">Dhaka</option>
+                    <option value="Asia/Jakarta">Jakarta</option>
+                    <option value="Asia/Kuala_Lumpur">Kuala Lumpur</option>
+                    <option value="Asia/Singapore">Singapour</option>
+                    <option value="Asia/Bangkok">Bangkok</option>
+                    <option value="Asia/Manila">Manille</option>
+                    <option value="Asia/Hong_Kong">Hong Kong</option>
+                    <option value="Asia/Shanghai">Shanghai</option>
+                    <option value="Asia/Tokyo">Tokyo</option>
+                    <option value="Asia/Seoul">Séoul</option>
+                    <option value="Asia/Mumbai">Mumbai</option>
+                    <option value="Asia/Delhi">Delhi</option>
+                    <option value="Asia/Colombo">Colombo</option>
+                </optgroup>
+                <optgroup label="Océanie">
+                    <option value="Australia/Sydney">Sydney</option>
+                    <option value="Australia/Melbourne">Melbourne</option>
+                    <option value="Australia/Perth">Perth</option>
+                    <option value="Australia/Brisbane">Brisbane</option>
+                    <option value="Pacific/Auckland">Auckland</option>
+                    <option value="Pacific/Fiji">Fiji</option>
+                </optgroup>
+            </select>
+        </div>
+        <button class="btn-locate" id="locateBtn">📍 Ma position</button>
+        <button class="btn-calculate" id="calculatePrayerBtn">Calculer</button>
+    </div>
+
+    <div class="method-section">
+        <label>Méthode de calcul</label>
+        <select id="calculationMethod">
+            <option value="MuslimWorldLeague" selected>Ligue Musulmane Mondiale</option>
+            <option value="IslamicSocietyOfNorthAmerica">ISNA (Amérique du Nord)</option>
+            <option value="Egyptian">Autorité égyptienne</option>
+            <option value="Makkah">Makkah (Umm Al-Qura)</option>
+            <option value="Karachi">Karachi (Université)</option>
+            <option value="Tehran">Institut de Géophysique (Téhéran)</option>
+            <option value="Kuwait">Koweït</option>
+            <option value="Qatar">Qatar</option>
+            <option value="Singapore">Singapour/Malaisie</option>
+            <option value="Turkey">Diyanet (Turquie)</option>
+            <option value="France">Union des Mosquées de France</option>
+        </select>
+        <small>Nous calculons l'imsak de la manière [Fajr-10min], en vrai y a pas vraiment moyen de le calculer.</small>
+    </div>
+
+    <div class="next-prayer" id="nextPrayer">
+        <div class="next-label">Prochaine prière</div>
+        <div class="next-name" id="nextPrayerName">-</div>
+        <div class="next-time" id="nextPrayerTime">-</div>
+        <div class="countdown" id="countdown">-</div>
+    </div>
+
+    <div class="prayer-list" id="prayerList">
+        <div class="prayer-item imsak-item">
+            <span class="prayer-name">Imsak <small>(fin du sahur)</small></span>
+            <span class="prayer-time" id="imsakTime">--:--</span>
+        </div>
+        <div class="prayer-item">
+            <span class="prayer-name">Fajr</span>
+            <span class="prayer-time" id="fajrTime">--:--</span>
+        </div>
+        <div class="prayer-item">
+            <span class="prayer-name">Lever du soleil</span>
+            <span class="prayer-time" id="sunriseTime">--:--</span>
+        </div>
+        <div class="prayer-item">
+            <span class="prayer-name">Dhuhr</span>
+            <span class="prayer-time" id="dhuhrTime">--:--</span>
+        </div>
+        <div class="prayer-item">
+            <span class="prayer-name">Asr</span>
+            <span class="prayer-time" id="asrTime">--:--</span>
+        </div>
+        <div class="prayer-item">
+            <span class="prayer-name">Maghrib</span>
+            <span class="prayer-time" id="maghribTime">--:--</span>
+        </div>
+        <div class="prayer-item">
+            <span class="prayer-name">Isha</span>
+            <span class="prayer-time" id="ishaTime">--:--</span>
+        </div>
+    </div>
+
+    <div class="qibla-section">
+        <h5>Direction de la Qibla</h5>
+        <div class="qibla-direction" id="qiblaDirection">
+            <span class="qibla-angle">-</span>
+            <span class="qibla-compass">🧭</span>
+        </div>
+    </div>
+</div>

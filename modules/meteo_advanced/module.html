@@ -1,0 +1,336 @@
+<div class="weather-builder">
+    <div class="config-section">
+        <h3>📍 Position</h3>
+        <div class="location-controls">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Rechercher une ville..." value="Alger">
+                <div id="autocomplete-results" class="suggestions hidden"></div>
+            </div>
+            <div class="coords-box">
+                <input type="number" id="lat-input" placeholder="Latitude" step="0.0001" value="36,73225">
+                <input type="number" id="lon-input" placeholder="Longitude" step="0.0001" value="3,08746">
+                <button id="geo-btn" title="Utiliser ma position GPS">🎯</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="config-section">
+        <h3>📅 Intervalle de temps</h3>
+        <div class="date-controls">
+            <label>Du : <input type="date" id="start-date"></label>
+            <label>Au : <input type="date" id="end-date"></label>
+        </div>
+    </div>
+
+    <div class="config-section">
+        <h3>⚙️ Options</h3>
+        <div class="options-controls">
+            <label><input type="checkbox" id="use-fahrenheit"> Utiliser °F</label>
+            <label><input type="checkbox" id="use-mph"> Utiliser mph</label>
+            <button id="theme-toggle" class="theme-btn">🌙 Mode sombre</button>
+            <button id="export-csv" class="export-btn">📥 Export CSV</button>
+        </div>
+    </div>
+
+    <div class="config-section">
+        <h3>⚙️ Variables à extraire</h3>
+        <div class="variables-grid">
+    <div class="var-group">
+        <h4>📍 Actuel (Current)</h4>
+        <div class="sub-category">-- Température & Air --</div>
+        <label><input type="checkbox" class="var-current" value="temperature_2m" checked> Température (2m)</label>
+        <label><input type="checkbox" class="var-current" value="apparent_temperature"> Ressenti</label>
+        <label><input type="checkbox" class="var-current" value="relative_humidity_2m"> Humidité</label>
+        <label><input type="checkbox" class="var-current" value="dew_point_2m"> Point de rosée</label>
+        <label><input type="checkbox" class="var-current" value="is_day" checked> Jour/Nuit</label>
+        
+        <div class="sub-category">-- Pression & Vent --</div>
+        <label><input type="checkbox" class="var-current" value="pressure_msl"> Pression (Mer)</label>
+        <label><input type="checkbox" class="var-current" value="surface_pressure"> Pression Surface</label>
+        <label><input type="checkbox" class="var-current" value="wind_speed_10m"> Vent (10m)</label>
+        <label><input type="checkbox" class="var-current" value="wind_direction_10m"> Direction Vent</label>
+        <label><input type="checkbox" class="var-current" value="wind_gusts_10m"> Rafales</label>
+        
+        <div class="sub-category">-- Précipitations & Nuages --</div>
+        <label><input type="checkbox" class="var-current" value="weather_code"> Code Météo</label>
+        <label><input type="checkbox" class="var-current" value="precipitation"> Précipitations</label>
+        <label><input type="checkbox" class="var-current" value="rain"> Pluie</label>
+        <label><input type="checkbox" class="var-current" value="showers"> Averses</label>
+        <label><input type="checkbox" class="var-current" value="snowfall"> Neige</label>
+        <label><input type="checkbox" class="var-current" value="cloud_cover"> Couverture nuageuse</label>
+        
+        <div class="sub-category">-- Rayonnement & Autres --</div>
+        <label><input type="checkbox" class="var-current" value="shortwave_radiation"> Rayonnement court</label>
+        <label><input type="checkbox" class="var-current" value="direct_radiation"> Rayonnement direct</label>
+        <label><input type="checkbox" class="var-current" value="diffuse_radiation"> Rayonnement diffus</label>
+        <label><input type="checkbox" class="var-current" value="direct_normal_irradiance"> DNI</label>
+        <label><input type="checkbox" class="var-current" value="terrestrial_radiation"> Rayonnement terrestre</label>
+        <label><input type="checkbox" class="var-current" value="uv_index"> Indice UV</label>
+        <label><input type="checkbox" class="var-current" value="cape"> CAPE</label>
+        <label><input type="checkbox" class="var-current" value="lifted_index"> Lifted Index</label>
+        <label><input type="checkbox" class="var-current" value="visibility"> Visibilité</label>
+        <label><input type="checkbox" class="var-current" value="vapor_pressure_deficit"> Déficit pression vapeur</label>
+    </div>
+
+    <div class="var-group">
+        <h4>⏱️ Horaire (Hourly)</h4>
+        <div class="sub-category">-- 🌡️ Température --</div>
+        <label><input type="checkbox" class="var-hourly" value="temperature_2m"> Température (2m)</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_80m"> Température (80m)</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_120m"> Température (120m)</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_180m"> Température (180m)</label>
+        <label><input type="checkbox" class="var-hourly" value="apparent_temperature"> Ressenti</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_2m"> Point de rosée</label>
+        
+        <div class="sub-category">-- 💧 Humidité --</div>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_2m"> Humidité (2m)</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_80m"> Humidité (80m)</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_120m"> Humidité (120m)</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_180m"> Humidité (180m)</label>
+        
+        <div class="sub-category">-- 🌧️ Précipitations --</div>
+        <label><input type="checkbox" class="var-hourly" value="precipitation"> Précipitations</label>
+        <label><input type="checkbox" class="var-hourly" value="precipitation_probability"> Probabilité</label>
+        <label><input type="checkbox" class="var-hourly" value="rain"> Pluie</label>
+        <label><input type="checkbox" class="var-hourly" value="rain_probability"> Proba. Pluie</label>
+        <label><input type="checkbox" class="var-hourly" value="showers"> Averses</label>
+        <label><input type="checkbox" class="var-hourly" value="showers_probability"> Proba. Averses</label>
+        <label><input type="checkbox" class="var-hourly" value="snowfall"> Chutes de neige</label>
+        <label><input type="checkbox" class="var-hourly" value="snowfall_probability"> Proba. Neige</label>
+        <label><input type="checkbox" class="var-hourly" value="snow_depth"> Épaisseur neige</label>
+        <label><input type="checkbox" class="var-hourly" value="snow_depth_water_equivalent"> Équivalent eau neige</label>
+        <label><input type="checkbox" class="var-hourly" value="freezing_level_height"> Altitude gel</label>
+        
+        <div class="sub-category">-- ☁️ Nuages --</div>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover"> Couverture totale</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_low"> Nuages bas</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_mid"> Nuages moyens</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_high"> Nuages hauts</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_base"> Base nuages</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_top"> Sommet nuages</label>
+        <label><input type="checkbox" class="var-hourly" value="ceiling"> Plafond</label>
+        
+        <div class="sub-category">-- 💨 Vent --</div>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_10m"> Vitesse (10m)</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_80m"> Vitesse (80m)</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_120m"> Vitesse (120m)</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_180m"> Vitesse (180m)</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_10m"> Direction (10m)</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_80m"> Direction (80m)</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_120m"> Direction (120m)</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_180m"> Direction (180m)</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_gusts_10m"> Rafales (10m)</label>
+        
+        <div class="sub-category">-- 📊 Pression --</div>
+        <label><input type="checkbox" class="var-hourly" value="pressure_msl"> Pression mer</label>
+        <label><input type="checkbox" class="var-hourly" value="surface_pressure"> Pression surface</label>
+        
+        <div class="sub-category">-- ☀️ Rayonnement solaire --</div>
+        <label><input type="checkbox" class="var-hourly" value="shortwave_radiation"> Rayonnement court</label>
+        <label><input type="checkbox" class="var-hourly" value="shortwave_radiation_instant"> Ray. court instantané</label>
+        <label><input type="checkbox" class="var-hourly" value="shortwave_radiation_clear_sky"> Ray. ciel dégagé</label>
+        <label><input type="checkbox" class="var-hourly" value="shortwave_radiation_clear_sky_instant"> Ray. ciel dégagé instant</label>
+        <label><input type="checkbox" class="var-hourly" value="direct_radiation"> Rayonnement direct</label>
+        <label><input type="checkbox" class="var-hourly" value="direct_radiation_instant"> Ray. direct instantané</label>
+        <label><input type="checkbox" class="var-hourly" value="diffuse_radiation"> Rayonnement diffus</label>
+        <label><input type="checkbox" class="var-hourly" value="diffuse_radiation_instant"> Ray. diffus instantané</label>
+        <label><input type="checkbox" class="var-hourly" value="direct_normal_irradiance"> DNI</label>
+        <label><input type="checkbox" class="var-hourly" value="direct_normal_irradiance_instant"> DNI instantané</label>
+        <label><input type="checkbox" class="var-hourly" value="global_tilted_irradiance"> GTI</label>
+        <label><input type="checkbox" class="var-hourly" value="global_tilted_irradiance_instant"> GTI instantané</label>
+        <label><input type="checkbox" class="var-hourly" value="terrestrial_radiation"> Rayonnement terrestre</label>
+        <label><input type="checkbox" class="var-hourly" value="terrestrial_radiation_instant"> Ray. terrestre instantané</label>
+        
+        <div class="sub-category">-- 🌙 Rayonnement long --</div>
+        <label><input type="checkbox" class="var-hourly" value="longwave_radiation"> Rayonnement long</label>
+        <label><input type="checkbox" class="var-hourly" value="longwave_radiation_instant"> Ray. long instantané</label>
+        <label><input type="checkbox" class="var-hourly" value="longwave_radiation_clear_sky"> Ray. ciel dégagé</label>
+        
+        <div class="sub-category">-- ⚡ Autres atmosphériques --</div>
+        <label><input type="checkbox" class="var-hourly" value="cape"> CAPE</label>
+        <label><input type="checkbox" class="var-hourly" value="convective_inhibition"> CIN</label>
+        <label><input type="checkbox" class="var-hourly" value="lifted_index"> Lifted Index</label>
+        <label><input type="checkbox" class="var-hourly" value="equilibrium_level_pressure"> Pression niveau équilibre</label>
+        <label><input type="checkbox" class="var-hourly" value="convective_cloud_top"> Sommet nuages convectifs</label>
+        <label><input type="checkbox" class="var-hourly" value="convective_cloud_base"> Base nuages convectifs</label>
+        <label><input type="checkbox" class="var-hourly" value="lightning_potential"> Potentiel foudre</label>
+        <label><input type="checkbox" class="var-hourly" value="lightning_density"> Densité foudre</label>
+        
+        <div class="sub-category">-- 🌱 Sol & Végétation --</div>
+        <label><input type="checkbox" class="var-hourly" value="soil_temperature_0cm"> Temp. sol (0cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_temperature_6cm"> Temp. sol (6cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_temperature_18cm"> Temp. sol (18cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_temperature_54cm"> Temp. sol (54cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_moisture_0_to_1cm"> Humidité sol (0-1cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_moisture_1_to_3cm"> Humidité sol (1-3cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_moisture_3_to_9cm"> Humidité sol (3-9cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_moisture_9_to_27cm"> Humidité sol (9-27cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="soil_moisture_27_to_81cm"> Humidité sol (27-81cm)</label>
+        <label><input type="checkbox" class="var-hourly" value="surface_temperature"> Temp. surface</label>
+        <label><input type="checkbox" class="var-hourly" value="skin_temperature"> Temp. peau</label>
+        
+        <div class="sub-category">-- 🌊 Hydrologie --</div>
+        <label><input type="checkbox" class="var-hourly" value="runoff"> Ruissellement</label>
+        <label><input type="checkbox" class="var-hourly" value="evapotranspiration"> Évapotranspiration</label>
+        <label><input type="checkbox" class="var-hourly" value="et0_fao_evapotranspiration"> ET0 FAO</label>
+        <label><input type="checkbox" class="var-hourly" value="precipitation_rain"> Précipitations pluie</label>
+        
+        <div class="sub-category">-- 👁️ Visibilité & Qualité --</div>
+        <label><input type="checkbox" class="var-hourly" value="visibility"> Visibilité</label>
+        <label><input type="checkbox" class="var-hourly" value="vapor_pressure_deficit"> Déficit pression vapeur</label>
+        <label><input type="checkbox" class="var-hourly" value="uv_index"> Indice UV</label>
+        <label><input type="checkbox" class="var-hourly" value="uv_index_clear_sky"> UV ciel dégagé</label>
+        <label><input type="checkbox" class="var-hourly" value="is_day"> Jour/Nuit</label>
+        <label><input type="checkbox" class="var-hourly" value="weather_code"> Code météo</label>
+        <label><input type="checkbox" class="var-hourly" value="geopotential_height_1000hPa"> Hauteur géopotentielle 1000hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="geopotential_height_800hPa"> Hauteur géopotentielle 800hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="geopotential_height_500hPa"> Hauteur géopotentielle 500hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wet_bulb_temperature_2m"> Temp. thermomètre mouillé</label>
+        
+        <div class="sub-category">-- 🌊 Niveaux de pression (Niveaux atmosphériques) --</div>
+        <label><input type="checkbox" class="var-hourly" value="temperature_1000hPa"> Temp. 1000hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_925hPa"> Temp. 925hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_850hPa"> Temp. 850hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_700hPa"> Temp. 700hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_500hPa"> Temp. 500hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_400hPa"> Temp. 400hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_300hPa"> Temp. 300hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_250hPa"> Temp. 250hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_200hPa"> Temp. 200hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_150hPa"> Temp. 150hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_100hPa"> Temp. 100hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_50hPa"> Temp. 50hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_30hPa"> Temp. 30hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_20hPa"> Temp. 20hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="temperature_10hPa"> Temp. 10hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_1000hPa"> Humidité 1000hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_925hPa"> Humidité 925hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_850hPa"> Humidité 850hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_700hPa"> Humidité 700hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_500hPa"> Humidité 500hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_400hPa"> Humidité 400hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_300hPa"> Humidité 300hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_250hPa"> Humidité 250hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_200hPa"> Humidité 200hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_150hPa"> Humidité 150hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_100hPa"> Humidité 100hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_50hPa"> Humidité 50hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_30hPa"> Humidité 30hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_20hPa"> Humidité 20hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="relative_humidity_10hPa"> Humidité 10hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_1000hPa"> Point rosée 1000hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_925hPa"> Point rosée 925hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_850hPa"> Point rosée 850hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_700hPa"> Point rosée 700hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_500hPa"> Point rosée 500hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_400hPa"> Point rosée 400hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_300hPa"> Point rosée 300hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_250hPa"> Point rosée 250hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_200hPa"> Point rosée 200hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_150hPa"> Point rosée 150hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_100hPa"> Point rosée 100hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_50hPa"> Point rosée 50hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_30hPa"> Point rosée 30hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_20hPa"> Point rosée 20hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="dew_point_10hPa"> Point rosée 10hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_1000hPa"> Nuages 1000hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_925hPa"> Nuages 925hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_850hPa"> Nuages 850hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_700hPa"> Nuages 700hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_500hPa"> Nuages 500hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_400hPa"> Nuages 400hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_300hPa"> Nuages 300hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_250hPa"> Nuages 250hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_200hPa"> Nuages 200hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_150hPa"> Nuages 150hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_100hPa"> Nuages 100hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_50hPa"> Nuages 50hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_30hPa"> Nuages 30hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_20hPa"> Nuages 20hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="cloud_cover_10hPa"> Nuages 10hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_1000hPa"> Vent 1000hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_925hPa"> Vent 925hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_850hPa"> Vent 850hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_700hPa"> Vent 700hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_500hPa"> Vent 500hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_400hPa"> Vent 400hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_300hPa"> Vent 300hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_250hPa"> Vent 250hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_200hPa"> Vent 200hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_150hPa"> Vent 150hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_100hPa"> Vent 100hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_50hPa"> Vent 50hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_30hPa"> Vent 30hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_20hPa"> Vent 20hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_speed_10hPa"> Vent 10hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_1000hPa"> Direction 1000hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_925hPa"> Direction 925hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_850hPa"> Direction 850hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_700hPa"> Direction 700hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_500hPa"> Direction 500hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_400hPa"> Direction 400hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_300hPa"> Direction 300hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_250hPa"> Direction 250hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_200hPa"> Direction 200hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_150hPa"> Direction 150hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_100hPa"> Direction 100hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_50hPa"> Direction 50hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_30hPa"> Direction 30hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_20hPa"> Direction 20hPa</label>
+        <label><input type="checkbox" class="var-hourly" value="wind_direction_10hPa"> Direction 10hPa</label>
+    </div>
+
+    <div class="var-group">
+        <h4>📅 Quotidien (Daily)</h4>
+        <div class="sub-category">-- 🌡️ Températures --</div>
+        <label><input type="checkbox" class="var-daily" value="temperature_2m_max" checked> Max (2m)</label>
+        <label><input type="checkbox" class="var-daily" value="temperature_2m_min" checked> Min (2m)</label>
+        <label><input type="checkbox" class="var-daily" value="temperature_2m_mean"> Moyenne (2m)</label>
+        <label><input type="checkbox" class="var-daily" value="apparent_temperature_max"> Ressenti Max</label>
+        <label><input type="checkbox" class="var-daily" value="apparent_temperature_min"> Ressenti Min</label>
+        <label><input type="checkbox" class="var-daily" value="apparent_temperature_mean"> Ressenti Moy</label>
+        
+        <div class="sub-category">-- ☀️ Soleil & Rayonnement --</div>
+        <label><input type="checkbox" class="var-daily" value="sunrise"> Lever soleil</label>
+        <label><input type="checkbox" class="var-daily" value="sunset"> Coucher soleil</label>
+        <label><input type="checkbox" class="var-daily" value="daylight_duration"> Durée jour</label>
+        <label><input type="checkbox" class="var-daily" value="sunshine_duration"> Durée ensoleillement</label>
+        <label><input type="checkbox" class="var-daily" value="uv_index_max"> UV Max</label>
+        <label><input type="checkbox" class="var-daily" value="uv_index_clear_sky_max"> UV ciel dégagé Max</label>
+        <label><input type="checkbox" class="var-daily" value="shortwave_radiation_sum"> Rayonnement court total</label>
+        <label><input type="checkbox" class="var-daily" value="et0_fao_evapotranspiration"> ET0 FAO</label>
+        
+        <div class="sub-category">-- 🌧️ Précipitations --</div>
+        <label><input type="checkbox" class="var-daily" value="precipitation_sum"> Total précipitations</label>
+        <label><input type="checkbox" class="var-daily" value="rain_sum"> Total pluie</label>
+        <label><input type="checkbox" class="var-daily" value="showers_sum"> Total averses</label>
+        <label><input type="checkbox" class="var-daily" value="snowfall_sum"> Total neige</label>
+        <label><input type="checkbox" class="var-daily" value="precipitation_hours"> Heures de pluie</label>
+        <label><input type="checkbox" class="var-daily" value="precipitation_probability_max"> Proba. max précipitations</label>
+        
+        <div class="sub-category">-- 💨 Vent --</div>
+        <label><input type="checkbox" class="var-daily" value="wind_speed_10m_max"> Vent max (10m)</label>
+        <label><input type="checkbox" class="var-daily" value="wind_gusts_10m_max"> Rafales max (10m)</label>
+        <label><input type="checkbox" class="var-daily" value="wind_direction_10m_dominant"> Direction dominante (10m)</label>
+        
+        <div class="sub-category">-- 🌱 Sol --</div>
+        <label><input type="checkbox" class="var-daily" value="soil_moisture_0_to_10cm_mean"> Humidité sol (0-10cm)</label>
+        <label><input type="checkbox" class="var-daily" value="soil_temperature_0_to_10cm_mean"> Temp. sol (0-10cm)</label>
+    </div>
+</div>
+    </div>
+
+    <button id="fetch-btn" class="action-btn">GÉNÉRER LA REQUÊTE 🚀</button>
+
+    <div class="results-section">
+        <div class="panel">
+            <h4>JSON Brut (Pour debug)</h4>
+            <pre id="json-raw">En attente...</pre>
+        </div>
+        <div class="panel">
+            <h4>Aperçu Visuel</h4>
+            <div id="visual-render">En attente...</div>
+        </div>
+    </div>
+
+</div>

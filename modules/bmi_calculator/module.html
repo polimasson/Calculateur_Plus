@@ -1,0 +1,59 @@
+<div class="bmi-calculator">
+    <div class="bmi-inputs">
+        <div class="input-group">
+            <label>Poids (kg)</label>
+            <input type="number" id="weightInput" min="1" max="500" step="0.1" placeholder="70">
+        </div>
+        <div class="input-group">
+            <label>Taille (cm)</label>
+            <input type="number" id="heightInput" min="1" max="300" step="0.1" placeholder="175">
+        </div>
+        <button id="calculateBtn" class="btn-calculate">Calculer</button>
+    </div>
+
+    <div class="bmi-result hidden" id="bmiResult">
+        <div class="bmi-value">
+            <span id="bmiNumber">0.0</span>
+            <small>IMC</small>
+        </div>
+        <div class="bmi-category" id="bmiCategory">-</div>
+        <div class="bmi-message" id="bmiMessage">-</div>
+    </div>
+
+    <div class="bmi-scale">
+        <h4>Échelle IMC</h4>
+        <div class="scale-bar">
+            <div class="scale-section" data-min="0" data-max="18.5" style="--color: #3498db;">
+                <span>Maigreur</span>
+                <small>&lt; 18.5</small>
+            </div>
+            <div class="scale-section" data-min="18.5" data-max="25" style="--color: #27ae60;">
+                <span>Normal</span>
+                <small>18.5 - 25</small>
+            </div>
+            <div class="scale-section" data-min="25" data-max="30" style="--color: #f39c12;">
+                <span>Surpoids</span>
+                <small>25 - 30</small>
+            </div>
+            <div class="scale-section" data-min="30" data-max="35" style="--color: #e67e22;">
+                <span>Obésité modérée</span>
+                <small>30 - 35</small>
+            </div>
+            <div class="scale-section" data-min="35" data-max="40" style="--color: #e74c3c;">
+                <span>Obésité sévère</span>
+                <small>35 - 40</small>
+            </div>
+            <div class="scale-section" data-min="40" data-max="100" style="--color: #c0392b;">
+                <span>Obésité massive</span>
+                <small>&gt; 40</small>
+            </div>
+        </div>
+        <div class="bmi-indicator" id="bmiIndicator"></div>
+    </div>
+
+    <div class="bmi-info">
+        <h4>À propos de l'IMC</h4>
+        <p>L'Indice de Masse Corporelle (IMC) est un indicateur utilisé pour évaluer la corpulence d'une personne. Il se calcule en divisant le poids (en kg) par le carré de la taille (en mètres).</p>
+        <p><strong>Formule :</strong> IMC = poids (kg) / taille² (m)</p>
+    </div>
+</div>

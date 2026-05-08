@@ -1,0 +1,382 @@
+.kitchen-converter {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.module-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.kitchen-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 10px 18px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+    font-size: 13px;
+}
+
+.tab-btn:hover {
+    background: #e0e0e0;
+}
+
+.tab-btn.active {
+    background: #e74c3c;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.converter-box {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.input-section, .output-section {
+    flex: 1;
+    min-width: 150px;
+}
+
+.input-section label, .output-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 13px;
+}
+
+.input-section input, .input-section select,
+.output-section select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.input-section input:focus, .input-section select:focus,
+.output-section select:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+.convert-arrow {
+    font-size: 24px;
+    color: #e74c3c;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.result-display {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #2e7d32;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-convert {
+    width: 100%;
+    padding: 14px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-convert:hover {
+    background: #c0392b;
+}
+
+/* Ingredient converter */
+.ingredient-converter {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.input-group select, .ingredient-row input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.ingredient-row {
+    display: flex;
+    gap: 10px;
+}
+
+.ingredient-row input {
+    flex: 1;
+}
+
+.ingredient-row select {
+    width: 150px;
+}
+
+.ingredient-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ing-result-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.ing-value {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #e74c3c;
+}
+
+.ing-unit {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Oven temp table */
+.oven-guide {
+    margin-top: 25px;
+    padding: 20px;
+    background: #fff3cd;
+    border-radius: 10px;
+}
+
+.oven-guide h4 {
+    margin: 0 0 15px 0;
+    color: #856404;
+}
+
+.oven-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.oven-table th {
+    background: #e74c3c;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.oven-table td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.oven-table tr:hover {
+    background: #f5f5f5;
+}
+
+/* Quick reference */
+.quick-reference {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.quick-reference h4 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+}
+
+.ref-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.ref-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.ref-card h5 {
+    margin: 0 0 10px 0;
+    color: #e74c3c;
+    font-size: 14px;
+}
+
+.ref-card ul {
+    margin: 0;
+    padding-left: 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+.ref-card li {
+    margin-bottom: 4px;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .converter-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .convert-arrow {
+        text-align: center;
+        transform: rotate(90deg);
+    }
+    
+    .ref-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .ingredient-results {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dark Mode */
+body.dark-mode .module-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .tab-btn {
+    background: #0f3460;
+    color: #e0e0e0;
+}
+
+body.dark-mode .tab-btn:hover {
+    background: #1a5fb4;
+}
+
+body.dark-mode .tab-btn.active {
+    background: #c0392b;
+}
+
+body.dark-mode .tab-content {
+    background: #16213e;
+}
+
+body.dark-mode .input-section label,
+body.dark-mode .output-section label,
+body.dark-mode .input-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .input-section input,
+body.dark-mode .input-section select,
+body.dark-mode .output-section select,
+body.dark-mode .input-group select,
+body.dark-mode .ingredient-row input {
+    background: #0f3460;
+    border-color: #1a5fb4;
+    color: #e0e0e0;
+}
+
+body.dark-mode .result-display {
+    background: #1a4a2a;
+    color: #4caf50;
+}
+
+body.dark-mode .ing-result-item {
+    background: #0f3460;
+}
+
+body.dark-mode .ing-value {
+    color: #ff6b6b;
+}
+
+body.dark-mode .ing-unit {
+    color: #aaa;
+}
+
+body.dark-mode .oven-guide {
+    background: #4a4a2a;
+}
+
+body.dark-mode .oven-guide h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .oven-table th {
+    background: #c0392b;
+}
+
+body.dark-mode .oven-table td {
+    border-color: #1a5fb4;
+}
+
+body.dark-mode .quick-reference {
+    background: #0f3460;
+}
+
+body.dark-mode .quick-reference h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .ref-card {
+    background: #16213e;
+}
+
+body.dark-mode .ref-card h5 {
+    color: #ff6b6b;
+}
+
+body.dark-mode .ref-card ul {
+    color: #aaa;
+}

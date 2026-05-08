@@ -1,0 +1,102 @@
+<div class="file-hash">
+    <h3 class="module-title">Vérification de Hash de Fichier</h3>
+    
+    <div class="hash-input-section">
+        <div class="file-drop-zone" id="dropZone">
+            <div class="drop-zone-content">
+                <div class="drop-icon">📁</div>
+                <p>Glissez-déposez un fichier ici</p>
+                <p class="or-text">ou</p>
+                <input type="file" id="fileInput" class="file-input">
+                <button class="btn-select-file" onclick="document.getElementById('fileInput').click()">
+                    Sélectionner un fichier
+                </button>
+            </div>
+        </div>
+        
+        <div class="file-info" id="fileInfo" style="display: none;">
+            <div class="file-details">
+                <span class="file-name" id="fileName"></span>
+                <span class="file-size" id="fileSize"></span>
+            </div>
+            <button class="btn-remove-file" id="removeFile">✕</button>
+        </div>
+        
+        <div class="progress-bar" id="progressBar" style="display: none;">
+            <div class="progress-fill" id="progressFill"></div>
+            <span class="progress-text" id="progressText">0%</span>
+        </div>
+    </div>
+    
+    <div class="algorithms-section">
+        <h4>Algorithmes de hash</h4>
+        <div class="algo-grid" id="algoGrid">
+            <label class="algo-checkbox">
+                <input type="checkbox" value="md5" checked>
+                <span>MD5</span>
+            </label>
+            <label class="algo-checkbox">
+                <input type="checkbox" value="sha1" checked>
+                <span>SHA-1</span>
+            </label>
+            <label class="algo-checkbox">
+                <input type="checkbox" value="sha256" checked>
+                <span>SHA-256</span>
+            </label>
+            <label class="algo-checkbox">
+                <input type="checkbox" value="sha384">
+                <span>SHA-384</span>
+            </label>
+            <label class="algo-checkbox">
+                <input type="checkbox" value="sha512">
+                <span>SHA-512</span>
+            </label>
+            <label class="algo-checkbox">
+                <input type="checkbox" value="crc32">
+                <span>CRC-32</span>
+            </label>
+            <label class="algo-checkbox">
+                <input type="checkbox" value="crc64">
+                <span>CRC-64</span>
+            </label>
+            <label class="algo-checkbox">
+                <input type="checkbox" value="blake2sp">
+                <span>BLAKE2sp</span>
+            </label>
+            <label class="algo-checkbox">
+                <input type="checkbox" value="xxh64">
+                <span>XXH64</span>
+            </label>
+        </div>
+        <div class="algo-actions">
+            <button class="btn-small" id="selectAllAlgos">Tout sélectionner</button>
+            <button class="btn-small" id="deselectAllAlgos">Tout désélectionner</button>
+        </div>
+    </div>
+    
+    <button class="btn-calculate" id="calculateHash" disabled>
+        <span class="btn-text">Calculer les hash</span>
+        <span class="btn-loader" style="display: none;">⏳</span>
+    </button>
+    
+    <div class="results-section" id="resultsSection" style="display: none;">
+        <h4>Résultats</h4>
+        <div class="hash-results" id="hashResults"></div>
+        
+        <div class="verify-section">
+            <h4>Vérifier un hash</h4>
+            <div class="verify-input-group">
+                <input type="text" id="verifyHash" placeholder="Collez le hash à vérifier ici...">
+                <button class="btn-verify" id="verifyBtn">Vérifier</button>
+            </div>
+            <div class="verify-result" id="verifyResult"></div>
+        </div>
+        
+        <div class="results-actions">
+            <button class="btn-export" id="exportResults">📋 Copier tout</button>
+            <button class="btn-export" id="exportJson">📄 Exporter JSON</button>
+        </div>
+    </div>
+    
+    <div class="error-message" id="errorMessage" style="display: none;"></div>
+</div>

@@ -1,0 +1,61 @@
+<div class="weather-simple">
+    <div class="weather-header">
+        <h3>🌤️ Météo</h3>
+        <div class="search-box">
+            <input type="text" id="search-input" placeholder="Rechercher une ville..." value="Paris">
+            <div id="autocomplete-results" class="suggestions hidden"></div>
+        </div>
+        <div class="coords-box">
+            <input type="number" id="lat-input" placeholder="Lat" step="0.0001" value="48.8566">
+            <input type="number" id="lon-input" placeholder="Lon" step="0.0001" value="2.3522">
+            <button id="geo-btn" title="Ma position">📍</button>
+        </div>
+    </div>
+
+    <div class="weather-current" id="current-weather">
+        <div class="current-main">
+            <div class="temp-big" id="current-temp">--°</div>
+            <div class="weather-icon" id="weather-icon">☁️</div>
+            <div class="weather-desc" id="weather-desc">-</div>
+        </div>
+        <div class="current-details">
+            <div class="detail-item">
+                <span class="detail-label">Ressenti</span>
+                <span class="detail-value" id="feels-like">--°</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Humidité</span>
+                <span class="detail-value" id="humidity">--%</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Vent</span>
+                <span class="detail-value" id="wind">-- km/h</span>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label">Pression</span>
+                <span class="detail-value" id="pressure">-- hPa</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="weather-forecast">
+        <h4>📅 Prévisions 7 jours</h4>
+        <div class="forecast-list" id="forecast-list">
+            <!-- Généré dynamiquement -->
+        </div>
+    </div>
+
+    <div class="weather-hourly">
+        <h4>⏱️ Prochaines heures</h4>
+        <div class="hourly-list" id="hourly-list">
+            <!-- Généré dynamiquement -->
+        </div>
+    </div>
+
+    <div class="weather-actions">
+        <button id="refresh-btn" class="btn-refresh">🔄 Actualiser</button>
+        <label class="unit-toggle">
+            <input type="checkbox" id="unit-toggle"> °F
+        </label>
+    </div>
+</div>

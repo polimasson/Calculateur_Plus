@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur Plus!</title>
+    <link href="src/style/style.css" rel="stylesheet"/>
+    <link rel="icon" type="image/svg+xml" href="src/icon/favicon.svg"/>
+    <script defer src="src/script.js"></script>
+    <script src="coi-serviceworker.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <script>
+        // Enregistrement du service worker pour le PWA (uniquement si autorisé)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Vérifier la préférence utilisateur dans localStorage
+                const swEnabled = localStorage.getItem('serviceWorkerEnabled') !== 'false';
+                
+                if (swEnabled) {
+                    navigator.serviceWorker.register('sw.js')
+                        .then(registration => {
+                            console.log('Service Worker enregistré:', registration);
+                        })
+                        .catch(error => {
+                            console.log('Échec de l\'enregistrement du Service Worker:', error);
+                        });
+                } else {
+                    console.log('Service Worker désactivé (préférence utilisateur)');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="menu">
+        <div id="category">
+            <div class="header-row">
+                <h1>Calculateur Plus! (Bêta)</h1>
+                <button id="themeToggle" onclick="toggleTheme()" title="Basculer mode sombre/clair">🌙</button>
+            </div>
+            <!--<small>Tous les modules sans le tag #API fonctionnent 100% en local sur votre appareil garantisant votre confidentialité et votre vie privée (pas de serveur externe), par contre pour les modules qui requièrent beaucoup de puissance ça peut ralentir / ramer sur certains périphériques avec peu de performances (ex: téléphone bas de gamme) comme le module "Super résolution IA".</small>-->
+            <h2 onclick="loadModule('info')">Plus d'info</h2>            
+            <div class="filter-zone">
+                <input type="text" id="searchInput" placeholder="Rechercher un module..." onkeyup="filterModules()">
+                <div id="tagFilters">
+                    </div>
+                <label class="strict-filter">
+                    <input type="checkbox" id="strictTagFilter" onchange="filterModules()">
+                    <span>Mode strict</span>
+                    <small>Recherche sur tous les tags sélectionnés (ET), le mode par défaut utilise (OU)</small>
+                </label>
+            </div>
+
+            <div class="module-count" id="moduleCount"></div>
+
+            <ul id="moduleList">
+                </ul>
+        </div>
+    </div>
+
+<div id="content" class="hidden">
+    <button onclick="goBack()">↩ Retour au menu</button>
+    <div id="module-info"></div> 
+    
+    <div id="module"></div>
+</div>
+</body>
+</html>

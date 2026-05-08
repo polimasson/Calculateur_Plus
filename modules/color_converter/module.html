@@ -1,0 +1,114 @@
+<div class="color-converter">
+    <div class="color-preview" id="colorPreview">
+        <div class="alpha-grid"></div>
+    </div>
+
+    <!-- Transparence -->
+    <div class="alpha-section">
+        <div class="slider-group">
+            <label>Transparence (Alpha): <span id="alphaValue">100</span>%</label>
+            <input type="range" id="alphaSlider" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="color-tabs">
+        <button class="tab-btn active" data-tab="hex">HEX</button>
+        <button class="tab-btn" data-tab="rgb">RGB</button>
+        <button class="tab-btn" data-tab="hsl">HSL</button>
+    </div>
+
+    <div class="color-inputs">
+        <!-- HEX -->
+        <div class="tab-content active" id="tab-hex">
+            <div class="input-group">
+                <label>#</label>
+                <input type="text" id="hexInput" maxlength="9" placeholder="FF5733 ou FF5733FF">
+                <input type="color" id="hexPicker" value="#FF5733">
+            </div>
+            <small>Supporte HEX 6 (RGB) et 8 (RGBA) caractères</small>
+        </div>
+
+        <!-- RGB -->
+        <div class="tab-content" id="tab-rgb">
+            <div class="slider-group">
+                <label>R: <span id="rValue">255</span></label>
+                <input type="range" id="rSlider" min="0" max="255" value="255">
+            </div>
+            <div class="slider-group">
+                <label>G: <span id="gValue">87</span></label>
+                <input type="range" id="gSlider" min="0" max="255" value="87">
+            </div>
+            <div class="slider-group">
+                <label>B: <span id="bValue">51</span></label>
+                <input type="range" id="bSlider" min="0" max="255" value="51">
+            </div>
+            <div class="input-group">
+                <input type="text" id="rgbInput" placeholder="rgb(255, 87, 51) ou rgba(255, 87, 51, 0.5)">
+            </div>
+            <small>Supporte rgb() et rgba() avec transparence</small>
+        </div>
+
+        <!-- HSL -->
+        <div class="tab-content" id="tab-hsl">
+            <div class="slider-group">
+                <label>H: <span id="hValue">9</span>°</label>
+                <input type="range" id="hSlider" min="0" max="360" value="9">
+            </div>
+            <div class="slider-group">
+                <label>S: <span id="sValue">100</span>%</label>
+                <input type="range" id="sSlider" min="0" max="100" value="100">
+            </div>
+            <div class="slider-group">
+                <label>L: <span id="lValue">60</span>%</label>
+                <input type="range" id="lSlider" min="0" max="100" value="60">
+            </div>
+            <div class="input-group">
+                <input type="text" id="hslInput" placeholder="hsl(9, 100%, 60%) ou hsla(9, 100%, 60%, 0.5)">
+            </div>
+            <small>Supporte hsl() et hsla() avec transparence</small>
+        </div>
+    </div>
+
+    <div class="color-results">
+        <div class="result-row">
+            <span>HEX:</span>
+            <code id="resultHex">#FF5733</code>
+            <button class="btn-copy" data-target="resultHex">📋</button>
+        </div>
+        <div class="result-row">
+            <span>HEX avec alpha:</span>
+            <code id="resultHexAlpha">#FF5733FF</code>
+            <button class="btn-copy" data-target="resultHexAlpha">📋</button>
+        </div>
+        <div class="result-row">
+            <span>RGB:</span>
+            <code id="resultRgb">rgb(255, 87, 51)</code>
+            <button class="btn-copy" data-target="resultRgb">📋</button>
+        </div>
+        <div class="result-row">
+            <span>RGBA:</span>
+            <code id="resultRgba">rgba(255, 87, 51, 1)</code>
+            <button class="btn-copy" data-target="resultRgba">📋</button>
+        </div>
+        <div class="result-row">
+            <span>HSL:</span>
+            <code id="resultHsl">hsl(9, 100%, 60%)</code>
+            <button class="btn-copy" data-target="resultHsl">📋</button>
+        </div>
+        <div class="result-row">
+            <span>HSLA:</span>
+            <code id="resultHsla">hsla(9, 100%, 60%, 1)</code>
+            <button class="btn-copy" data-target="resultHsla">📋</button>
+        </div>
+    </div>
+
+    <div class="history-controls">
+        <button id="addToHistoryBtn" class="btn-primary">➕ Ajouter à l'historique</button>
+    </div>
+
+    <div class="color-history">
+        <h4>Historique</h4>
+        <div id="colorHistory"></div>
+        <button id="clearColorHistory" class="btn-small">Effacer</button>
+    </div>
+</div>

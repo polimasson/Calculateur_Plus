@@ -1,0 +1,128 @@
+<div class="clothing-size-converter">
+    <h3 class="module-title">Convertisseur de Tailles de Vêtements</h3>
+    
+    <div class="clothing-tabs">
+        <button class="tab-btn active" data-tab="tops">Hauts</button>
+        <button class="tab-btn" data-tab="bottoms">Bas</button>
+        <button class="tab-btn" data-tab="shirts">Chemises</button>
+    </div>
+    
+    <div class="tab-content active" id="tab-tops">
+        <div class="input-group">
+            <label>Catégorie</label>
+            <select id="topsGender">
+                <option value="women">Femme</option>
+                <option value="men">Homme</option>
+                <option value="kids">Enfant</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label>Taille à convertir</label>
+            <div class="size-inputs">
+                <input type="number" id="topsSize" placeholder="Taille" min="0">
+                <select id="topsFrom">
+                    <option value="eu">EU (Europe)</option>
+                    <option value="us">US</option>
+                    <option value="uk">UK</option>
+                    <option value="fr">FR</option>
+                    <option value="it">IT</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="arrow">→</div>
+        
+        <div class="input-group">
+            <label>Convertir en</label>
+            <select id="topsTo">
+                <option value="int">International (XS-XXL)</option>
+                <option value="eu">EU</option>
+                <option value="us">US</option>
+                <option value="uk">UK</option>
+                <option value="fr">FR</option>
+                <option value="it">IT</option>
+            </select>
+        </div>
+        
+        <button class="btn-convert" id="convertTops">Convertir</button>
+        
+        <div class="result-section" id="topsResult"></div>
+    </div>
+    
+    <div class="tab-content" id="tab-bottoms">
+        <div class="input-group">
+            <label>Catégorie</label>
+            <select id="bottomsGender">
+                <option value="women">Femme</option>
+                <option value="men">Homme</option>
+                <option value="kids">Enfant</option>
+            </select>
+        </div>
+        
+        <div class="input-group">
+            <label>Taille à convertir</label>
+            <div class="size-inputs">
+                <input type="number" id="bottomsSize" placeholder="Taille" min="0">
+                <select id="bottomsFrom">
+                    <option value="eu">EU (Europe)</option>
+                    <option value="us">US</option>
+                    <option value="uk">UK</option>
+                    <option value="fr">FR</option>
+                    <option value="waist">Tour de taille (cm)</option>
+                    <option value="hips">Tour de hanches (cm)</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="arrow">→</div>
+        
+        <div class="input-group">
+            <label>Convertir en</label>
+            <select id="bottomsTo">
+                <option value="int">International</option>
+                <option value="eu">EU</option>
+                <option value="us">US</option>
+                <option value="uk">UK</option>
+                <option value="fr">FR</option>
+            </select>
+        </div>
+        
+        <button class="btn-convert" id="convertBottoms">Convertir</button>
+        
+        <div class="result-section" id="bottomsResult"></div>
+    </div>
+    
+    <div class="tab-content" id="tab-shirts">
+        <div class="input-group">
+            <label>Taille à convertir</label>
+            <div class="size-inputs">
+                <input type="number" id="shirtCollar" placeholder="Tour de cou (cm)" min="0">
+            </div>
+        </div>
+        
+        <div class="arrow">→</div>
+        
+        <div class="input-group">
+            <label>Correspondance</label>
+            <div class="shirt-result" id="shirtResult">
+                <div class="shirt-info">
+                    <span class="label">EU:</span> <span id="shirtEU">-</span>
+                </div>
+                <div class="shirt-info">
+                    <span class="label">US/UK:</span> <span id="shirtUS">-</span>
+                </div>
+                <div class="shirt-info">
+                    <span class="label">International:</span> <span id="shirtInt">-</span>
+                </div>
+            </div>
+        </div>
+        
+        <button class="btn-convert" id="convertShirt">Convertir</button>
+    </div>
+    
+    <div class="size-guide">
+        <h4>Guide des tailles</h4>
+        <div class="guide-section" id="sizeGuideContent"></div>
+    </div>
+</div>

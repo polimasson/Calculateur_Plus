@@ -1,0 +1,72 @@
+<div class="datetime-diff">
+    <h3 class="module-title">Calculateur de Différence entre Dates</h3>
+    
+    <div class="datetime-inputs">
+        <div class="datetime-group">
+            <label for="startDate">Date et heure de début</label>
+            <input type="datetime-local" id="startDate" step="1">
+            <button class="btn-now" data-target="startDate">Maintenant</button>
+        </div>
+        
+        <div class="datetime-separator">➔</div>
+        
+        <div class="datetime-group">
+            <label for="endDate">Date et heure de fin</label>
+            <input type="datetime-local" id="endDate" step="1">
+            <button class="btn-now" data-target="endDate">Maintenant</button>
+        </div>
+    </div>
+    
+    <button id="calculateDiff" class="btn-calculate">Calculer la différence</button>
+    <button id="swapDates" class="btn-swap">⇄ Inverser les dates</button>
+    
+    <div class="result-container" id="resultContainer" style="display: none;">
+        <h4>Résultat</h4>
+        
+        <div class="diff-summary" id="diffSummary"></div>
+        
+        <div class="diff-breakdown">
+            <div class="diff-unit">
+                <span class="unit-value" id="yearsValue">0</span>
+                <span class="unit-label">année(s)</span>
+            </div>
+            <div class="diff-unit">
+                <span class="unit-value" id="monthsValue">0</span>
+                <span class="unit-label">mois</span>
+            </div>
+            <div class="diff-unit">
+                <span class="unit-value" id="daysValue">0</span>
+                <span class="unit-label">jour(s)</span>
+            </div>
+            <div class="diff-unit">
+                <span class="unit-value" id="hoursValue">0</span>
+                <span class="unit-label">heure(s)</span>
+            </div>
+            <div class="diff-unit">
+                <span class="unit-value" id="minutesValue">0</span>
+                <span class="unit-label">minute(s)</span>
+            </div>
+            <div class="diff-unit">
+                <span class="unit-value" id="secondsValue">0</span>
+                <span class="unit-label">seconde(s)</span>
+            </div>
+        </div>
+        
+        <div class="total-values">
+            <div class="total-item">
+                <strong>Total en jours :</strong> <span id="totalDays">0</span> jours
+            </div>
+            <div class="total-item">
+                <strong>Total en heures :</strong> <span id="totalHours">0</span> heures
+            </div>
+            <div class="total-item">
+                <strong>Total en minutes :</strong> <span id="totalMinutes">0</span> minutes
+            </div>
+            <div class="total-item">
+                <strong>Total en secondes :</strong> <span id="totalSeconds">0</span> secondes
+            </div>
+        </div>
+    </div>
+    
+    <div class="error-message" id="errorMessage" style="display: none;"></div>
+</div>

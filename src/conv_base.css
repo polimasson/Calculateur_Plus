@@ -1,0 +1,212 @@
+/* ==========================================================================
+   CSS de Base pour les Convertisseurs
+   ========================================================================== */
+
+/* Variables par défaut (peuvent être surchargées par chaque module) */
+body.dark-mode {
+    --conv-text-color: #ffffff !important;
+}
+:root {
+    --conv-bg-color: #f5f5f5;
+    --conv-title-color: #2c3e50;
+    --conv-btn-bg: #3498db;
+    --conv-btn-color: #ffffff;
+    --conv-btn-hover: #2980b9;
+    --conv-tooltip-bg: #e8e8e8;
+    --conv-tooltip-border: rgba(100, 100, 100, 0.3);
+    --conv-input-border: #ddd;
+    --conv-input-focus: #3498db;
+    --conv-text-color: #333;
+    --conv-spacing: 20px;
+    --conv-radius: 8px;
+}
+
+/* Conteneur principal */
+#module {
+    padding: var(--conv-spacing);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Fond de page */
+body {
+    background: var(--conv-bg-color);
+    transition: background 0.3s ease;
+}
+
+/* Titres */
+#module h2 {
+    color: var(--conv-title-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--conv-title-color);
+    padding-bottom: 10px;
+}
+
+/* Boutons */
+#module button {
+    background-color: var(--conv-btn-bg);
+    color: var(--conv-btn-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--conv-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin: 5px;
+}
+
+#module button:hover {
+    background-color: var(--conv-btn-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#module button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Champs de saisie et selects */
+#module input,
+#module select {
+    padding: 10px 15px;
+    border: 2px solid var(--conv-input-border);
+    border-radius: var(--conv-radius);
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    margin: 5px;
+    background: white;
+}
+
+#module input:focus,
+#module select:focus {
+    outline: none;
+    border-color: var(--conv-input-focus);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Section de résultat */
+#module p,
+.result-display {
+    background: white;
+    padding: 15px;
+    border-radius: var(--conv-radius);
+    margin: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: var(--conv-text-color);
+    font-weight: 500;
+}
+
+/* Options de précision */
+#precision-options {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--conv-radius);
+}
+
+#precision-options label {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#precision-options input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 180px;
+    background-color: var(--conv-tooltip-bg);
+    color: var(--conv-text-color);
+    text-align: center;
+    padding: 10px;
+    border-radius: var(--conv-radius);
+    border: 2px solid var(--conv-tooltip-border);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 100;
+    font-size: 13px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--conv-tooltip-border) transparent transparent transparent;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Layout des formulaires */
+.conv-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.conv-form label {
+    font-weight: 500;
+    color: var(--conv-text-color);
+    min-width: 100px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    #module {
+        padding: 15px;
+    }
+    
+    .conv-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .conv-form label {
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+    
+    #module input,
+    #module select,
+    #module button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Animation de transition */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#module > * {
+    animation: fadeIn 0.3s ease-out;
+}

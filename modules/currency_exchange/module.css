@@ -1,0 +1,358 @@
+.currency-exchange {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.exchange-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+}
+
+.exchange-header h4 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 18px;
+}
+
+.last-update {
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+.exchange-main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.exchange-box {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.currency-input,
+.currency-select,
+.currency-result {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.currency-input label,
+.currency-select label,
+.currency-result label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.currency-input input,
+.currency-select select {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    transition: border-color 0.2s;
+}
+
+.currency-input input:focus,
+.currency-select select:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+.currency-input input {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.result-value {
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #27ae60;
+    background: white;
+    border: 2px solid #27ae60;
+    border-radius: 8px;
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.swap-btn {
+    align-self: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #3498db;
+    background: white;
+    color: #3498db;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swap-btn:hover {
+    background: #3498db;
+    color: white;
+    transform: rotate(180deg);
+}
+
+.btn-convert {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    background: #27ae60;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 20px;
+}
+
+.btn-convert:hover {
+    background: #2ecc71;
+}
+
+.btn-convert:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+}
+
+.rate-info {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.rate-display {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.rate-display:last-child {
+    border-bottom: none;
+}
+
+.rate-display span {
+    color: #666;
+    font-size: 14px;
+}
+
+.rate-display strong {
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+}
+
+.market-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #95a5a6;
+}
+
+.status-indicator.open {
+    background: #27ae60;
+    box-shadow: 0 0 8px #27ae60;
+}
+
+.status-indicator.closed {
+    background: #e74c3c;
+}
+
+.status-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.popular-rates {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.popular-rates h5 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 14px;
+}
+
+.rates-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.rate-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.rate-item.loading,
+.rate-item.error {
+    grid-column: 1 / -1;
+    justify-content: center;
+    color: #7f8c8d;
+}
+
+.rate-item.error {
+    color: #e74c3c;
+}
+
+.rate-pair {
+    color: #666;
+    font-weight: 500;
+}
+
+.rate-value {
+    color: #3498db;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+.exchange-info {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 12px;
+    color: #856404;
+}
+
+.exchange-info a {
+    color: #856404;
+    text-decoration: underline;
+}
+
+/* Mode sombre */
+body.dark-mode .exchange-header h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .last-update {
+    color: #7fb3d5;
+}
+
+body.dark-mode .exchange-box {
+    background: #0f3460;
+}
+
+body.dark-mode .currency-input label,
+body.dark-mode .currency-select label,
+body.dark-mode .currency-result label {
+    color: #7fb3d5;
+}
+
+body.dark-mode .currency-input input,
+body.dark-mode .currency-select select {
+    background: #16213e;
+    border-color: #1a5fb4;
+    color: #e0e0e0;
+}
+
+body.dark-mode .result-value {
+    background: #16213e;
+    border-color: #27ae60;
+}
+
+body.dark-mode .swap-btn {
+    background: #0f3460;
+    border-color: #4a90d9;
+    color: #7fb3d5;
+}
+
+body.dark-mode .swap-btn:hover {
+    background: #4a90d9;
+    color: white;
+}
+
+body.dark-mode .btn-convert {
+    background: #219a52;
+}
+
+body.dark-mode .btn-convert:hover {
+    background: #27ae60;
+}
+
+body.dark-mode .btn-convert:disabled {
+    background: #7f8c8d;
+}
+
+body.dark-mode .rate-info,
+body.dark-mode .market-status,
+body.dark-mode .popular-rates {
+    background: #0f3460;
+}
+
+body.dark-mode .rate-display {
+    border-color: #1a5fb4;
+}
+
+body.dark-mode .rate-display span,
+body.dark-mode .status-text {
+    color: #7fb3d5;
+}
+
+body.dark-mode .rate-item {
+    background: #16213e;
+}
+
+body.dark-mode .rate-pair {
+    color: #7fb3d5;
+}
+
+body.dark-mode .exchange-info {
+    background: #856404;
+    border-color: #ffc107;
+    color: #fff3cd;
+}
+
+body.dark-mode .exchange-info a {
+    color: #fff3cd;
+}
+
+@media (max-width: 480px) {
+    .exchange-box {
+        grid-template-columns: 1fr;
+    }
+    
+    .rates-grid {
+        grid-template-columns: 1fr;
+    }
+}

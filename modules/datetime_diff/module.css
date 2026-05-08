@@ -1,0 +1,307 @@
+.datetime-diff {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.module-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 1.3em;
+}
+
+.datetime-inputs {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.datetime-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+.datetime-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.datetime-group input[type="datetime-local"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: 'Courier New', monospace;
+    margin-bottom: 8px;
+}
+
+.datetime-group input[type="datetime-local"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.btn-now {
+    background: #ecf0f1;
+    border: 1px solid #bdc3c7;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #555;
+    transition: all 0.2s;
+}
+
+.btn-now:hover {
+    background: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.datetime-separator {
+    font-size: 24px;
+    color: #3498db;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.btn-calculate {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 10px;
+}
+
+.btn-calculate:hover {
+    background: #2980b9;
+}
+
+.btn-swap {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #ecf0f1;
+    color: #555;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 20px;
+}
+
+.btn-swap:hover {
+    background: #bdc3c7;
+}
+
+.result-container {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+.result-container h4 {
+    margin: 0 0 20px 0;
+    color: #2c3e50;
+    text-align: center;
+    font-size: 18px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.diff-summary {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.summary-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+}
+
+.summary-text strong {
+    color: #2c3e50;
+}
+
+.duration-text {
+    font-size: 16px;
+    color: #3498db;
+    font-weight: bold;
+}
+
+.diff-breakdown {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.diff-unit {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.unit-value {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #3498db;
+    margin-bottom: 5px;
+}
+
+.unit-label {
+    font-size: 12px;
+    color: #777;
+    text-transform: uppercase;
+}
+
+.total-values {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 3px solid #2ecc71;
+}
+
+.total-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #ecf0f1;
+    font-size: 14px;
+    color: #555;
+}
+
+.total-item:last-child {
+    border-bottom: none;
+}
+
+.total-item strong {
+    color: #2c3e50;
+}
+
+.error-message {
+    background: #e74c3c;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .datetime-inputs {
+        flex-direction: column;
+    }
+    
+    .datetime-separator {
+        transform: rotate(90deg);
+    }
+    
+    .diff-breakdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .unit-value {
+        font-size: 22px;
+    }
+}
+
+/* Dark mode */
+body.dark-mode .module-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .datetime-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .datetime-group input[type="datetime-local"] {
+    background: #16213e;
+    border-color: #1a5fb4;
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-now {
+    background: #0f3460;
+    border-color: #1a5fb4;
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-now:hover {
+    background: #1a5fb4;
+}
+
+body.dark-mode .btn-swap {
+    background: #0f3460;
+    border-color: #1a5fb4;
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-swap:hover {
+    background: #1a5fb4;
+}
+
+body.dark-mode .result-container {
+    background: #0f3460;
+}
+
+body.dark-mode .result-container h4 {
+    color: #e0e0e0;
+    border-color: #4a90d9;
+}
+
+body.dark-mode .diff-summary {
+    background: #16213e;
+}
+
+body.dark-mode .summary-text {
+    color: #e0e0e0;
+}
+
+body.dark-mode .summary-text strong {
+    color: #4a90d9;
+}
+
+body.dark-mode .diff-unit {
+    background: #16213e;
+}
+
+body.dark-mode .unit-label {
+    color: #aaa;
+}
+
+body.dark-mode .total-values {
+    background: #16213e;
+    border-color: #27ae60;
+}
+
+body.dark-mode .total-item {
+    color: #e0e0e0;
+    border-color: #1a5fb4;
+}
+
+body.dark-mode .total-item strong {
+    color: #4a90d9;
+}

@@ -1,0 +1,204 @@
+<div class="kitchen-converter">
+    <h3 class="module-title">Convertisseur de Cuisine</h3>
+    
+    <div class="kitchen-tabs">
+        <button class="tab-btn active" data-tab="volume">Volume</button>
+        <button class="tab-btn" data-tab="weight">Poids</button>
+        <button class="tab-btn" data-tab="temperature">Température</button>
+        <button class="tab-btn" data-tab="ingredients">Ingrédients</button>
+    </div>
+    
+    <!-- Volume Tab -->
+    <div class="tab-content active" id="tab-volume">
+        <div class="converter-box">
+            <div class="input-section">
+                <label>Quantité</label>
+                <input type="number" id="volumeInput" placeholder="Montant" step="0.1" min="0">
+                <select id="volumeFrom">
+                    <option value="ml">Millilitres (ml)</option>
+                    <option value="cl">Centilitres (cl)</option>
+                    <option value="dl">Décilitres (dl)</option>
+                    <option value="l">Litres (l)</option>
+                    <option value="tsp">Cuillère à café (tsp)</option>
+                    <option value="tbsp">Cuillère à soupe (tbsp)</option>
+                    <option value="oz">Once liquide (fl oz)</option>
+                    <option value="cup">Tasse (cup)</option>
+                    <option value="pt">Pinte (pt)</option>
+                    <option value="qt">Quart (qt)</option>
+                    <option value="gal">Gallon (gal)</option>
+                </select>
+            </div>
+            
+            <div class="convert-arrow">=</div>
+            
+            <div class="output-section">
+                <label>Convertir en</label>
+                <select id="volumeTo">
+                    <option value="ml">Millilitres (ml)</option>
+                    <option value="cl">Centilitres (cl)</option>
+                    <option value="dl">Décilitres (dl)</option>
+                    <option value="l">Litres (l)</option>
+                    <option value="tsp">Cuillère à café (tsp)</option>
+                    <option value="tbsp">Cuillère à soupe (tbsp)</option>
+                    <option value="oz">Once liquide (fl oz)</option>
+                    <option value="cup">Tasse (cup)</option>
+                    <option value="pt">Pinte (pt)</option>
+                    <option value="qt">Quart (qt)</option>
+                    <option value="gal">Gallon (gal)</option>
+                </select>
+                <div class="result-display" id="volumeResult">-</div>
+            </div>
+        </div>
+        
+        <button class="btn-convert" id="convertVolume">Convertir</button>
+    </div>
+    
+    <!-- Weight Tab -->
+    <div class="tab-content" id="tab-weight">
+        <div class="converter-box">
+            <div class="input-section">
+                <label>Quantité</label>
+                <input type="number" id="weightInput" placeholder="Montant" step="0.1" min="0">
+                <select id="weightFrom">
+                    <option value="mg">Milligrammes (mg)</option>
+                    <option value="g">Grammes (g)</option>
+                    <option value="kg">Kilogrammes (kg)</option>
+                    <option value="oz">Onces (oz)</option>
+                    <option value="lb">Livres (lb)</option>
+                </select>
+            </div>
+            
+            <div class="convert-arrow">=</div>
+            
+            <div class="output-section">
+                <label>Convertir en</label>
+                <select id="weightTo">
+                    <option value="mg">Milligrammes (mg)</option>
+                    <option value="g">Grammes (g)</option>
+                    <option value="kg">Kilogrammes (kg)</option>
+                    <option value="oz">Onces (oz)</option>
+                    <option value="lb">Livres (lb)</option>
+                </select>
+                <div class="result-display" id="weightResult">-</div>
+            </div>
+        </div>
+        
+        <button class="btn-convert" id="convertWeight">Convertir</button>
+    </div>
+    
+    <!-- Temperature Tab -->
+    <div class="tab-content" id="tab-temperature">
+        <div class="converter-box">
+            <div class="input-section">
+                <label>Température</label>
+                <input type="number" id="tempInput" placeholder="Valeur" step="0.1">
+                <select id="tempFrom">
+                    <option value="c">Celsius (°C)</option>
+                    <option value="f">Fahrenheit (°F)</option>
+                    <option value="k">Kelvin (K)</option>
+                    <option value="gas">Marque de gaz</option>
+                </select>
+            </div>
+            
+            <div class="convert-arrow">=</div>
+            
+            <div class="output-section">
+                <label>Convertir en</label>
+                <select id="tempTo">
+                    <option value="f">Fahrenheit (°F)</option>
+                    <option value="c">Celsius (°C)</option>
+                    <option value="k">Kelvin (K)</option>
+                    <option value="gas">Marque de gaz</option>
+                </select>
+                <div class="result-display" id="tempResult">-</div>
+            </div>
+        </div>
+        
+        <button class="btn-convert" id="convertTemp">Convertir</button>
+        
+        <div class="oven-guide">
+            <h4>Guide des températures de four</h4>
+            <div class="temp-table" id="ovenTempTable"></div>
+        </div>
+    </div>
+    
+    <!-- Ingredients Tab -->
+    <div class="tab-content" id="tab-ingredients">
+        <div class="ingredient-converter">
+            <div class="input-group">
+                <label>Ingrédient</label>
+                <select id="ingredientSelect">
+                    <option value="flour">Farine</option>
+                    <option value="sugar">Sucre</option>
+                    <option value="butter">Beurre</option>
+                    <option value="oil">Huile</option>
+                    <option value="milk">Lait</option>
+                    <option value="water">Eau</option>
+                    <option value="honey">Miel</option>
+                    <option value="salt">Sel</option>
+                    <option value="rice">Riz</option>
+                    <option value="oats">Flocons d'avoine</option>
+                    <option value="cocoa">Cacao en poudre</option>
+                    <option value="yeast">Levure</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label>Quantité</label>
+                <div class="ingredient-row">
+                    <input type="number" id="ingredientInput" placeholder="Montant" step="0.1" min="0">
+                    <select id="ingredientUnit">
+                        <option value="g">Grammes (g)</option>
+                        <option value="kg">Kilogrammes (kg)</option>
+                        <option value="cup">Tasses</option>
+                        <option value="tbsp">Cuillères à soupe</option>
+                        <option value="tsp">Cuillères à café</option>
+                        <option value="ml">Millilitres (ml)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button class="btn-convert" id="convertIngredient">Convertir</button>
+            
+            <div class="ingredient-results" id="ingredientResults"></div>
+        </div>
+    </div>
+    
+    <div class="quick-reference">
+        <h4>Références rapides</h4>
+        <div class="ref-grid">
+            <div class="ref-card">
+                <h5>Cuillères</h5>
+                <ul>
+                    <li>1 c. à café = 5 ml</li>
+                    <li>1 c. à soupe = 15 ml</li>
+                    <li>1/4 tasse = 4 c. à soupe</li>
+                </ul>
+            </div>
+            <div class="ref-card">
+                <h5>Tasses</h5>
+                <ul>
+                    <li>1 tasse = 240 ml</li>
+                    <li>1/2 tasse = 120 ml</li>
+                    <li>1/4 tasse = 60 ml</li>
+                </ul>
+            </div>
+            <div class="ref-card">
+                <h5>Poids communs</h5>
+                <ul>
+                    <li>1 oz = 28.35 g</li>
+                    <li>1 lb = 453.59 g</li>
+                    <li>1 kg = 2.205 lb</li>
+                </ul>
+            </div>
+            <div class="ref-card">
+                <h5>Températures</h5>
+                <ul>
+                    <li>180°C = 350°F</li>
+                    <li>200°C = 400°F</li>
+                    <li>220°C = 425°F</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

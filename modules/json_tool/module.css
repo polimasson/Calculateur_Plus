@@ -1,0 +1,369 @@
+.json-tool {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.module-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+/* Tabs */
+.json-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 10px 25px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    background: #e0e0e0;
+}
+
+.tab-btn.active {
+    background: #9b59b6;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Editor */
+.editor-container {
+    display: grid;
+    gap: 15px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.section-header label {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.input-actions, .output-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-icon {
+    padding: 6px 10px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.btn-icon:hover {
+    background: #e0e0e0;
+}
+
+.input-section textarea, .output-section textarea {
+    width: 100%;
+    min-height: 150px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+    resize: vertical;
+}
+
+.input-section textarea:focus {
+    border-color: #9b59b6;
+    outline: none;
+}
+
+.validation-status {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.validation-status.valid {
+    background: #d4edda;
+    color: #155724;
+}
+
+.validation-status.invalid {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.validation-status:empty {
+    display: none;
+}
+
+/* Actions Panel */
+.actions-panel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.btn-action {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    background: #9b59b6;
+    color: white;
+}
+
+.btn-action:hover {
+    background: #8e44ad;
+    transform: translateY(-2px);
+}
+
+/* Output */
+.output-section textarea {
+    background: #f8f9fa;
+}
+
+.output-stats {
+    text-align: right;
+    font-size: 12px;
+    color: #666;
+    margin-top: 8px;
+}
+
+/* Tree View */
+.tree-container {
+    display: grid;
+    gap: 15px;
+}
+
+.tree-input-section textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 13px;
+}
+
+.btn-convert-tree {
+    width: 100%;
+    padding: 12px;
+    background: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tree-view {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 13px;
+    overflow-x: auto;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.tree-line {
+    padding: 2px 0;
+    white-space: pre;
+}
+
+.tree-key {
+    color: #922b21;
+}
+
+.tree-value.string {
+    color: #27ae60;
+}
+
+.tree-value.number {
+    color: #2980b9;
+}
+
+.tree-value.boolean {
+    color: #8e44ad;
+}
+
+.tree-bracket {
+    color: #2c3e50;
+}
+
+.tree-count {
+    color: #7f8c8d;
+    font-size: 11px;
+    margin: 0 4px;
+}
+
+.tree-node {
+    position: relative;
+}
+
+.tree-children {
+    margin-left: 20px;
+}
+
+.tree-toggle {
+    cursor: pointer;
+}
+
+.tree-toggle::before {
+    content: "▼";
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 10px;
+    color: #666;
+}
+
+.tree-node.collapsed .tree-toggle::before {
+    content: "▶";
+}
+
+.tree-node.collapsed .tree-children {
+    display: none;
+}
+
+/* Error Message */
+.error-message {
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.error-message.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.error-message.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .actions-panel {
+        flex-direction: column;
+    }
+    
+    .btn-action {
+        width: 100%;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Dark Mode */
+body.dark-mode .module-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .tab-btn {
+    background: #0f3460;
+    color: #e0e0e0;
+}
+
+body.dark-mode .tab-btn:hover {
+    background: #1a5fb4;
+}
+
+body.dark-mode .tab-btn.active {
+    background: #9b59b6;
+}
+
+body.dark-mode .section-header label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-icon {
+    background: #0f3460;
+    color: #e0e0e0;
+}
+
+body.dark-mode .input-section textarea,
+body.dark-mode .tree-input-section textarea {
+    background: #16213e;
+    border-color: #1a5fb4;
+    color: #e0e0e0;
+}
+
+body.dark-mode .output-section textarea {
+    background: #0f3460;
+    color: #e0e0e0;
+}
+
+body.dark-mode .validation-status.valid {
+    background: #1a4a2a;
+    color: #4caf50;
+}
+
+body.dark-mode .validation-status.invalid {
+    background: #4a1a2a;
+    color: #ff6b6b;
+}
+
+body.dark-mode .actions-panel {
+    background: #0f3460;
+}
+
+body.dark-mode .btn-action {
+    background: #8e44ad;
+}
+
+body.dark-mode .tree-view {
+    background: #0f3460;
+}
+
+body.dark-mode .tree-key {
+    color: #ff9999;
+}
+
+body.dark-mode .tree-value.string {
+    color: #4caf50;
+}
+
+body.dark-mode .tree-value.number {
+    color: #64b5f6;
+}
+
+body.dark-mode .tree-bracket {
+    color: #e0e0e0;
+}

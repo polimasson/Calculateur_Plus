@@ -1,0 +1,57 @@
+<div class="json-tool">
+    <h3 class="module-title">Outil JSON</h3>
+    
+    <div class="json-tabs">
+        <button class="tab-btn active" data-tab="editor">Éditeur</button>
+        <button class="tab-btn" data-tab="tree">Arborescence</button>
+    </div>
+    
+    <div class="tab-content active" id="tab-editor">
+        <div class="editor-container">
+            <div class="input-section">
+                <div class="section-header">
+                    <label>JSON Input</label>
+                    <div class="input-actions">
+                        <button class="btn-icon" id="pasteJson" title="Coller">📋</button>
+                        <button class="btn-icon" id="loadSample" title="Exemple">📝</button>
+                        <button class="btn-icon" id="clearInput" title="Effacer">🗑️</button>
+                    </div>
+                </div>
+                <textarea id="jsonInput" placeholder="Collez votre JSON ici..."></textarea>
+                <div class="validation-status" id="validationStatus"></div>
+            </div>
+            
+            <div class="actions-panel">
+                <button class="btn-action" id="btnBeautify">✨ Enjoliver</button>
+                <button class="btn-action" id="btnMinify">🗜️ Minifier</button>
+                <button class="btn-action" id="btnValidate">✓ Valider</button>
+                <button class="btn-action" id="btnEscape">\u Échapper</button>
+                <button class="btn-action" id="btnUnescape">\u Déséchapper</button>
+            </div>
+            
+            <div class="output-section">
+                <div class="section-header">
+                    <label>Résultat</label>
+                    <div class="output-actions">
+                        <button class="btn-icon" id="copyOutput" title="Copier">📋</button>
+                        <button class="btn-icon" id="downloadJson" title="Télécharger">💾</button>
+                    </div>
+                </div>
+                <textarea id="jsonOutput" placeholder="Le résultat apparaîtra ici..." readonly></textarea>
+                <div class="output-stats" id="outputStats"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="tab-content" id="tab-tree">
+        <div class="tree-container">
+            <div class="tree-input-section">
+                <textarea id="treeInput" placeholder="Collez votre JSON pour voir l'arborescence..."></textarea>
+                <button class="btn-convert-tree" id="btnConvertTree">🌳 Visualiser</button>
+            </div>
+            <div class="tree-view" id="treeView"></div>
+        </div>
+    </div>
+    
+    <div class="error-message" id="errorMessage" style="display: none;"></div>
+</div>

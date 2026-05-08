@@ -1,0 +1,214 @@
+/* Container Principal - On passe à 100% avec un max large */
+.ratio-tool {
+    max-width: 1000px;
+    margin: 20px auto;
+    background: #1a1a1a;
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    color: #eee;
+}
+
+.ratio-tool h2 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    color: #00d1b2;
+    margin-bottom: 30px;
+    border-left: 5px solid #00d1b2;
+    padding-left: 15px;
+}
+
+/* Layout en deux colonnes pour les grands écrans */
+.tool-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 30px;
+}
+
+/* Colonne de gauche : Contrôles */
+.controls-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Section Verrouillage */
+.lock-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #252525;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #444;
+    transition: .3s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px; width: 18px;
+    left: 4px; bottom: 4px;
+    background-color: white;
+    transition: .3s;
+    border-radius: 50%;
+}
+
+input:checked + .slider { background-color: #00d1b2; }
+input:checked + .slider:before { transform: translateX(24px); }
+
+/* Inputs et Sélecteurs */
+.ratio-selector { transition: 0.3s; }
+.disabled-area { opacity: 0.15; pointer-events: none; filter: blur(1px); }
+
+#ratio-preset {
+    width: 100%;
+    background: #252525;
+    border: 1px solid #444;
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.input-group input {
+    flex: 1;
+    background: #252525;
+    border: 1px solid #444;
+    padding: 10px;
+    color: #00d1b2;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* Champs de dimensions empilés à gauche */
+.dimensions-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.field label {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 6px;
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.field input {
+    width: 100%;
+    background: #252525;
+    border: 2px solid #333;
+    padding: 15px;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+.field input:focus {
+    border-color: #00d1b2;
+    background: #2a2a2a;
+    outline: none;
+}
+
+/* Colonne de droite : Preview et Résultats */
+.display-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.preview-box {
+    background: #0f0f0f;
+    flex-grow: 1; /* Prend toute la place restante */
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 2px dashed #333;
+    position: relative;
+    padding: 20px;
+}
+
+#ratio-preview {
+    background: rgba(0, 209, 178, 0.05);
+    border: 3px solid #00d1b2;
+    box-shadow: 0 0 30px rgba(0, 209, 178, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00d1b2;
+    font-weight: bold;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Cartes de résultats horizontales sous la preview */
+.ratio-results {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.result-card {
+    background: linear-gradient(145deg, #252525, #1e1e1e);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #333;
+}
+
+.result-card .label {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.result-card .value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+/* Responsive pour tablettes/mobiles */
+@media (max-width: 850px) {
+    .tool-grid {
+        grid-template-columns: 1fr;
+    }
+    .preview-box {
+        min-height: 250px;
+    }
+}
+
+.hidden { display: none !important; }

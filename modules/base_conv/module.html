@@ -1,0 +1,84 @@
+<div class="base-converter">
+    <div class="base-section">
+        <div class="base-header">
+            <label>Entrée</label>
+            <select id="fromBase">
+                <option value="bin">Binaire (Base 2)</option>
+                <option value="oct">Octal (Base 8)</option>
+                <option value="dec" selected>Décimal (Base 10)</option>
+                <option value="hex">Hexadécimal (Base 16)</option>
+                <option value="b32">Base32</option>
+                <option value="b58">Base58</option>
+                <option value="b64">Base64</option>
+            </select>
+        </div>
+        <textarea id="inputValue" placeholder="Entrez une valeur..." rows="3"></textarea>
+        <small class="base-hint" id="inputHint">0-9</small>
+    </div>
+
+    <div class="base-swap">
+        <button id="swapBtn" title="Inverser">⇅</button>
+    </div>
+
+    <div class="base-section">
+        <div class="base-header">
+            <label>Sortie</label>
+            <select id="toBase">
+                <option value="bin">Binaire (Base 2)</option>
+                <option value="oct">Octal (Base 8)</option>
+                <option value="dec">Décimal (Base 10)</option>
+                <option value="hex" selected>Hexadécimal (Base 16)</option>
+                <option value="b32">Base32</option>
+                <option value="b58">Base58</option>
+                <option value="b64">Base64</option>
+            </select>
+        </div>
+        <textarea id="outputValue" placeholder="Résultat..." rows="3" readonly></textarea>
+        <small class="base-hint" id="outputHint">0-9, A-F</small>
+    </div>
+
+    <div class="base-actions">
+        <button id="convertBtn" class="btn-convert">Convertir</button>
+        <button id="clearBtn" class="btn-clear">Effacer</button>
+        <button id="copyBtn" class="btn-copy">Copier</button>
+    </div>
+
+    <div class="base-all-results">
+        <h4>Toutes les bases</h4>
+        <div class="result-row">
+            <span>Binaire (2):</span>
+            <code id="allBin">-</code>
+            <button class="btn-copy-small" data-target="allBin">📋</button>
+        </div>
+        <div class="result-row">
+            <span>Octal (8):</span>
+            <code id="allOct">-</code>
+            <button class="btn-copy-small" data-target="allOct">📋</button>
+        </div>
+        <div class="result-row">
+            <span>Décimal (10):</span>
+            <code id="allDec">-</code>
+            <button class="btn-copy-small" data-target="allDec">📋</button>
+        </div>
+        <div class="result-row">
+            <span>Hexadécimal (16):</span>
+            <code id="allHex">-</code>
+            <button class="btn-copy-small" data-target="allHex">📋</button>
+        </div>
+        <div class="result-row">
+            <span>Base32:</span>
+            <code id="allB32">-</code>
+            <button class="btn-copy-small" data-target="allB32">📋</button>
+        </div>
+        <div class="result-row">
+            <span>Base58:</span>
+            <code id="allB58">-</code>
+            <button class="btn-copy-small" data-target="allB58">📋</button>
+        </div>
+        <div class="result-row">
+            <span>Base64:</span>
+            <code id="allB64">-</code>
+            <button class="btn-copy-small" data-target="allB64">📋</button>
+        </div>
+    </div>
+</div>

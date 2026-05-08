@@ -1,0 +1,149 @@
+<div class="text-encoder">
+    <h3 class="module-title">Encodeur/Décodeur de Texte</h3>
+    
+    <div class="encoder-tabs">
+        <button class="tab-btn active" data-tab="base64">Base64</button>
+        <button class="tab-btn" data-tab="url">URL</button>
+        <button class="tab-btn" data-tab="html">HTML</button>
+        <button class="tab-btn" data-tab="hex">Hex</button>
+        <button class="tab-btn" data-tab="binary">Binaire</button>
+        <button class="tab-btn" data-tab="unicode">Unicode</button>
+        <button class="tab-btn" data-tab="punycode">Punycode</button>
+    </div>
+    
+    <div class="encoder-content">
+        <!-- Base64 -->
+        <div class="tab-content active" id="tab-base64">
+            <div class="encode-section">
+                <label>Texte original</label>
+                <textarea id="base64Input" placeholder="Entrez le texte à encoder en Base64..."></textarea>
+                <button class="btn-encode" data-action="encode" data-type="base64">Encoder → Base64</button>
+            </div>
+            <div class="decode-section">
+                <label>Base64</label>
+                <textarea id="base64Output" placeholder="Résultat Base64..."></textarea>
+                <button class="btn-decode" data-action="decode" data-type="base64">← Décoder Base64</button>
+            </div>
+        </div>
+        
+        <!-- URL -->
+        <div class="tab-content" id="tab-url">
+            <div class="encode-section">
+                <label>Texte original</label>
+                <textarea id="urlInput" placeholder="Entrez le texte à encoder en URL..."></textarea>
+                <button class="btn-encode" data-action="encode" data-type="url">Encoder → URL</button>
+            </div>
+            <div class="decode-section">
+                <label>URL Encoded</label>
+                <textarea id="urlOutput" placeholder="Résultat URL encoded..."></textarea>
+                <button class="btn-decode" data-action="decode" data-type="url">← Décoder URL</button>
+            </div>
+        </div>
+        
+        <!-- HTML Entities -->
+        <div class="tab-content" id="tab-html">
+            <div class="encode-section">
+                <label>Texte original</label>
+                <textarea id="htmlInput" placeholder="Entrez le texte à convertir en entités HTML..."></textarea>
+                <div class="html-options">
+                    <label><input type="radio" name="htmlMode" value="named" checked> Entités nommées (&amp;amp;)</label>
+                    <label><input type="radio" name="htmlMode" value="numeric"> Numériques (&amp;#38;)</label>
+                    <label><input type="radio" name="htmlMode" value="hex"> Hexadécimales (&amp;#x26;)</label>
+                </div>
+                <button class="btn-encode" data-action="encode" data-type="html">Encoder → HTML</button>
+            </div>
+            <div class="decode-section">
+                <label>HTML Entities</label>
+                <textarea id="htmlOutput" placeholder="Résultat HTML entities..."></textarea>
+                <button class="btn-decode" data-action="decode" data-type="html">← Décoder HTML</button>
+            </div>
+        </div>
+        
+        <!-- Hex -->
+        <div class="tab-content" id="tab-hex">
+            <div class="encode-section">
+                <label>Texte original</label>
+                <textarea id="hexInput" placeholder="Entrez le texte à convertir en hexadécimal..."></textarea>
+                <div class="hex-options">
+                    <label><input type="checkbox" id="hexUppercase" checked> Majuscules</label>
+                    <label><input type="checkbox" id="hexWithSpaces" checked> Avec espaces</label>
+                    <label><input type="checkbox" id="hexWithPrefix"> Avec préfixe 0x</label>
+                </div>
+                <button class="btn-encode" data-action="encode" data-type="hex">Encoder → Hex</button>
+            </div>
+            <div class="decode-section">
+                <label>Hexadécimal</label>
+                <textarea id="hexOutput" placeholder="Résultat hexadécimal..."></textarea>
+                <button class="btn-decode" data-action="decode" data-type="hex">← Décoder Hex</button>
+            </div>
+        </div>
+        
+        <!-- Binary -->
+        <div class="tab-content" id="tab-binary">
+            <div class="encode-section">
+                <label>Texte original</label>
+                <textarea id="binaryInput" placeholder="Entrez le texte à convertir en binaire..."></textarea>
+                <div class="binary-options">
+                    <label><input type="checkbox" id="binaryWithSpaces" checked> Avec espaces</label>
+                    <label><input type="checkbox" id="binaryWithPrefix"> Avec préfixe 0b</label>
+                </div>
+                <button class="btn-encode" data-action="encode" data-type="binary">Encoder → Binaire</button>
+            </div>
+            <div class="decode-section">
+                <label>Binaire</label>
+                <textarea id="binaryOutput" placeholder="Résultat binaire..."></textarea>
+                <button class="btn-decode" data-action="decode" data-type="binary">← Décoder Binaire</button>
+            </div>
+        </div>
+        
+        <!-- Unicode -->
+        <div class="tab-content" id="tab-unicode">
+            <div class="encode-section">
+                <label>Texte original</label>
+                <textarea id="unicodeInput" placeholder="Entrez le texte à convertir en Unicode..."></textarea>
+                <div class="unicode-options">
+                    <label><input type="radio" name="unicodeMode" value="escape" checked> \uXXXX</label>
+                    <label><input type="radio" name="unicodeMode" value="braces"> \u{XXXX}</label>
+                    <label><input type="radio" name="unicodeMode" value="codepoint"> U+XXXX</label>
+                </div>
+                <button class="btn-encode" data-action="encode" data-type="unicode">Encoder → Unicode</button>
+            </div>
+            <div class="decode-section">
+                <label>Unicode Escape</label>
+                <textarea id="unicodeOutput" placeholder="Résultat Unicode..."></textarea>
+                <button class="btn-decode" data-action="decode" data-type="unicode">← Décoder Unicode</button>
+            </div>
+        </div>
+        
+        <!-- Punycode -->
+        <div class="tab-content" id="tab-punycode">
+            <div class="encode-section">
+                <label>Texte Unicode (ex: café.com, москва.рф)</label>
+                <textarea id="punycodeInput" placeholder="Entrez le texte à encoder en Punycode (domaine Unicode)..."></textarea>
+                <div class="punycode-info">
+                    <small>Punycode convertit les caractères Unicode en ASCII pour les noms de domaine (IDN)</small>
+                </div>
+                <button class="btn-encode" data-action="encode" data-type="punycode">Encoder → Punycode</button>
+            </div>
+            <div class="decode-section">
+                <label>Punycode (ex: xn--caf-dma.com)</label>
+                <textarea id="punycodeOutput" placeholder="Résultat Punycode (xn--...)..."></textarea>
+                <button class="btn-decode" data-action="decode" data-type="punycode">← Décoder Punycode</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="encoder-actions">
+        <button class="btn-swap" id="swapBtn">⇄ Échanger</button>
+        <button class="btn-clear" id="clearBtn">🗑 Effacer</button>
+        <button class="btn-copy-result" id="copyResultBtn">📋 Copier résultat</button>
+    </div>
+    
+    <div class="history-section">
+        <h4>Historique récent</h4>
+        <div class="history-list" id="historyList"></div>
+        <button class="btn-clear-history" id="clearHistoryBtn">Effacer l'historique</button>
+    </div>
+    
+    <div class="error-message" id="errorMessage" style="display: none;"></div>
+</div>

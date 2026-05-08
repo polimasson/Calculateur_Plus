@@ -1,0 +1,143 @@
+<style>
+    .hidden {
+        display: none;
+    }
+
+    .preview-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    canvas {
+        max-width: 100%;
+        border: 1px solid #ccc;
+        height: auto;
+    }
+
+    #upscale-progress {
+        color: blue;
+        font-weight: bold;
+    }
+
+    .progress-track {
+        width: 100%;
+        height: 20px;
+        background: #eee;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        transition: width 0.3s ease;
+        border-radius: 10px;
+    }
+
+    .progress-text {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 5px;
+        color: #333;
+    }
+
+    #upscale-error {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+
+
+<div id="upscale-container">
+    <h3>Super-resolution IA</h3>
+    <input type="file" id="upscale-file" accept="image/*">
+
+    <select id="upscale-model"></select>
+
+    <select id="upscale-device">
+        <option value="wasm" selected>WASM (CPU - Recommandé)</option>
+        <option value="webgpu">WebGPU (GPU - Expérimental, nécessite 4GB+ VRAM)</option>
+    </select>
+
+    <select id="upscale-threads" title="Threads WASM (nécessite COOP/COEP)"></select>
+    <select id="upscale-tilesize" title="Taille des tuiles (inférence)">
+        <option value="1">Tuiles 1px (très rapide, risque mémoire)</option>
+        <option value="2">Tuiles 2px (très rapide, risque mémoire)</option>
+        <option value="4">Tuiles 4px (très rapide, risque mémoire)</option>
+        <option value="8">Tuiles 8px (très rapide, risque mémoire)</option>
+        <option value="10">Tuiles 10px</option>
+        <option value="16">Tuiles 16px (très rapide, risque mémoire)</option>
+        <option value="20">Tuiles 20px</option>
+        <option value="24">Tuiles 24px</option>
+        <option value="28">Tuiles 28px</option>
+        <option value="30">Tuiles 30px</option>
+        <option value="32">Tuiles 32px</option>
+        <option value="36">Tuiles 36px</option>
+        <option value="40">Tuiles 40px</option>
+        <option value="44">Tuiles 44px</option>
+        <option value="48">Tuiles 48px</option>
+        <option value="52">Tuiles 52px</option>
+        <option value="56">Tuiles 56px</option>
+        <option value="60">Tuiles 60px</option>
+        <option value="64">Tuiles 64px (plus de tuiles, plus précis)</option>
+        <option value="100">Tuiles 100px</option>
+        <option value="128">Tuiles 128px</option>
+        <option value="192">Tuiles 192px</option>
+        <option value="200">Tuiles 200px</option>
+        <option value="224">Tuiles 224px</option>
+        <option value="256" selected>Tuiles 256px (moins de tuiles, plus rapide)</option>
+        <option value="512">Tuiles 512px (très rapide, risque mémoire)</option>
+        <option value="custom">Personnalisé...</option>
+    </select>
+    <input type="number" id="upscale-tilesize-custom" class="hidden" min="1" max="2048" value="256" placeholder="Taille tuile (px)" title="Taille personnalisée des tuiles en pixels">
+
+    <select id="upscale-overlap" title="Taille du chevauchement (overlap) entre tuiles">
+        <option value="auto" selected>Auto (proportionnel)</option>
+        <option value="0">0 px (pas de chevauchement)</option>
+        <option value="4">4 px</option>
+        <option value="8">8 px</option>
+        <option value="16">16 px</option>
+        <option value="32">32 px</option>
+        <option value="64">64 px</option>
+        <option value="custom">Personnalisé...</option>
+    </select>
+    <input type="number" id="upscale-overlap-custom" class="hidden" min="0" max="512" value="8" placeholder="Overlap (px)" title="Chevauchement personnalisé en pixels">
+
+    <div class="info-box">
+        <strong>ℹ️ Info :</strong> Inférence ONNX Runtime Web avec tiling automatique. 
+        Tuiles configurables (64px à 512px). Scale x2 ou x4 selon le modèle.
+        Nécessite ~2-3GB RAM pour WASM. Si l'IA échoue, réduisez la taille des tuiles.
+    </div>
+
+    <div id="model-status" style="margin: 10px 0; padding: 8px 12px; border-radius: 4px; background: #f0f0f0; font-size: 13px;">
+        <span id="model-status-text">Aucun modèle chargé</span>
+    </div>
+
+    <button id="upscale-load-model">📥 Précharger le modèle</button>
+    <button id="upscale-unload-model" disabled>🗑️ Décharger le modèle</button>
+    <button id="upscale-run" disabled>🚀 Upscale l'image</button>
+    <button id="upscale-stop" disabled>Arrêter</button>
+    <button id="upscale-download" disabled>Télécharger</button>
+
+    <div id="upscale-progress" class="hidden"></div>
+    <div id="upscale-progress-bar-container" class="hidden">
+        <div class="progress-track">
+            <div class="progress-fill" id="upscale-progress-fill" style="width: 0%"></div>
+        </div>
+        <div class="progress-text" id="upscale-progress-text">0%</div>
+    </div>
+    <div id="upscale-error" class="hidden"></div>
+
+    <div class="preview-container">
+        <div>
+            <h4>Entrée</h4>
+            <canvas id="upscale-input-canvas"></canvas>
+        </div>
+        <div>
+            <h4>Sortie</h4>
+            <canvas id="upscale-output-canvas"></canvas>
+        </div>
+    </div>
+</div>

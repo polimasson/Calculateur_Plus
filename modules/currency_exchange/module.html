@@ -1,0 +1,57 @@
+<div class="currency-exchange">
+    <div class="exchange-header">
+        <h4>Convertisseur de devises</h4>
+        <div class="last-update" id="lastUpdate">-</div>
+    </div>
+
+    <div class="exchange-main">
+        <div class="exchange-box">
+            <div class="currency-input">
+                <label>Montant</label>
+                <input type="number" id="amountInput" min="0" step="0.01" value="100" placeholder="Montant">
+            </div>
+            <div class="currency-select">
+                <label>De</label>
+                <select id="fromCurrency"></select>
+            </div>
+        </div>
+
+        <button class="swap-btn" id="swapCurrency" title="Inverser">⇅</button>
+
+        <div class="exchange-box">
+            <div class="currency-select">
+                <label>Vers</label>
+                <select id="toCurrency"></select>
+            </div>
+            <div class="currency-result">
+                <label>Résultat</label>
+                <div class="result-value" id="exchangeResult">-</div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn-convert" id="convertBtn">Convertir</button>
+
+    <div class="rate-info">
+        <div class="rate-display">
+            <span>Taux de change:</span>
+            <strong id="exchangeRate">-</strong>
+        </div>
+    </div>
+
+    <div class="market-status" id="marketStatus">
+        <span class="status-indicator"></span>
+        <span class="status-text">Marché ouvert</span>
+    </div>
+
+    <div class="popular-rates">
+        <h5>Taux populaires</h5>
+        <div class="rates-grid" id="popularRates">
+            <div class="rate-item loading">Chargement...</div>
+        </div>
+    </div>
+
+    <div class="exchange-info">
+        <p><strong>Note:</strong> Les taux sont fournis à titre indicatif par <a href="https://www.exchangerate-api.com" target="_blank">ExchangeRate-API</a>. Toutes les devises mondiales disponibles. Ils peuvent différer des taux bancaires réels.</p>
+    </div>
+</div>

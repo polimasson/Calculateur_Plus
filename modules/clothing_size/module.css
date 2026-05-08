@@ -1,0 +1,239 @@
+.clothing-size-converter {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.module-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.clothing-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.tab-btn:hover {
+    background: #e0e0e0;
+}
+
+.tab-btn.active {
+    background: #3498db;
+    color: white;
+}
+
+.tab-content {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.input-group select, .input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.size-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.size-inputs input {
+    flex: 1;
+}
+
+.size-inputs select {
+    width: 180px;
+}
+
+.arrow {
+    text-align: center;
+    font-size: 24px;
+    color: #3498db;
+    margin: 15px 0;
+}
+
+.btn-convert {
+    width: 100%;
+    padding: 14px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-convert:hover {
+    background: #2980b9;
+}
+
+.result-section {
+    margin-top: 20px;
+    padding: 15px;
+    background: #e8f5e9;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.result-section.error {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.result-section.success {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.shirt-result {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.shirt-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.shirt-info:last-child {
+    border-bottom: none;
+}
+
+.shirt-info .label {
+    font-weight: bold;
+    color: #666;
+}
+
+.size-guide {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.size-guide h4 {
+    margin: 0 0 15px 0;
+    color: #2c3e50;
+}
+
+.guide-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.guide-table th, .guide-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.guide-table th {
+    background: #3498db;
+    color: white;
+}
+
+.guide-table tr:nth-child(even) {
+    background: #f0f0f0;
+}
+
+/* Dark Mode */
+body.dark-mode .module-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .tab-btn {
+    background: #0f3460;
+    color: #e0e0e0;
+}
+
+body.dark-mode .tab-btn:hover {
+    background: #1a5fb4;
+}
+
+body.dark-mode .tab-btn.active {
+    background: #4a90d9;
+}
+
+body.dark-mode .tab-content {
+    background: #16213e;
+}
+
+body.dark-mode .input-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .input-group select,
+body.dark-mode .input-group input {
+    background: #0f3460;
+    border-color: #1a5fb4;
+    color: #e0e0e0;
+}
+
+body.dark-mode .shirt-result {
+    background: #0f3460;
+}
+
+body.dark-mode .shirt-info {
+    border-color: #1a5fb4;
+}
+
+body.dark-mode .size-guide {
+    background: #0f3460;
+}
+
+body.dark-mode .size-guide h4 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .guide-table th {
+    background: #4a90d9;
+}
+
+body.dark-mode .guide-table td {
+    border-color: #1a5fb4;
+}
+
+body.dark-mode .guide-table tr:nth-child(even) {
+    background: #16213e;
+}

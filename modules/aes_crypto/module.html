@@ -1,0 +1,84 @@
+<h2>Chiffrement AES</h2>
+
+<div class="crypto-tabs">
+    <button class="tab-btn active" data-tab="text">Texte</button>
+    <button class="tab-btn" data-tab="file">Fichier</button>
+</div>
+
+<div id="text-panel" class="tab-panel active">
+    <div class="input-group">
+        <label>Texte à chiffrer/déchiffrer :</label>
+        <textarea id="text-input" rows="4" placeholder="Entrez votre texte..."></textarea>
+    </div>
+</div>
+
+<div id="file-panel" class="tab-panel">
+    <div class="input-group">
+        <label>Sélectionner un fichier :</label>
+        <input type="file" id="file-input">
+        <div id="file-info" class="file-info"></div>
+    </div>
+    <div class="input-group file-options">
+        <label><input type="checkbox" id="encrypt-filename"> 🔒 Chiffrer aussi le nom du fichier</label>
+        <small>Le nom original sera caché dans le fichier chiffré</small>
+    </div>
+</div>
+
+<div class="crypto-section">
+    <h3>Configuration AES</h3>
+    
+    <div class="conv-form">
+        <label>Algorithme :</label>
+        <select id="aes-variant">
+            <option value="AES-GCM" selected>AES-GCM (recommandé)</option>
+            <option value="AES-CBC">AES-CBC</option>
+            <option value="AES-CTR">AES-CTR</option>
+        </select>
+    </div>
+    
+    <div class="conv-form">
+        <label>Taille de clé :</label>
+        <select id="key-size">
+            <option value="256" selected>256 bits</option>
+            <option value="192">192 bits</option>
+            <option value="128">128 bits</option>
+        </select>
+    </div>
+    
+    <div class="conv-form">
+        <label>Clé (mot de passe) :</label>
+        <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Mot de passe fort...">
+        </div>
+        <button type="button" id="toggle-password">👁</button>
+    </div>
+    
+    <div class="conv-form iv-section">
+        <label>IV / Nonce (hex, laisser vide pour auto) :</label>
+        <input type="text" id="iv-input" placeholder="32 caractères hex pour GCM (96 bits)">
+        <small id="iv-help">GCM: 12 bytes, CBC/CTR: 16 bytes (laisser vide = auto-généré)</small>
+    </div>
+    
+    <div class="conv-form aad-section" id="aad-section">
+        <label>AAD (Additional Authenticated Data - GCM seulement) :</label>
+        <input type="text" id="aad-input" placeholder="Données associées (optionnel)">
+    </div>
+</div>
+
+<div class="button-group">
+    <button id="btn-encrypt" class="btn-primary">🔒 Chiffrer</button>
+    <button id="btn-decrypt" class="btn-secondary">🔓 Déchiffrer</button>
+    <button id="btn-generate-key" class="btn-info">🔑 Générer clé aléatoire</button>
+</div>
+    <div class="filename-status" id="filename-status"></div>
+
+<div id="result-section" class="result-section">
+    <h3>Résultat</h3>
+    <div class="result-display" id="result-display"></div>
+    <div class="result-actions" id="result-actions">
+        <button id="btn-copy" class="btn-small">📋 Copier</button>
+        <button id="btn-download" class="btn-small">💾 Télécharger</button>
+    </div>
+</div>
+
+<div id="error-display" class="error-display"></div>

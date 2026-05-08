@@ -1,0 +1,45 @@
+<div class="password-generator">
+    <div class="password-display">
+        <input type="text" id="passwordOutput" readonly placeholder="Mot de passe généré...">
+        <button id="copyBtn" title="Copier">📋</button>
+    </div>
+
+    <div class="password-strength" id="strengthIndicator">
+        <div class="strength-bar"></div>
+        <span class="strength-text">Force: -</span>
+    </div>
+
+    <div class="password-options">
+        <div class="option-row">
+            <label>Longueur: <span id="lengthValue">16</span></label>
+            <input type="range" id="lengthSlider" min="4" max="128" value="16">
+        </div>
+
+        <div class="checkbox-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="uppercase" checked>
+                <span>Majuscules (A-Z)</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="lowercase" checked>
+                <span>Minuscules (a-z)</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="numbers" checked>
+                <span>Chiffres (0-9)</span>
+            </label>
+            <label class="checkbox-label">
+                <input type="checkbox" id="symbols">
+                <span>Symboles (!@#$...)</span>
+            </label>
+        </div>
+    </div>
+
+    <button id="generateBtn" class="btn-generate">Générer</button>
+
+    <div class="password-history">
+        <h4>Historique</h4>
+        <div id="historyList"></div>
+        <button id="clearHistoryBtn" class="btn-small">Effacer l'historique</button>
+    </div>
+</div>

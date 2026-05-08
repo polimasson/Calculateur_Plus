@@ -1,0 +1,70 @@
+<div class="game-header">
+    <h1>🎮 TETRIS</h1>
+</div>
+
+<div class="game-stats">
+    <div class="stat-item">
+        <div class="stat-label">Score</div>
+        <div class="stat-value" id="score">0</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-label">Lignes</div>
+        <div class="stat-value" id="lines">0</div>
+    </div>
+    <div class="stat-item">
+        <div class="stat-label">Niveau</div>
+        <div class="stat-value" id="level">1</div>
+    </div>
+</div>
+
+<div class="game-area">
+    <canvas id="gameCanvas" width="300" height="600"></canvas>
+    <div class="next-piece-container">
+        <h3>Prochaine pièce</h3>
+        <canvas id="nextCanvas" width="120" height="120"></canvas>
+    </div>
+</div>
+
+<div class="game-controls">
+    <button id="startBtn" class="btn btn-primary">Commencer</button>
+    <button id="pauseBtn" class="btn btn-secondary" disabled>Pause</button>
+    <button id="resetBtn" class="btn btn-secondary">Réinitialiser</button>
+</div>
+
+<div class="instructions">
+    <h3>🎯 Contrôles</h3>
+    <div class="control-grid">
+        <div class="control-item">
+            <span>Déplacer gauche</span>
+            <span class="key">←</span>
+        </div>
+        <div class="control-item">
+            <span>Déplacer droite</span>
+            <span class="key">→</span>
+        </div>
+        <div class="control-item">
+            <span>Rotation</span>
+            <span class="key">↑</span>
+        </div>
+        <div class="control-item">
+            <span>Descente rapide</span>
+            <span class="key">↓</span>
+        </div>
+        <div class="control-item">
+            <span>Chute instantanée</span>
+            <span class="key">Espace</span>
+        </div>
+        <div class="control-item">
+            <span>Pause</span>
+            <span class="key">P</span>
+        </div>
+    </div>
+</div>
+
+<div class="game-over-overlay" id="gameOverOverlay">
+    <div class="game-over-content">
+        <h2>🎮 Game Over!</h2>
+        <div class="final-score">Score final: <span id="finalScore">0</span></div>
+        <button id="playAgainBtn" class="btn btn-primary">Rejouer</button>
+    </div>
+</div>

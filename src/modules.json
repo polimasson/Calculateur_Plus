@@ -1,0 +1,333 @@
+[
+  {
+    "id": "standard_calculator",
+    "name": "Calculatrice Standard",
+    "version": "1.0.0",
+    "tags": ["math"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "arbitrary_and_variable_precision_scientific_calculator",
+    "name": "Calculatrice scientifique à précision arbitraire et variable",
+    "version": "1.6.0",
+    "tags": ["math", "DX"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "length",
+    "name": "Convertisseur de Longueur",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "weight",
+    "name": "Convertisseur de Poids",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "time",
+    "name": "Convertisseur de Temps",
+    "version": "1.0.0",
+    "tags": ["conversion", "temps"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "temperature",
+    "name": "Convertisseur de Température",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "amount_of_substance",
+    "name": "Convertisseur de Quantité de matière",
+    "version": "1.1.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "speed",
+    "name": "Convertisseur de Vitesse",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "data",
+    "name": "Convertisseur de Données",
+    "version": "1.0.0",
+    "tags": ["conversion", "informatique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "data-transfer",
+    "name": "Convertisseur de Transfert de données",
+    "version": "1.0.0",
+    "tags": ["conversion", "informatique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "stopwatch",
+    "name": "Chronomètre",
+    "version": "1.0.0",
+    "tags": ["temps", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "info",
+    "name": "Plus d'info",
+    "visibility": "off",
+    "version": "0.0.0",
+    "tags": ["outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "resolution_ratio",
+    "name": "Calculateur de Ratio de résolution",
+    "version": "1.0.0",
+    "tags": ["math", "informatique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "meteo",
+    "name": "Chaîne météo",
+    "version": "1.0.0",
+    "tags": ["API", "position"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "meteo_advanced",
+    "name": "Chaîne météo avancée",
+    "version": "1.1.0",
+    "tags": ["outil", "API", "position", "DX"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "area",
+    "name": "Convertisseur de Surface",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "volume",
+    "name": "Convertisseur de Volume",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "energy",
+    "name": "Convertisseur d'Énergie",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "power",
+    "name": "Convertisseur de Puissance",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "pressure",
+    "name": "Convertisseur de Pression",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "force",
+    "name": "Convertisseur de Force",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "frequency",
+    "name": "Convertisseur de Fréquence",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "angle",
+    "name": "Convertisseur d'Angle",
+    "version": "1.0.0",
+    "tags": ["conversion", "math"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "luminescence",
+    "name": "Convertisseur de Luminescence (Éclairement)",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "base_conv",
+    "name": "Convertisseur de Bases",
+    "version": "1.0.0",
+    "tags": ["conversion", "informatique", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "password_generator",
+    "name": "Générateur de mots de passe",
+    "version": "1.0.0",
+    "tags": ["sécurité", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "color_converter",
+    "name": "Convertisseur de couleurs",
+    "version": "1.0.0",
+    "tags": ["conversion", "informatique", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "bmi_calculator",
+    "name": "Calculateur d'IMC",
+    "version": "1.0.0",
+    "tags": ["santé", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "financial_calculator",
+    "name": "Calculateur Financier",
+    "version": "1.0.0",
+    "tags": ["finance", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "currency_exchange",
+    "name": "Convertisseur de devises",
+    "version": "1.0.0",
+    "tags": ["finance", "conversion", "API"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "prayer_times",
+    "name": "Horaires de Prière",
+    "version": "1.0.0",
+    "tags": ["religion", "outil", "position"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "viscosity",
+    "name": "Convertisseur de Viscosité",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "inductance",
+    "name": "Convertisseur d'Inductance",
+    "version": "1.0.0",
+    "tags": ["conversion", "électricité"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "capacitance",
+    "name": "Convertisseur de Capacité",
+    "version": "1.0.0",
+    "tags": ["conversion", "électricité"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "aes_crypto",
+    "name": "Chiffrement AES",
+    "version": "1.0.0",
+    "tags": ["sécurité", "cryptographie", "outil", "texte"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "text_diff",
+    "name": "Comparateur de Texte",
+    "version": "1.0.0",
+    "tags": ["outil", "texte"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "datetime_diff",
+    "name": "Calculateur de Différence entre Dates",
+    "version": "1.0.0",
+    "tags": ["outil", "temps"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "file_hash",
+    "name": "Vérification de Hash de Fichier",
+    "version": "1.0.0",
+    "tags": ["sécurité", "outil", "cryptographie"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "text_encoder",
+    "name": "Encodeur/Décodeur de Texte",
+    "version": "1.0.0",
+    "tags": ["outil", "conversion", "texte"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "clothing_size",
+    "name": "Convertisseur de Tailles de Vêtements",
+    "version": "0.5.0",
+    "tags": ["conversion", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "shoe_size",
+    "name": "Convertisseur de Pointures",
+    "version": "0.5.0",
+    "tags": ["conversion", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "kitchen_converter",
+    "name": "Convertisseur de Cuisine",
+    "version": "1.0.0",
+    "tags": ["conversion", "outil"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "json_tool",
+    "name": "Outil JSON",
+    "version": "1.0.0",
+    "tags": ["outil", "développement"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "torque",
+    "name": "Convertisseur de Couple",
+    "version": "1.0.0",
+    "tags": ["conversion", "physique", "mécanique"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "super-resolution",
+    "name": "Super-Résolution IA",
+    "version": "1.0.0",
+    "tags": ["AI (Neural Engine)", "image", "wasm", "DX"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "tetris",
+    "name": "Jeu d'empilement de bloc satisfasant et addictif",
+    "version": "1.0.0",
+    "tags": ["arcade"],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "cache-manager",
+    "name": "Gestionnaire de Cache",
+    "visibility": "off",
+    "version": "1.0.0",
+    "tags": ["outil", "développement", "cache"],
+    "author": "PolimassonDev"
+  }
+]

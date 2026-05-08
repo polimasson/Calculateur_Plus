@@ -1,0 +1,51 @@
+<div class="module-header">
+    <h1>🔧 Gestionnaire de Cache</h1>
+    <p>Gestion du Service Worker et du cache de l'application</p>
+</div>
+
+<div class="status-section">
+    <h3>📊 État du Service Worker</h3>
+    <div class="status-grid">
+        <div class="status-item">
+            <div class="status-label">Statut</div>
+            <div class="status-value" id="swStatus">Vérification...</div>
+        </div>
+        <div class="status-item">
+            <div class="status-label">Version</div>
+            <div class="status-value" id="swVersion">-</div>
+        </div>
+        <div class="status-item">
+            <div class="status-label">Caches actifs</div>
+            <div class="status-value" id="cacheCount">-</div>
+        </div>
+        <div class="status-item">
+            <div class="status-label">Taille totale</div>
+            <div class="status-value" id="totalSize">-</div>
+        </div>
+    </div>
+</div>
+
+<div class="controls-section">
+    <h3>⚙️ Contrôles du Service Worker</h3>
+    <div class="controls-grid">
+        <button id="toggleSW" class="btn btn-primary">Activer SW</button>
+        <button id="refreshSW" class="btn btn-warning">Rafraîchir SW</button>
+        <button id="clearAllCache" class="btn btn-danger">Vider tout cache</button>
+    </div>
+</div>
+
+<div class="cache-list-section">
+    <h3>📦 Caches disponibles</h3>
+    <div class="cache-list" id="cacheList">
+        <div style="text-align: center; opacity: 0.7;">Chargement...</div>
+    </div>
+</div>
+
+<div class="log-section">
+    <h3>📋 Journal d'activités</h3>
+    <div class="log-container" id="logContainer">
+        <div class="log-entry info">
+            <span class="log-entry time">[00:00:00]</span> Gestionnaire de cache initialisé
+        </div>
+    </div>
+</div>

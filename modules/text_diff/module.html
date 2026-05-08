@@ -1,0 +1,63 @@
+<h2>Comparateur de Texte (Diff)</h2>
+
+<div class="diff-container">
+    <div class="diff-inputs">
+        <div class="diff-box">
+            <label for="text-original">Texte original :</label>
+            <textarea id="text-original" rows="10" placeholder="Collez le texte original ici..."></textarea>
+            <div class="text-stats" id="stats-original">
+                <span>📝 <strong id="orig-lines">0</strong> lignes</span>
+                <span>🔤 <strong id="orig-words">0</strong> mots</span>
+                <span>📊 <strong id="orig-chars">0</strong> caractères</span>
+                <span>🚫 <strong id="orig-spaces">0</strong> sans espaces</span>
+            </div>
+        </div>
+        <div class="diff-box">
+            <label for="text-modified">Texte modifié :</label>
+            <textarea id="text-modified" rows="10" placeholder="Collez le texte modifié ici..."></textarea>
+            <div class="text-stats" id="stats-modified">
+                <span>📝 <strong id="mod-lines">0</strong> lignes</span>
+                <span>🔤 <strong id="mod-words">0</strong> mots</span>
+                <span>📊 <strong id="mod-chars">0</strong> caractères</span>
+                <span>🚫 <strong id="mod-spaces">0</strong> sans espaces</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="diff-options">
+        <label>Options de comparaison :</label>
+        <div class="options-row">
+            <label><input type="checkbox" id="ignore-case" checked> Ignorer la casse</label>
+            <label><input type="checkbox" id="ignore-whitespace"> Ignorer espaces</label>
+            <label><input type="checkbox" id="ignore-punctuation"> Ignorer ponctuation</label>
+        </div>
+        <div class="options-row mode-row">
+            <label>Mode de comparaison :</label>
+            <select id="diff-mode">
+                <option value="line" selected>Ligne par ligne</option>
+                <option value="word">Mot par mot</option>
+                <option value="char">Caractère par caractère</option>
+            </select>
+        </div>
+    </div>
+
+    <button id="btn-compare">Comparer</button>
+    <button id="btn-clear" class="btn-secondary">Effacer</button>
+</div>
+
+<div id="result-section" class="result-section">
+    <h3>Résultat de la comparaison</h3>
+    <div class="stats-bar">
+        <span id="stats-added" class="stat added">0 ajoutés</span>
+        <span id="stats-removed" class="stat removed">0 supprimés</span>
+        <span id="stats-unchanged" class="stat unchanged">0 identiques</span>
+        <span id="stats-similarity" class="stat similarity">0% similitude</span>
+    </div>
+    <div id="diff-output" class="diff-output"></div>
+    <div class="result-actions">
+        <button id="btn-copy-result" class="btn-small">📋 Copier résultat</button>
+        <button id="btn-export" class="btn-small">💾 Exporter HTML</button>
+    </div>
+</div>
+
+<p id="result-message"></p>

@@ -1,0 +1,101 @@
+/* Container principal */
+.simple-calc {
+    max-width: 320px;
+    margin: 10px auto;
+    background: #1e1e1e;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Écran de la calculatrice */
+.calc-screen {
+    background: #2d2d2d;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    text-align: right;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#calc-history {
+    color: #888;
+    font-size: 0.9rem;
+    height: 20px;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+#calc-display {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 2rem;
+    text-align: right;
+    outline: none;
+    padding: 0;
+}
+
+/* Grille des boutons */
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 18px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Boutons numériques */
+.btn-num {
+    background: #3d3d3d;
+}
+
+.btn-num:hover {
+    background: #4d4d4d;
+}
+
+/* Opérateurs (+, -, *, /) */
+.btn-op {
+    background: #f39c12;
+}
+
+.btn-op:hover {
+    background: #e67e22;
+}
+
+/* Actions (C, DEL) */
+.btn-alt {
+    background: #e74c3c;
+}
+
+.btn-alt:hover {
+    background: #c0392b;
+}
+
+/* Bouton Égal (=) */
+.btn-exec {
+    background: #27ae60;
+    grid-row: span 2; /* S'étend sur deux lignes */
+}
+
+.btn-exec:hover {
+    background: #2ecc71;
+}

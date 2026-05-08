@@ -1,0 +1,257 @@
+.shoe-size-converter {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.module-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 25px;
+}
+
+.input-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.size-row {
+    display: flex;
+    gap: 10px;
+}
+
+.size-row input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.size-row select {
+    width: 180px;
+}
+
+.btn-convert {
+    width: 100%;
+    padding: 14px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-convert:hover {
+    background: #2980b9;
+}
+
+.quick-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.result-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.result-card.highlight {
+    background: #e3f2fd;
+    border: 2px solid #3498db;
+}
+
+.result-card .system {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.result-card .value {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.size-tables {
+    margin-bottom: 30px;
+}
+
+.size-tables h4 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.table-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.table-tab {
+    padding: 8px 15px;
+    border: none;
+    background: #f0f0f0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.table-tab:hover {
+    background: #e0e0e0;
+}
+
+.table-tab.active {
+    background: #2ecc71;
+    color: white;
+}
+
+.table-content {
+    display: none;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.table-content.active {
+    display: block;
+}
+
+.size-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.size-table th {
+    background: #3498db;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.size-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.size-table tr:hover {
+    background: #f5f5f5;
+}
+
+.tips-section {
+    background: #fff3cd;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #ffc107;
+}
+
+.tips-section h4 {
+    color: #856404;
+    margin: 0 0 10px 0;
+}
+
+.tips-section ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #856404;
+}
+
+.tips-section li {
+    margin-bottom: 5px;
+}
+
+/* Dark Mode */
+body.dark-mode .module-title {
+    color: #e0e0e0;
+}
+
+body.dark-mode .input-section,
+body.dark-mode .table-content {
+    background: #16213e;
+}
+
+body.dark-mode .input-group label {
+    color: #e0e0e0;
+}
+
+body.dark-mode .input-group select,
+body.dark-mode .size-row input {
+    background: #0f3460;
+    border-color: #1a5fb4;
+    color: #e0e0e0;
+}
+
+body.dark-mode .table-tab {
+    background: #0f3460;
+    color: #e0e0e0;
+}
+
+body.dark-mode .table-tab:hover {
+    background: #1a5fb4;
+}
+
+body.dark-mode .result-card {
+    background: #0f3460;
+}
+
+body.dark-mode .result-card .system {
+    color: #aaa;
+}
+
+body.dark-mode .size-table th {
+    background: #4a90d9;
+}
+
+body.dark-mode .size-table td {
+    border-color: #1a5fb4;
+}
+
+body.dark-mode .size-table tr:hover {
+    background: #0f3460;
+}
+
+body.dark-mode .tips-section {
+    background: #3d3d1a;
+    border-color: #b8a030;
+}
+
+body.dark-mode .tips-section h4,
+body.dark-mode .tips-section ul {
+    color: #e0e0e0;
+}
