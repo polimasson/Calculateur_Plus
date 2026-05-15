@@ -317,8 +317,8 @@
   },
   {
     "id": "tetris",
-    "name": "Jeu d'empilement de bloc satisfasant et addictif",
-    "version": "1.0.0",
+    "name": "Tetris Ultime (Jeu d'empilement de bloc satisfasant et avec un système de configuration et de jauge addictif)",
+    "version": "2.0.0",
     "tags": ["arcade"],
     "author": "PolimassonDev"
   },

@@ -1,70 +1,229 @@
-<div class="game-header">
-    <h1>🎮 TETRIS</h1>
-</div>
+<section class="tetris-shell" aria-label="Tetris">
+    <header class="tetris-topbar">
+        <div>
+            <p class="tetris-kicker">Mode Marathon</p>
+            <h2>Tetris Ultime</h2>
+        </div>
+        <div class="tetris-badges">
+            <span id="tetris-state">Pret</span>
+            <span>Best <strong id="bestScore">0</strong></span>
+        </div>
+    </header>
 
-<div class="game-stats">
-    <div class="stat-item">
-        <div class="stat-label">Score</div>
-        <div class="stat-value" id="score">0</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-label">Lignes</div>
-        <div class="stat-value" id="lines">0</div>
-    </div>
-    <div class="stat-item">
-        <div class="stat-label">Niveau</div>
-        <div class="stat-value" id="level">1</div>
-    </div>
-</div>
+    <section class="prelaunch-panel" id="prelaunchPanel">
+        <h3>Pre-lancement</h3>
+        <div class="prelaunch-grid">
+            <label><input type="checkbox" id="cfgHold" checked> Hold actif</label>
+            <label><input type="checkbox" id="cfgGhost" checked> Piece fantome active</label>
+            <label><input type="checkbox" id="cfgMirror" checked> Touche miroir active</label>
+            <label><input type="checkbox" id="cfgTrueRandom"> Vrai aleatoire (sans 7-bag)</label>
+            <label>
+                Vitesse de base:
+                <input type="number" id="cfgBaseSpeedMultiplier" min="0.1" max="20" step="0.1" value="1">
+            </label>
+            <label><input type="checkbox" id="cfgLevelProgression" checked> Montee progressive active</label>
+            <label>
+                Pieces suivantes affichees:
+                <input type="number" id="cfgNextCount" min="1" max="7" value="5">
+            </label>
+            <label><input type="checkbox" id="cfgGaugeEnabled" checked> Jauge active</label>
+            <label class="gauge-field">
+                Condition de remplissage:
+                <select id="cfgGaugeCondition">
+                    <option value="score">Score</option>
+                    <option value="lines">Lignes</option>
+                    <option value="combo">Combo</option>
+                    <option value="multiline">Multiligne</option>
+                    <option value="mono_color">Ligne mono-couleur</option>
+                    <option value="turns">Tours (nouvelle piece)</option>
+                    <option value="elapsed_time">Temps ecoule</option>
+                </select>
+            </label>
+            <label class="gauge-field">
+                Activation de la jauge:
+                <select id="cfgGaugeActivation">
+                    <option value="manual">Manuelle</option>
+                    <option value="auto">Automatique</option>
+                </select>
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="lines">
+                Remplissage par lignes:
+                <input type="number" id="cfgLinesThreshold" min="1" max="200" value="20">
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="score">
+                Remplissage par score:
+                <input type="number" id="cfgScoreThreshold" min="50" max="20000" step="50" value="400">
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="combo">
+                Combo cible:
+                <input type="number" id="cfgComboTarget" min="1" max="20" value="3">
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="combo">
+                Combo requis (nombre de fois):
+                <input type="number" id="cfgComboTimes" min="1" max="20" value="2">
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="multiline">
+                Combien de lignes:
+                <select id="cfgMultilineTarget">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="2+">2+</option>
+                    <option value="3+">3+</option>
+                </select>
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="multiline">
+                Combien de fois:
+                <input type="number" id="cfgMultilineTimes" min="1" max="20" value="2">
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="mono_color">
+                Lignes mono-couleur requises:
+                <input type="number" id="cfgMonoTimes" min="1" max="20" value="1">
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="turns">
+                Remplissage par tours:
+                <input type="number" id="cfgTurnsThreshold" min="1" max="500" value="12">
+            </label>
+            <label class="gauge-field condition-field" data-condition-field="elapsed_time">
+                Temps ecoule (secondes):
+                <input type="number" id="cfgTimeThreshold" min="1" max="3600" value="30">
+            </label>
+            <label class="gauge-field">
+                Effet de jauge:
+                <select id="cfgGaugeEffect">
+                    <optgroup label="Plateau">
+                        <option value="clear_bottom">Supprimer X lignes en bas</option>
+                        <option value="clear_top_bottom_on_next_clear">Supprimer X haut+bas a la prochaine suppression</option>
+                        <option value="add_random_blocks">Ajouter des blocs aleatoires (malus)</option>
+                    </optgroup>
+                    <optgroup label="Score">
+                        <option value="increase_score">Augmenter le score de X</option>
+                        <option value="decrease_score">Reduire le score de X (malus)</option>
+                    </optgroup>
+                    <optgroup label="Visibilite">
+                        <option value="invisible_seconds">Rendre invisible pendant X secondes (malus)</option>
+                        <option value="invisible_turns">Rendre invisible pendant X tours (malus)</option>
+                        <option value="board_invisible_seconds">Rendre tout invisible sauf la piece pendant X secondes (malus)</option>
+                        <option value="board_invisible_turns">Rendre tout invisible sauf la piece pendant X tours (malus)</option>
+                        <option value="piece_invisible_seconds">Rendre invisible la piece actuelle pendant X secondes (malus)</option>
+                        <option value="piece_invisible_turns">Rendre invisible la piece actuelle pendant X tours (malus)</option>
+                        <option value="hide_next_turns">Masquer les pieces suivantes pendant X tours (malus)</option>
+                    </optgroup>
+                    <optgroup label="Commandes et vitesse">
+                        <option value="invert_controls_seconds">Inverser les commandes pendant X secondes (malus)</option>
+                        <option value="speed_multiplier">Changer la vitesse a X pendant Y secondes</option>
+                        <option value="speed_multiplier_turns">Changer la vitesse a X pendant Y tours</option>
+                    </optgroup>
+                    <optgroup label="Fonctions temporaires">
+                        <option value="timed_unlock">Debloquer une fonction pendant X secondes</option>
+                        <option value="timed_unlock_turns">Debloquer une fonction pendant X tours</option>
+                        <option value="block_feature_turns">Bloquer une fonction pendant X tours (malus)</option>
+                        <option value="block_feature_seconds">Bloquer une fonction pendant X secondes (malus)</option>
+                    </optgroup>
+                </select>
+            </label>
+            <label class="gauge-field">
+                Valeur X (lignes / blocs / points / secondes / tours / vitesse):
+                <input type="number" id="cfgGaugeX" min="1" max="100000" step="1" value="2">
+            </label>
+            <label class="gauge-field effect-field" data-effect-field="speed-duration">
+                Duree Y de l'effet vitesse (secondes):
+                <input type="number" id="cfgSpeedEffectDuration" min="0.1" max="3600" step="0.1" value="5">
+            </label>
+            <label class="gauge-field effect-field" data-effect-field="speed-turns">
+                Duree Y de l'effet vitesse (tours):
+                <input type="number" id="cfgSpeedEffectTurns" min="1" max="500" value="5">
+            </label>
+            <label class="gauge-field effect-field" data-effect-field="feature-target">
+                Fonction ciblee (unlock / block):
+                <select id="cfgFeatureTarget">
+                    <option value="ghost">Piece fantome</option>
+                    <option value="hold">Hold</option>
+                    <option value="mirror">Touche miroir</option>
+                    <option value="ghost,hold">Piece fantome + Hold</option>
+                    <option value="ghost,mirror">Piece fantome + Miroir</option>
+                    <option value="hold,mirror">Hold + Miroir</option>
+                    <option value="ghost,hold,mirror">Piece fantome + Hold + Miroir</option>
+                </select>
+            </label>
+        </div>
+        <small>Tu peux relancer une partie avec d'autres valeurs à tout moment. J'aime bien ce mode (Hold, touche miroir et pièce fantôme activés + une jauge de temps : toutes les 15 secondes, elle ajoute automatiquement un bloc aléatoire).</small>
+    </section>
 
-<div class="game-area">
-    <canvas id="gameCanvas" width="300" height="600"></canvas>
-    <div class="next-piece-container">
-        <h3>Prochaine pièce</h3>
-        <canvas id="nextCanvas" width="120" height="120"></canvas>
-    </div>
-</div>
+    <div class="tetris-layout">
+        <aside class="tetris-panel tetris-left-panel">
+            <div class="metric-grid">
+                <div class="metric"><span>Score</span><strong id="score">0</strong></div>
+                <div class="metric"><span>Niveau</span><strong id="level">1</strong></div>
+                <div class="metric"><span>Lignes</span><strong id="lines">0</strong></div>
+                <div class="metric"><span>Combo</span><strong id="combo">0</strong></div>
+            </div>
 
-<div class="game-controls">
-    <button id="startBtn" class="btn btn-primary">Commencer</button>
-    <button id="pauseBtn" class="btn btn-secondary" disabled>Pause</button>
-    <button id="resetBtn" class="btn btn-secondary">Réinitialiser</button>
-</div>
+            <div class="mini-board">
+                <div class="mini-board-head"><span>Hold</span><small>Shift / C</small></div>
+                <canvas id="holdCanvas" width="120" height="120"></canvas>
+            </div>
 
-<div class="instructions">
-    <h3>🎯 Contrôles</h3>
-    <div class="control-grid">
-        <div class="control-item">
-            <span>Déplacer gauche</span>
-            <span class="key">←</span>
-        </div>
-        <div class="control-item">
-            <span>Déplacer droite</span>
-            <span class="key">→</span>
-        </div>
-        <div class="control-item">
-            <span>Rotation</span>
-            <span class="key">↑</span>
-        </div>
-        <div class="control-item">
-            <span>Descente rapide</span>
-            <span class="key">↓</span>
-        </div>
-        <div class="control-item">
-            <span>Chute instantanée</span>
-            <span class="key">Espace</span>
-        </div>
-        <div class="control-item">
-            <span>Pause</span>
-            <span class="key">P</span>
-        </div>
-    </div>
-</div>
+            <div class="action-row">
+                <button id="startBtn" class="tetris-btn primary">Demarrer</button>
+                <button id="pauseBtn" class="tetris-btn" disabled>Pause</button>
+                <button id="resetBtn" class="tetris-btn subtle">Reset</button>
+                <button id="gaugeUseBtn" class="tetris-btn warning" disabled>Activer jauge</button>
+            </div>
+        </aside>
 
-<div class="game-over-overlay" id="gameOverOverlay">
-    <div class="game-over-content">
-        <h2>🎮 Game Over!</h2>
-        <div class="final-score">Score final: <span id="finalScore">0</span></div>
-        <button id="playAgainBtn" class="btn btn-primary">Rejouer</button>
+        <main class="board-wrap">
+            <canvas id="gameCanvas" width="300" height="600"></canvas>
+            <div class="line-flash" id="lineFlash"></div>
+            <div class="game-over-overlay" id="gameOverOverlay">
+                <div class="game-over-content">
+                    <p>Partie terminee</p>
+                    <h3>Game Over</h3>
+                    <div>Score final <strong id="finalScore">0</strong></div>
+                    <button id="playAgainBtn" class="tetris-btn primary">Rejouer</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="tetris-panel tetris-right-panel">
+            <div class="gauge-card">
+                <div class="mini-board-head"><span>Jauge</span><small id="gaugeModeLabel">Active</small></div>
+                <svg id="gaugeSvg" viewBox="0 0 120 120" class="gauge-svg">
+                    <circle cx="60" cy="60" r="48" class="gauge-track"></circle>
+                    <circle cx="60" cy="60" r="48" class="gauge-fill" id="gaugeFill"></circle>
+                </svg>
+                <strong id="gaugeText">0%</strong>
+                <small id="gaugeHint">Remplis des objectifs pour activer.</small>
+            </div>
+
+            <div class="mini-board next-stack">
+                <div class="mini-board-head"><span>Suivantes</span><small>7-bag</small></div>
+                <canvas id="nextCanvas" width="150" height="292"></canvas>
+            </div>
+
+            <div class="control-card">
+                <div><kbd>←</kbd><kbd>→</kbd> Deplacer</div>
+                <div><kbd>↑</kbd> Rotation</div>
+                <div><kbd>Z</kbd> Rotation inverse</div>
+                <div><kbd>M</kbd> Miroir</div>
+                <div><kbd>↓</kbd> Soft drop</div>
+                <div><kbd>Espace</kbd> Hard drop</div>
+                <div><kbd>P</kbd> Pause</div>
+                <div><kbd>A</kbd> Activer jauge</div>
+            </div>
+        </aside>
     </div>
-</div>
+
+    <div class="touch-controls" aria-label="Controles tactiles">
+        <button data-action="left" aria-label="Gauche">←</button>
+        <button data-action="right" aria-label="Droite">→</button>
+        <button data-action="down" aria-label="Descente rapide">↓</button>
+        <button data-action="rotate" aria-label="Rotation">↑</button>
+        <button data-action="rotate-ccw" aria-label="Rotation inverse">Z</button>
+        <button data-action="hold" aria-label="Hold">HOLD</button>
+        <button data-action="mirror" aria-label="Miroir">MIR</button>
+        <button data-action="drop" class="wide" aria-label="Chute instantanee">DROP</button>
+        <button data-action="pause" class="wide" aria-label="Pause">PAUSE</button>
+        <button data-action="activate-gauge" class="wide" aria-label="Activer jauge">Jauge</button>
+    </div>
+</section>
