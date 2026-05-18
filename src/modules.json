@@ -319,7 +319,7 @@
     "id": "tetris",
     "name": "Tetris Ultime (Jeu d'empilement de bloc satisfasant et avec un système de configuration et de jauge addictif)",
     "version": "2.0.0",
-    "tags": ["arcade"],
+    "tags": ["arcade","DX"],
     "author": "PolimassonDev"
   },
   {
@@ -328,6 +328,14 @@
     "visibility": "off",
     "version": "1.0.0",
     "tags": ["outil", "développement", "cache"],
+    "author": "PolimassonDev"
+  }
+  ,
+  {
+    "id": "pgcd_ppcm",
+    "name": "PGCD / PPCM et décomposition en facteurs premiers",
+    "version": "1.0.0",
+    "tags": ["math", "nombre"],
     "author": "PolimassonDev"
   }
 ]

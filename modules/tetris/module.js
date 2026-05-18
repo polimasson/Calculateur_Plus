@@ -73,6 +73,7 @@ class TetrisUltimate {
             activation: container.querySelector("#cfgGaugeActivation"),
             baseSpeedMultiplier: container.querySelector("#cfgBaseSpeedMultiplier"),
             levelProgression: container.querySelector("#cfgLevelProgression"),
+            maxLevel: container.querySelector("#cfgMaxLevel"),
             nextCount: container.querySelector("#cfgNextCount"),
             linesThreshold: container.querySelector("#cfgLinesThreshold"),
             scoreThreshold: container.querySelector("#cfgScoreThreshold"),
@@ -90,6 +91,16 @@ class TetrisUltimate {
             featureTarget: container.querySelector("#cfgFeatureTarget")
         };
 
+        // Preset system (saved in localStorage)
+        this.presetKey = "tetrisUltimatePresets";
+        this.presets = [];
+        this.presetSelect = container.querySelector("#cfgPresetSelect");
+        this.presetLoadBtn = container.querySelector("#cfgPresetLoadBtn");
+        this.presetSaveBtn = container.querySelector("#cfgPresetSaveBtn");
+        this.presetDeleteBtn = container.querySelector("#cfgPresetDeleteBtn");
+        this.loadPresets?.();
+        this.populatePresetList?.();
+
         this.bestScore = Number(localStorage.getItem(STORAGE_KEY) || 0);
         this.audio = null;
         this.destroyed = false;
@@ -98,6 +109,7 @@ class TetrisUltimate {
         this.resetSettings();
         this.resetState();
         this.bindEvents();
+        this.updateMaxLevelVisibility();
         this.updateGaugeXInputMode();
         this.updateVisibleGaugeFields();
         this.updateFeatureTargetOptions();
@@ -118,6 +130,7 @@ class TetrisUltimate {
             condition: "score",
             activation: "manual",
             nextCount: 5,
+            maxLevel: 99,
             rules: {
                 linesThreshold: 20,
                 scoreThreshold: 400,
@@ -164,6 +177,7 @@ class TetrisUltimate {
         this.settings.condition = this.configInputs.condition.value;
         this.settings.activation = this.configInputs.activation.value;
         this.settings.nextCount = getInt(this.configInputs.nextCount, 5, 1, 7);
+        this.settings.maxLevel = getInt(this.configInputs.maxLevel, 99, 1, 1000);
         this.settings.rules.linesThreshold = getInt(this.configInputs.linesThreshold, 20, 1, 2000);
         this.settings.rules.scoreThreshold = getInt(this.configInputs.scoreThreshold, 400, 1, 1000000);
         this.settings.rules.comboTarget = getInt(this.configInputs.comboTarget, 3, 1, 200);
@@ -263,6 +277,13 @@ class TetrisUltimate {
             this.start();
         });
 
+        if (this.presetSaveBtn) this.on(this.presetSaveBtn, "click", () => this.handleSavePreset());
+        if (this.presetLoadBtn) this.on(this.presetLoadBtn, "click", () => this.handleLoadPreset());
+        if (this.presetDeleteBtn) this.on(this.presetDeleteBtn, "click", () => this.handleDeletePreset());
+        if (this.presetSelect) this.on(this.presetSelect, "change", () => {
+            /* noop - selection used by load/delete buttons */
+        });
+
         this.on(document, "keydown", (event) => this.handleKey(event));
         this.container.querySelectorAll(".touch-controls button").forEach((button) => {
             this.on(button, "click", () => this.handleAction(button.dataset.action));
@@ -278,6 +299,252 @@ class TetrisUltimate {
         const raw = Number.parseFloat(this.configInputs.x.value);
         const normalized = Number.isNaN(raw) ? 1 : clamp(Math.round(raw), 1, 100000);
         this.configInputs.x.value = String(normalized);
+    }
+
+    /* Preset management: save/load/delete presets stored in localStorage */
+    loadPresets() {
+        try {
+            const raw = localStorage.getItem(this.presetKey);
+            this.presets = raw ? JSON.parse(raw) : [];
+        } catch (e) {
+            this.presets = [];
+        }
+        // If no presets found, add sensible defaults
+        if (!Array.isArray(this.presets) || this.presets.length === 0) {
+            const commonRules = {
+                linesThreshold: 20,
+                scoreThreshold: 400,
+                comboTarget: 3,
+                comboTimes: 2,
+                multilineTarget: "2",
+                multilineTimes: 2,
+                monoTimes: 1,
+                turnsThreshold: 12,
+                timeThreshold: 30
+            };
+
+            this.presets = [
+                {
+                    name: "Relax",
+                    data: {
+                        holdEnabled: true,
+                        ghostEnabled: true,
+                        mirrorEnabled: true,
+                        trueRandom: false,
+                        baseSpeedMultiplier: 1,
+                        levelProgression: false,
+                        gaugeEnabled: true,
+                        condition: "score",
+                        activation: "manual",
+                        nextCount: 5,
+                        maxLevel: 50,
+                        rules: { ...commonRules },
+                        effect: { type: "increase_score", x: 100, speedDuration: 5, speedTurns: 5, featureTargets: ["ghost"] }
+                    }
+                },
+                {
+                    name: "Standard",
+                    data: {
+                        holdEnabled: true,
+                        ghostEnabled: true,
+                        mirrorEnabled: true,
+                        trueRandom: false,
+                        baseSpeedMultiplier: 1,
+                        levelProgression: true,
+                        gaugeEnabled: true,
+                        condition: "score",
+                        activation: "manual",
+                        nextCount: 5,
+                        maxLevel: 99,
+                        rules: { ...commonRules },
+                        effect: { type: "clear_bottom", x: 2, speedDuration: 5, speedTurns: 5, featureTargets: ["ghost"] }
+                    }
+                },
+                {
+                    name: "Survie (Mon preferé)",
+                    data: {
+                        holdEnabled: true,
+                        ghostEnabled: true,
+                        mirrorEnabled: true,
+                        trueRandom: false,
+                        baseSpeedMultiplier: 1,
+                        levelProgression: true,
+                        gaugeEnabled: true,
+                        condition: "elapsed_time",
+                        activation: "auto",
+                        nextCount: 5,
+                        maxLevel: 99,
+                        rules: { linesThreshold: 10, scoreThreshold: 1000, comboTarget: 4, comboTimes: 2, multilineTarget: "4", multilineTimes: 3, monoTimes: 1, turnsThreshold: 10, timeThreshold: 15 },
+                        effect: { type: "add_random_blocks", x: 1, speedDuration: 5, speedTurns: 5, featureTargets: [] }
+                    }
+                },
+                {
+                    name: "Pas le temps de réfléchir",
+                    data: {
+                        holdEnabled: true,
+                        ghostEnabled: true,
+                        mirrorEnabled: true,
+                        trueRandom: false,
+                        baseSpeedMultiplier: 1,
+                        levelProgression: true,
+                        gaugeEnabled: true,
+                        condition: "elapsed_time",
+                        activation: "auto",
+                        nextCount: 5,
+                        maxLevel: 99,
+                        rules: { linesThreshold: 10, scoreThreshold: 1000, comboTarget: 4, comboTimes: 2, multilineTarget: "4", multilineTimes: 3, monoTimes: 1, turnsThreshold: 10, timeThreshold: 1 },
+                        effect: { type: "decrease_score", x: 20, speedDuration: 5, speedTurns: 5, featureTargets: [] }
+                    }
+                },
+                {
+                    name: "1989",
+                    data: {
+                        holdEnabled: false,
+                        ghostEnabled: false,
+                        mirrorEnabled: false,
+                        trueRandom: true,
+                        baseSpeedMultiplier: 1,
+                        levelProgression: true,
+                        gaugeEnabled: false,
+                        condition: "lines",
+                        activation: "manual",
+                        nextCount: 1,
+                        maxLevel: 99,
+                        rules: { linesThreshold: 10, scoreThreshold: 1000, comboTarget: 4, comboTimes: 2, multilineTarget: "4", multilineTimes: 1, monoTimes: 1, turnsThreshold: 10, timeThreshold: 20 },
+                        effect: { type: "add_random_blocks", x: 3, speedDuration: 5, speedTurns: 5, featureTargets: [] }
+                    }
+                },
+                {
+                    name: "Tetris (4-line clear boost)",
+                    data: {
+                        holdEnabled: true,
+                        ghostEnabled: true,
+                        mirrorEnabled: true,
+                        trueRandom: false,
+                        baseSpeedMultiplier: 1,
+                        levelProgression: true,
+                        gaugeEnabled: true,
+                        condition: "multiline",
+                        activation: "manual",
+                        nextCount: 5,
+                        maxLevel: 99,
+                        rules: { linesThreshold: 10, scoreThreshold: 1000, comboTarget: 4, comboTimes: 2, multilineTarget: "4", multilineTimes: 3, monoTimes: 1, turnsThreshold: 10, timeThreshold: 20 },
+                        effect: { type: "delete_lines", x: 20, speedDuration: 5, speedTurns: 5, featureTargets: [] }
+                    }
+                }
+            ];
+            this.savePresets();
+        }
+    }
+
+    savePresets() {
+        try {
+            localStorage.setItem(this.presetKey, JSON.stringify(this.presets));
+        } catch (e) {
+            /* ignore */
+        }
+    }
+
+    populatePresetList() {
+        if (!this.presetSelect) return;
+        this.presetSelect.innerHTML = "";
+        const none = document.createElement("option");
+        none.value = "";
+        none.textContent = "-- Aucun --";
+        this.presetSelect.appendChild(none);
+        this.presets.forEach((p, i) => {
+            const o = document.createElement("option");
+            o.value = String(i);
+            o.textContent = p.name;
+            this.presetSelect.appendChild(o);
+        });
+    }
+
+    getSnapshot() {
+        // read current UI into this.settings and return a deep copy
+        this.readSettingsFromUI();
+        return JSON.parse(JSON.stringify(this.settings));
+    }
+
+    applyPreset(data) {
+        if (!data) return;
+        const setInput = (input, val) => {
+            if (!input) return;
+            if (input.type === "checkbox") input.checked = !!val;
+            else input.value = val ?? "";
+        };
+
+        setInput(this.configInputs.hold, data.holdEnabled);
+        setInput(this.configInputs.ghost, data.ghostEnabled);
+        setInput(this.configInputs.mirror, data.mirrorEnabled);
+        setInput(this.configInputs.trueRandom, data.trueRandom);
+        setInput(this.configInputs.baseSpeedMultiplier, data.baseSpeedMultiplier);
+        setInput(this.configInputs.levelProgression, data.levelProgression);
+        setInput(this.configInputs.maxLevel, data.maxLevel);
+        setInput(this.configInputs.nextCount, data.nextCount);
+        setInput(this.configInputs.gaugeEnabled, data.gaugeEnabled);
+        setInput(this.configInputs.condition, data.condition);
+        setInput(this.configInputs.activation, data.activation);
+        setInput(this.configInputs.linesThreshold, data.rules?.linesThreshold);
+        setInput(this.configInputs.scoreThreshold, data.rules?.scoreThreshold);
+        setInput(this.configInputs.comboTarget, data.rules?.comboTarget);
+        setInput(this.configInputs.comboTimes, data.rules?.comboTimes);
+        setInput(this.configInputs.multilineTarget, data.rules?.multilineTarget);
+        setInput(this.configInputs.multilineTimes, data.rules?.multilineTimes);
+        setInput(this.configInputs.monoTimes, data.rules?.monoTimes);
+        setInput(this.configInputs.turnsThreshold, data.rules?.turnsThreshold);
+        setInput(this.configInputs.timeThreshold, data.rules?.timeThreshold);
+        setInput(this.configInputs.effect, data.effect?.type);
+        setInput(this.configInputs.x, data.effect?.x);
+        setInput(this.configInputs.speedEffectDuration, data.effect?.speedDuration);
+        setInput(this.configInputs.speedEffectTurns, data.effect?.speedTurns);
+        if (data.effect?.featureTargets) this.configInputs.featureTarget.value = data.effect.featureTargets.join(",");
+
+        this.updateMaxLevelVisibility();
+        this.updateGaugeXInputMode();
+        this.updateVisibleGaugeFields();
+        this.updateFeatureTargetOptions();
+        this.readSettingsFromUI();
+        this.updateUi();
+        this.drawPreviews();
+        this.draw();
+    }
+
+    handleSavePreset() {
+        const name = prompt("Nom du preset (unique) :");
+        if (!name) return;
+        const snapshot = this.getSnapshot();
+        const existing = this.presets.findIndex((p) => p.name === name);
+        const presetObj = { name, data: snapshot };
+        if (existing >= 0) {
+            if (!confirm("Preset existe déjà — remplacer ?")) return;
+            this.presets[existing] = presetObj;
+        } else {
+            this.presets.push(presetObj);
+        }
+        this.savePresets();
+        this.populatePresetList();
+        if (this.presetSelect) this.presetSelect.value = String(this.presets.findIndex((p) => p.name === name));
+    }
+
+    handleLoadPreset() {
+        if (!this.presetSelect) return;
+        const idx = Number(this.presetSelect.value);
+        if (!Number.isFinite(idx) || idx < 0 || idx >= this.presets.length) return;
+        const preset = this.presets[idx];
+        if (!preset) return;
+        this.applyPreset(preset.data);
+    }
+
+    handleDeletePreset() {
+        if (!this.presetSelect) return;
+        const idx = Number(this.presetSelect.value);
+        if (!Number.isFinite(idx) || idx < 0 || idx >= this.presets.length) return;
+        const ok = confirm(`Supprimer le preset "${this.presets[idx].name}" ?`);
+        if (!ok) return;
+        this.presets.splice(idx, 1);
+        this.savePresets();
+        this.populatePresetList();
     }
 
     updateNextPreviewCountFromUI() {
@@ -297,11 +564,21 @@ class TetrisUltimate {
     updateLevelProgressionFromUI() {
         this.settings.levelProgression = !!this.configInputs.levelProgression.checked;
         this.level = this.settings.levelProgression ? this.getProgressionLevel() : 0;
+        this.updateMaxLevelVisibility();
         this.updateUi();
     }
 
+    updateMaxLevelVisibility() {
+        const enabled = !!this.configInputs.levelProgression.checked;
+        this.container.querySelectorAll(".level-field").forEach((field) => {
+            field.style.display = enabled ? "" : "none";
+        });
+    }
+
     getProgressionLevel() {
-        return Math.floor(this.lines / 10) + 1;
+        const base = Math.floor(this.lines / 10) + 1;
+        const max = Number.isFinite(this.settings?.maxLevel) ? this.settings.maxLevel : Infinity;
+        return Math.min(base, max);
     }
 
     updateRandomizerFromUI() {
@@ -329,7 +606,9 @@ class TetrisUltimate {
             const visible =
                 (fieldType === "feature-target" && needsFeatureTarget) ||
                 (fieldType === "speed-duration" && selected === "speed_multiplier") ||
-                (fieldType === "speed-turns" && selected === "speed_multiplier_turns");
+                (fieldType === "speed-turns" && selected === "speed_multiplier_turns") ||
+                // generic X value is not needed for the immediate game over effect
+                (fieldType === "value-x" && selected !== "game_over");
             field.classList.toggle("is-hidden", !gaugeEnabled || !visible);
         });
     }
@@ -1108,6 +1387,12 @@ class TetrisUltimate {
         if (effect === "hide_next_turns") {
             this.nextHiddenTurnsRemaining = intX;
             this.consumeGauge(`Malus: pieces suivantes masquees pendant ${intX} tours`);
+        }
+
+        if (effect === "game_over") {
+            // Malus: termine la partie immédiatement
+            this.consumeGauge("Malus: fin de partie");
+            this.gameOver();
         }
 
         if (effect === "invert_controls_seconds") {

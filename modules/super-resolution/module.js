@@ -114,6 +114,20 @@ export function init(container) {
         }
     }
 
+    // Afficher/cacher l'option de threads selon le backend sélectionné
+    function updateThreadVisibility() {
+        if (!deviceSelect || !threadSelect) return;
+        if (deviceSelect.value === 'wasm') {
+            threadSelect.classList.remove('hidden');
+        } else {
+            threadSelect.classList.add('hidden');
+        }
+    }
+
+    // Appliquer l'état initial et écouter les changements de device
+    deviceSelect.addEventListener('change', updateThreadVisibility);
+    updateThreadVisibility();
+
     // --- Gestion du Worker ---
     function setupWorker() {
         if (worker) {
@@ -236,14 +250,15 @@ export function init(container) {
         deviceSelect.disabled = true;     // Bloquer changement CPU/GPU
         threadSelect.disabled = true;     // Bloquer changement de threads
         
-        worker.postMessage({
-            action: 'INIT_PIPELINE',
-            payload: {
-                modelId: selectedModel,
-                device: deviceSelect.value,
-                numThreads: parseInt(threadSelect?.value, 10) || 2
-            }
-        });
+        // Envoyer numThreads uniquement pour WASM (inutiles pour WebGPU)
+        const numThreadsToSend = (deviceSelect.value === 'wasm') ? (parseInt(threadSelect?.value, 10) || 2) : undefined;
+        const payload = {
+            modelId: selectedModel,
+            device: deviceSelect.value,
+        };
+        if (numThreadsToSend !== undefined) payload.numThreads = numThreadsToSend;
+
+        worker.postMessage({ action: 'INIT_PIPELINE', payload });
     });
     
     // --- Déchargement du modèle ---

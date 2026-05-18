@@ -13,20 +13,33 @@
     <section class="prelaunch-panel" id="prelaunchPanel">
         <h3>Pre-lancement</h3>
         <div class="prelaunch-grid">
-            <label><input type="checkbox" id="cfgHold" checked> Hold actif</label>
-            <label><input type="checkbox" id="cfgGhost" checked> Piece fantome active</label>
-            <label><input type="checkbox" id="cfgMirror" checked> Touche miroir active</label>
-            <label><input type="checkbox" id="cfgTrueRandom"> Vrai aleatoire (sans 7-bag)</label>
+            <label class="preset-row">
+                <span class="preset-label">Preset</span>
+                <div class="preset-controls" style="display:flex;gap:8px;align-items:center;">
+                    <select id="cfgPresetSelect"><option value="">-- Aucun --</option></select>
+                    <button id="cfgPresetLoadBtn" class="tetris-btn subtle">Charger</button>
+                    <button id="cfgPresetSaveBtn" class="tetris-btn">Sauvegarder</button>
+                    <button id="cfgPresetDeleteBtn" class="tetris-btn warning">Supprimer</button>
+                </div>
+            </label>
             <label>
                 Vitesse de base:
                 <input type="number" id="cfgBaseSpeedMultiplier" min="0.1" max="20" step="0.1" value="1">
             </label>
-            <label><input type="checkbox" id="cfgLevelProgression" checked> Montee progressive active</label>
+            <label class="toggle"><span class="toggle-text">Hold actif</span><input type="checkbox" id="cfgHold" checked><span class="toggle-slider" aria-hidden="true"></span></label>
+            <label class="toggle"><span class="toggle-text">Piece fantome active</span><input type="checkbox" id="cfgGhost" checked><span class="toggle-slider" aria-hidden="true"></span></label>
+            <label class="toggle"><span class="toggle-text">Touche miroir active</span><input type="checkbox" id="cfgMirror" checked><span class="toggle-slider" aria-hidden="true"></span></label>
+            <label class="toggle"><span class="toggle-text">Vrai aleatoire (sans 7-bag)</span><input type="checkbox" id="cfgTrueRandom"><span class="toggle-slider" aria-hidden="true"></span></label>
+            <label class="toggle"><span class="toggle-text">Montee progressive active</span><input type="checkbox" id="cfgLevelProgression" checked><span class="toggle-slider" aria-hidden="true"></span></label>
+            <label class="level-field">
+                Niveau maximum:
+                <input type="number" id="cfgMaxLevel" min="1" max="1000" value="99">
+            </label>
             <label>
                 Pieces suivantes affichees:
                 <input type="number" id="cfgNextCount" min="1" max="7" value="5">
             </label>
-            <label><input type="checkbox" id="cfgGaugeEnabled" checked> Jauge active</label>
+            <label class="toggle"><span class="toggle-text">Jauge active</span><input type="checkbox" id="cfgGaugeEnabled" checked><span class="toggle-slider" aria-hidden="true"></span></label>
             <label class="gauge-field">
                 Condition de remplissage:
                 <select id="cfgGaugeCondition">
@@ -108,6 +121,7 @@
                         <option value="piece_invisible_seconds">Rendre invisible la piece actuelle pendant X secondes (malus)</option>
                         <option value="piece_invisible_turns">Rendre invisible la piece actuelle pendant X tours (malus)</option>
                         <option value="hide_next_turns">Masquer les pieces suivantes pendant X tours (malus)</option>
+                        <option value="game_over">Fin de partie immédiate (malus)</option>
                     </optgroup>
                     <optgroup label="Commandes et vitesse">
                         <option value="invert_controls_seconds">Inverser les commandes pendant X secondes (malus)</option>
@@ -122,7 +136,7 @@
                     </optgroup>
                 </select>
             </label>
-            <label class="gauge-field">
+            <label class="gauge-field" data-effect-field="value-x">
                 Valeur X (lignes / blocs / points / secondes / tours / vitesse):
                 <input type="number" id="cfgGaugeX" min="1" max="100000" step="1" value="2">
             </label>
@@ -147,7 +161,7 @@
                 </select>
             </label>
         </div>
-        <small>Tu peux relancer une partie avec d'autres valeurs à tout moment. J'aime bien ce mode (Hold, touche miroir et pièce fantôme activés + une jauge de temps : toutes les 15 secondes, elle ajoute automatiquement un bloc aléatoire).</small>
+        <small>Tu peux relancer une partie avec d'autres valeurs à tout moment.</small>
     </section>
 
     <div class="tetris-layout">
