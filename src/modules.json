@@ -175,7 +175,7 @@
     "tags": ["conversion", "informatique", "outil"],
     "author": "PolimassonDev"
   },
-  {
+{
     "id": "password_generator",
     "name": "Générateur de mots de passe",
     "version": "1.0.0",
@@ -336,6 +336,13 @@
     "name": "PGCD / PPCM et décomposition en facteurs premiers",
     "version": "1.0.0",
     "tags": ["math", "nombre"],
+    "author": "PolimassonDev"
+  },
+    {
+    "id": "code_generator",
+    "name": "Générateur de code (qrcode, code-barres, code-matrix etc...) [bwip-js]",
+    "version": "1.0.0",
+    "tags": ["outil", "DX"],
     "author": "PolimassonDev"
   }
 ]

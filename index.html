@@ -7,29 +7,8 @@
     <link href="src/style/style.css" rel="stylesheet"/>
     <link rel="icon" type="image/svg+xml" href="src/icon/favicon.svg"/>
     <script defer src="src/script.js"></script>
-    <script src="coi-serviceworker.js"></script>
+    <script src="sw.js"></script>
     <link rel="manifest" href="manifest.json">
-    <script>
-        // Enregistrement du service worker pour le PWA (uniquement si autorisé)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                // Vérifier la préférence utilisateur dans localStorage
-                const swEnabled = localStorage.getItem('serviceWorkerEnabled') !== 'false';
-                
-                if (swEnabled) {
-                    navigator.serviceWorker.register('sw.js')
-                        .then(registration => {
-                            console.log('Service Worker enregistré:', registration);
-                        })
-                        .catch(error => {
-                            console.log('Échec de l\'enregistrement du Service Worker:', error);
-                        });
-                } else {
-                    console.log('Service Worker désactivé (préférence utilisateur)');
-                }
-            });
-        }
-    </script>
 </head>
 <body>
     <div id="menu">

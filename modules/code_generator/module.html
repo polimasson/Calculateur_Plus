@@ -1,0 +1,181 @@
+<div class="barcode-generator">
+    <div class="barcode-grid">
+        <div class="barcode-controls">
+            <div class="control-group">
+                <label for="barcode-type">Type de code-barres</label>
+                <select id="barcode-type">
+                    <optgroup id="cat-1d" label="Linéaires (1D)"></optgroup>
+                    <optgroup id="cat-2d" label="Matriciels (2D)"></optgroup>
+                    <optgroup id="cat-stacked" label="Empilés / Composite"></optgroup>
+                    <optgroup id="cat-postal" label="Postaux"></optgroup>
+                    <optgroup id="cat-gs1" label="GS1 / Logistique"></optgroup>
+                    <optgroup id="cat-hibc" label="Médical (HIBC)"></optgroup>
+                    <optgroup id="cat-pharma" label="Pharma"></optgroup>
+                    <optgroup id="cat-special" label="Spéciaux / Divers"></optgroup>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="barcode-text">Données à encoder</label>
+                <textarea id="barcode-text" rows="2" placeholder="Saisissez le texte/code...">Calculateur Plus!</textarea>
+            </div>
+
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="barcode-scale">Échelle <small>(taille)</small></label>
+                    <input type="range" id="barcode-scale" min="1" max="10" step="1" value="3" disabled>
+                    <span id="barcode-scale-value" class="value-badge">3</span>
+                    <label class="autofit-toggle">
+                        <input type="checkbox" id="barcode-autofit" checked>
+                        <span>Auto-fit <small>(ajuste au viewport)</small></span>
+                    </label>
+                </div>
+                <div class="control-group">
+                    <label for="barcode-height">Hauteur <small>(barres 1D)</small></label>
+                    <input type="range" id="barcode-height" min="5" max="50" step="1" value="10">
+                    <span id="barcode-height-value" class="value-badge">10</span>
+                </div>
+            </div>
+
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="barcode-rotate">Rotation</label>
+                    <select id="barcode-rotate">
+                        <option value="N">Normal (0°)</option>
+                        <option value="R">Droite (90°)</option>
+                        <option value="L">Gauche (-90°)</option>
+                        <option value="I">Inversé (180°)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label for="barcode-includetext">Texte lisible</label>
+                    <select id="barcode-includetext">
+                        <option value="true">Oui</option>
+                        <option value="false">Non</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="barcode-fg">Couleur barres</label>
+                    <input type="color" id="barcode-fg" value="#000000">
+                </div>
+                <div class="control-group">
+                    <label for="barcode-bg">Couleur fond</label>
+                    <input type="color" id="barcode-bg" value="#ffffff">
+                </div>
+            </div>
+
+            <div class="control-row">
+                <div class="control-group">
+                    <label for="barcode-padx">Marge horizontale <small>(px)</small></label>
+                    <input type="range" id="barcode-padx" min="0" max="50" step="1" value="5">
+                    <span id="barcode-padx-value" class="value-badge">5</span>
+                </div>
+                <div class="control-group">
+                    <label for="barcode-pady">Marge verticale <small>(px)</small></label>
+                    <input type="range" id="barcode-pady" min="0" max="50" step="1" value="5">
+                    <span id="barcode-pady-value" class="value-badge">5</span>
+                </div>
+            </div>
+
+            <div class="control-twoD-group hidden" id="twoD-options">
+                <div class="twoD-header">
+                    <h4>Options 2D <small>(redondance / ECC, version, encodage)</small></h4>
+                </div>
+
+                <div class="control-row" data-cap="ecc">
+                    <div class="control-group">
+                        <label for="barcode-ecc">Niveau de correction <small>(redondance)</small></label>
+                        <select id="barcode-ecc">
+                            <option value="L">L — ~7% redondance (bas)</option>
+                            <option value="M" selected>M — ~15% redondance (moyen)</option>
+                            <option value="Q">Q — ~25% redondance (élevé)</option>
+                            <option value="H">H — ~30% redondance (max)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="barcode-version">Version <small>(0 = auto)</small></label>
+                        <input type="range" id="barcode-version" min="0" max="40" step="1" value="0">
+                        <span id="barcode-version-value" class="value-badge">0</span>
+                    </div>
+                </div>
+
+                <div class="control-row" data-cap="encoding">
+                    <div class="control-group" style="grid-column: 1 / -1;">
+                        <label class="autofit-toggle">
+                            <input type="checkbox" id="barcode-parse">
+                            <span>Interpréter les caractères de contrôle <small>(<code>^NNN</code> = octet, FNC1...)</small></span>
+                        </label>
+                        <small class="hint">bwip-js choisit automatiquement le mode d'encodage (numérique/alphanumérique/octet) selon le contenu. Cette option active le parsing des séquences spéciales.</small>
+                    </div>
+                </div>
+
+                <div class="control-row" data-cap="aztecEcc">
+                    <div class="control-group" style="grid-column: 1 / -1;">
+                        <label for="barcode-aztec-ecc">Aztec — correction d'erreur <small>(%)</small></label>
+                        <input type="range" id="barcode-aztec-ecc" min="5" max="95" step="1" value="33">
+                        <span id="barcode-aztec-ecc-value" class="value-badge">33</span>
+                        <small class="hint">Recommandé : 23 à 33. Plus élevé = plus robuste mais plus gros.</small>
+                    </div>
+                </div>
+
+                <div class="control-row" data-cap="pdf417Ecc">
+                    <div class="control-group">
+                        <label for="barcode-pdf417-ecc">PDF417 — niveau ECC <small>(0-8, 0 = auto)</small></label>
+                        <input type="range" id="barcode-pdf417-ecc" min="0" max="8" step="1" value="0">
+                        <span id="barcode-pdf417-ecc-value" class="value-badge">0</span>
+                    </div>
+                    <div class="control-group" data-cap="pdf417Columns">
+                        <label for="barcode-pdf417-cols">PDF417 — colonnes <small>(0 = auto)</small></label>
+                        <input type="range" id="barcode-pdf417-cols" min="0" max="30" step="1" value="0">
+                        <span id="barcode-pdf417-cols-value" class="value-badge">0</span>
+                    </div>
+                </div>
+
+                <div class="control-row" data-cap="dmFormat">
+                    <div class="control-group" style="grid-column: 1 / -1;">
+                        <label for="barcode-dm-format">Data Matrix — format</label>
+                        <select id="barcode-dm-format">
+                            <option value="" selected>Automatique</option>
+                            <option value="square">Carré</option>
+                            <option value="rectangle">Rectangulaire</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-group advanced">
+                <label for="barcode-addtext">Options avancées <small>(ex: includecheck, guardwhitespace...)</small></label>
+                <input type="text" id="barcode-addtext" placeholder="option1 option2=valeur ...">
+                <small class="hint">Voir la doc bwip-js. Multiples séparées par espace.</small>
+            </div>
+
+            <div class="button-row">
+                <button id="barcode-generate" class="btn-generate">Générer</button>
+                <button id="barcode-download-png" class="btn-download">PNG</button>
+                <button id="barcode-download-svg" class="btn-download">SVG</button>
+                <button id="barcode-copy" class="btn-copy" title="Copier l'image">📋</button>
+            </div>
+        </div>
+
+        <div class="barcode-preview">
+            <div class="preview-wrap" id="barcode-preview-wrap">
+                <div id="barcode-viewport" class="barcode-viewport">
+                    <canvas id="barcode-canvas"></canvas>
+                </div>
+                <div id="barcode-zoom-indicator" class="barcode-zoom-indicator hidden">100%</div>
+                <div class="barcode-zoom-controls">
+                    <input type="range" id="barcode-zoom-slider" min="1" max="20" step="0.1" value="1" aria-label="Zoom">
+                    <button type="button" id="barcode-zoom-reset" class="barcode-zoom-reset" title="Réinitialiser le zoom">🔄</button>
+                </div>
+            </div>
+            <div id="barcode-info" class="barcode-info"></div>
+            <div id="barcode-error" class="barcode-error hidden"></div>
+            <div class="barcode-meta">
+                <span id="barcode-reader-hint" class="reader-hint"></span>
+            </div>
+        </div>
+    </div>
+</div>

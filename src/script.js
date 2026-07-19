@@ -3,6 +3,7 @@ let activeTags = new Set(); // Tags sélectionnés pour le filtre
 let strictTagMode = false; // Mode strict : AND entre les tags, sinon OR
 let currentModuleJs = null; // Référence au module actif pour le cleanup
 let isLoadingModule = false; // Empêche le double chargement
+let activeModuleId = null; // ID du module actif ou en cours de chargement
 
 const menu = document.getElementById("menu");
 const content = document.getElementById("content");
@@ -125,6 +126,7 @@ async function loadModule(moduleId) {
         console.log('Module déjà en cours de chargement, ignore');
         return;
     }
+    activeModuleId = moduleId;
     isLoadingModule = true;
     
     const oldStyle = document.querySelector('link[id^="css-"]');
@@ -201,6 +203,7 @@ function goBack() {
         try { currentModuleJs.destroy(); } catch(e) { console.warn('Erreur cleanup module:', e); }
     }
     currentModuleJs = null;
+    activeModuleId = null;
     moduleContainer.innerHTML = "";
 }
 // --- GESTION DU THEME ---
@@ -231,6 +234,9 @@ window.addEventListener('hashchange', () => {
        goBack(); // Si le hash disparaît, on revient au menu
    } else if (hash.startsWith('module-')) {
        const moduleId = hash.replace('module-', '');
+       if (moduleId === activeModuleId) {
+           return; // Déjà chargé ou en cours de chargement
+       }
        const moduleExists = allModules.find(m => m.id === moduleId && m.visibility !== 'off');
        if (moduleExists) {
            loadModule(moduleId);
