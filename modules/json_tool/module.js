@@ -183,9 +183,17 @@ function setupJsonTool(container) {
     }
     
     function updateStats(text) {
-        const lines = text.split('\n').length;
-        const chars = text.length;
-        const bytes = new Blob([text]).size;
+        const lines = text === "" ? 0 : text.split('\n').length;
+        let chars;
+        try {
+            if (typeof Intl !== "undefined" && Intl.Segmenter) {
+                const seg = new Intl.Segmenter(undefined, { granularity: "grapheme" });
+                chars = [...seg.segment(text)].length;
+            } else {
+                chars = Array.from(text).length;
+            }
+        } catch { chars = Array.from(text).length; }
+        const bytes = new TextEncoder().encode(text).length;
         outputStats.textContent = `${lines} lignes | ${chars} caractères | ${bytes} octets`;
     }
     

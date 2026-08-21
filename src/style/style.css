@@ -155,6 +155,44 @@ h1 {
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #3498db;
+    gap: 12px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.shell-switcher {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.shell-switcher button {
+    font-size: 12px;
+    padding: 6px 10px;
+    border: 1px solid #3498db;
+    background: transparent;
+    color: #3498db;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.shell-switcher button.active-shell {
+    background: #3498db;
+    color: #fff;
+}
+
+body.dark-mode .shell-switcher button {
+    border-color: #4a90d9;
+    color: #7fb3d5;
+}
+
+body.dark-mode .shell-switcher button.active-shell {
+    background: #4a90d9;
+    color: #fff;
 }
 
 #themeToggle {
@@ -272,6 +310,16 @@ html {
     background: transparent;
 }
 
+body.shell-desktop {
+    margin: 0;
+    overflow: hidden;
+}
+
+body.shell-desktop #menu,
+body.shell-desktop #content {
+    display: none !important;
+}
+
 @media (max-width: 480px) {
 
 #menu, #content {
@@ -280,4 +328,158 @@ html {
 body {
 margin: 0;
 }
+}
+
+/* --- Panneau de configuration (thème Classique) --- */
+.control-panel {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.control-panel[hidden] {
+    display: none;
+}
+
+.control-panel-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    width: min(560px, 92vw);
+    max-height: 84vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.control-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+}
+
+.control-panel-header h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.control-panel-header button {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    color: #888;
+}
+
+.control-panel-header button:hover {
+    color: #3498db;
+}
+
+.control-panel-toolbar {
+    display: flex;
+    gap: 8px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #eee;
+}
+
+.control-panel-toolbar button {
+    border: 1px solid #3498db;
+    background: transparent;
+    color: #3498db;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.control-panel-toolbar button:hover {
+    background: #3498db;
+    color: #fff;
+}
+
+.control-panel-list {
+    overflow-y: auto;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.control-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 10px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.control-row:hover {
+    border-color: #3498db;
+}
+
+.control-row input[type="checkbox"] {
+    accent-color: #3498db;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.control-name {
+    font-weight: 600;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.control-tags {
+    color: #999;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.control-row input:disabled + .control-name,
+.control-row input:disabled ~ .control-tags {
+    opacity: 0.55;
+}
+
+.control-panel-entry .name {
+    color: #3498db;
+}
+
+body.dark-mode .control-panel-box {
+    background: #1a1a2e;
+    border: 1px solid #2a2a3e;
+}
+
+body.dark-mode .control-panel-header {
+    border-bottom-color: #2a2a3e;
+}
+
+body.dark-mode .control-panel-toolbar {
+    border-bottom-color: #2a2a3e;
+}
+
+body.dark-mode .control-panel-header button {
+    color: #aaa;
+}
+
+body.dark-mode .control-row {
+    border-color: #2a2a3e;
+}
+
+body.dark-mode .control-row:hover {
+    border-color: #4a90d9;
+}
+
+body.dark-mode .control-tags {
+    color: #7a7a90;
 }

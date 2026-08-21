@@ -6,16 +6,31 @@
     <title>Calculateur Plus!</title>
     <link href="src/style/style.css" rel="stylesheet"/>
     <link rel="icon" type="image/svg+xml" href="src/icon/favicon.svg"/>
-    <script defer src="src/script.js"></script>
+    <script defer src="src/script.js?v=54"></script>
     <script src="sw.js"></script>
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <div id="menu">
+<script>
+    // Anti-flash : masque le catalogue immédiatement si le thème sauvegardé est un bureau.
+    // Garder cette liste à jour avec les ids "shell": "desktop" de src/themes/themes.json.
+    (function () {
+        try {
+            var saved = localStorage.getItem("cp.theme");
+            if (saved && ["win95"].indexOf(saved) !== -1) {
+                document.body.classList.add("shell-desktop");
+            }
+        } catch (e) {}
+    })();
+</script>
+<div id="menu">
         <div id="category">
             <div class="header-row">
                 <h1>Calculateur Plus! (Bêta)</h1>
-                <button id="themeToggle" onclick="toggleTheme()" title="Basculer mode sombre/clair">🌙</button>
+                <div class="header-actions">
+                    <div id="shellSwitcher" class="shell-switcher"></div>
+                    <button id="themeToggle" onclick="toggleTheme()" title="Basculer mode sombre/clair">🌙</button>
+                </div>
             </div>
             <!--<small>Tous les modules sans le tag #API fonctionnent 100% en local sur votre appareil garantisant votre confidentialité et votre vie privée (pas de serveur externe), par contre pour les modules qui requièrent beaucoup de puissance ça peut ralentir / ramer sur certains périphériques avec peu de performances (ex: téléphone bas de gamme) comme le module "Super résolution IA".</small>-->
             <h2 onclick="loadModule('info')">Plus d'info</h2>            
@@ -43,5 +58,7 @@
     
     <div id="module"></div>
 </div>
+
+<div id="desktop-root" hidden></div>
 </body>
 </html>

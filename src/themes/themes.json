@@ -1,0 +1,38 @@
+{
+  "_comment": "Pour un thème n3 : copier src/themes/win95/ (ou classic), changer id/name/css, ajouter l'entrée ici. shell = catalog (liste actuelle) ou desktop (bureau + fenêtres). Les classes window.* doivent matcher le CSS du thème (98.css pour win95).",
+  "default": "classic",
+  "storageKey": "cp.theme",
+  "desktopModeKey": "cp.desktopMode",
+  "themes": [
+    {
+      "id": "classic",
+      "name": "Classique",
+      "shell": "catalog",
+      "css": [],
+      "frameCss": []
+    },
+    {
+      "id": "win95",
+      "name": "Windows 95",
+      "shell": "desktop",
+      "css": [
+        "src/themes/win95/vendor/98.css",
+        "src/themes/win95/desktop.css"
+      ],
+      "frameCss": [
+        "src/themes/win95/vendor/98.css",
+        "src/themes/win95/frame.css"
+      ],
+      "wallpaper": "#008080",
+      "startLabel": "Démarrer",
+      "window": {
+        "className": "window",
+        "titleBar": "title-bar",
+        "titleBarText": "title-bar-text",
+        "titleBarControls": "title-bar-controls",
+        "body": "window-body",
+        "inactiveTitle": "inactive"
+      }
+    }
+  ]
+}

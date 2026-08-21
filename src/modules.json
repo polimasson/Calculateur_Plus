@@ -250,6 +250,7 @@
     "name": "Comparateur de Texte",
     "version": "1.0.0",
     "tags": ["outil", "texte"],
+    "openWith": ["text"],
     "author": "PolimassonDev"
   },
   {
@@ -271,6 +272,7 @@
     "name": "Encodeur/Décodeur de Texte",
     "version": "1.0.0",
     "tags": ["outil", "conversion", "texte"],
+    "openWith": ["text"],
     "author": "PolimassonDev"
   },
   {
@@ -299,6 +301,7 @@
     "name": "Outil JSON",
     "version": "1.0.0",
     "tags": ["outil", "développement"],
+    "openWith": ["json", "text"],
     "author": "PolimassonDev"
   },
   {

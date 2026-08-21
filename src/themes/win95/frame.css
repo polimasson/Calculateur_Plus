@@ -1,0 +1,42 @@
+html, body {
+    margin: 0;
+    min-height: 100%;
+    background: silver;
+}
+
+body {
+    background: silver !important;
+}
+
+#module {
+    box-sizing: border-box;
+    padding: 8px;
+    max-width: none;
+    margin: 0;
+}
+
+#module h2 {
+    font-size: 1.1rem;
+}
+
+#module button {
+    background: silver;
+    color: #222;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+    border: none;
+    border-radius: 0;
+    transform: none;
+}
+
+#module button:hover {
+    background: silver;
+    transform: none;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff, inset -2px -2px grey, inset 2px 2px #dfdfdf;
+}
+
+#module input,
+#module select {
+    box-shadow: inset -1px -1px #fff, inset 1px 1px grey, inset -2px -2px #dfdfdf, inset 2px 2px #0a0a0a;
+    border: none;
+    border-radius: 0;
+}

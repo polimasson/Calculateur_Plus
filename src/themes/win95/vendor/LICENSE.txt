@@ -1,0 +1,4 @@
+MIT License — 98.css
+https://github.com/jdan/98.css
+Copyright (c) Jordan Scales
+Vendored locally in this folder (v0.1.21).

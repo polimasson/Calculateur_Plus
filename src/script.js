@@ -4,42 +4,164 @@ let strictTagMode = false; // Mode strict : AND entre les tags, sinon OR
 let currentModuleJs = null; // Référence au module actif pour le cleanup
 let isLoadingModule = false; // Empêche le double chargement
 let activeModuleId = null; // ID du module actif ou en cours de chargement
+let themesDoc = { default: "classic", themes: [] };
+let currentThemeId = "classic";
+let desktopHandle = null;
 
 const menu = document.getElementById("menu");
 const content = document.getElementById("content");
 const moduleContainer = document.getElementById("module");
 const moduleList = document.getElementById("moduleList");
 const tagFiltersContainer = document.getElementById("tagFilters");
+const desktopRoot = document.getElementById("desktop-root");
 
-// Chemin de base dynamique déduit de l'emplacement du script
-let basePath = './';
+// Chemin de base : racine du site (script dans src/)
+let basePath = "./";
 try {
-    const scriptSrc = document.currentScript?.src || '';
+    const scriptEl = document.querySelector("script[src*='src/script.js']");
+    const scriptSrc = scriptEl?.src || document.currentScript?.src || "";
     if (scriptSrc) {
-        const cleanSrc = scriptSrc.split('?')[0].split('#')[0];
-        basePath = new URL('..', cleanSrc).href;
+        const cleanSrc = scriptSrc.split("?")[0].split("#")[0];
+        basePath = new URL("..", cleanSrc).href;
     }
 } catch (e) {
-    console.warn('Impossible de déterminer le chemin de base', e);
+    console.warn("Impossible de déterminer le chemin de base", e);
+}
+
+function themeStorageKey() {
+    return themesDoc.storageKey || "cp.theme";
+}
+
+function currentThemeDef() {
+    return themesDoc.themes.find((t) => t.id === currentThemeId) || themesDoc.themes[0];
+}
+
+function isDesktopShell() {
+    return currentThemeDef()?.shell === "desktop";
+}
+
+const hiddenModulesKey = "cp.hiddenModules";
+
+function hiddenModuleIds() {
+    try {
+        return JSON.parse(localStorage.getItem(hiddenModulesKey) || "[]");
+    } catch {
+        return [];
+    }
+}
+
+function isModuleHidden(m) {
+    return m.visibility === "off" || hiddenModuleIds().includes(m.id);
+}
+
+function setModuleHidden(id, hidden) {
+    const ids = hiddenModuleIds();
+    const i = ids.indexOf(id);
+    if (hidden && i === -1) ids.push(id);
+    if (!hidden && i !== -1) ids.splice(i, 1);
+    localStorage.setItem(hiddenModulesKey, JSON.stringify(ids));
+}
+
+function visibleModules() {
+    return allModules.filter((m) => !isModuleHidden(m));
+}
+
+function renderThemeSwitcher() {
+    const host = document.getElementById("shellSwitcher");
+    if (!host) return;
+    host.innerHTML = "";
+    for (const t of themesDoc.themes) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = t.name;
+        btn.classList.toggle("active-shell", t.id === currentThemeId);
+        btn.addEventListener("click", () => setTheme(t.id));
+        host.appendChild(btn);
+    }
+}
+
+function clearThemeStyles() {
+    document.querySelectorAll("link[data-theme-css]").forEach((l) => l.remove());
+}
+
+async function setTheme(id) {
+    const def = themesDoc.themes.find((t) => t.id === id);
+    if (!def) return;
+
+    currentThemeId = def.id;
+    localStorage.setItem(themeStorageKey(), def.id);
+    document.documentElement.dataset.theme = def.id;
+    renderThemeSwitcher();
+
+    if (desktopHandle) {
+        desktopHandle.unmount();
+        desktopHandle = null;
+    }
+    clearThemeStyles();
+
+    if (def.shell === "desktop") {
+        if (!content.classList.contains("hidden")) goBack();
+        menu.classList.add("hidden");
+        content.classList.add("hidden");
+        document.body.classList.add("shell-desktop");
+        for (const href of def.css || []) {
+            const link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = `${basePath}${href}`;
+            link.dataset.themeCss = def.id;
+            document.head.appendChild(link);
+        }
+        const { mountDesktop } = await import(`${basePath}src/shell/desktop.js?v=54`);
+        desktopHandle = mountDesktop({
+            root: desktopRoot,
+            modules: visibleModules(),
+            catalog: allModules,
+            theme: def,
+            basePath,
+            themes: themesDoc.themes,
+            onSwitchTheme: setTheme,
+            isHidden: isModuleHidden,
+            setHidden: setModuleHidden,
+            getModules: () => visibleModules(),
+        });
+        return;
+    }
+
+    document.body.classList.remove("shell-desktop");
+    if (desktopRoot) {
+        desktopRoot.hidden = true;
+        desktopRoot.innerHTML = "";
+    }
+    menu.classList.remove("hidden");
 }
 
 // --- 1. CHARGEMENT INITIAL ---
 async function initApp() {
     try {
+        themesDoc = await fetch(`${basePath}src/themes/themes.json`).then((r) => r.json());
+        const saved = localStorage.getItem(themeStorageKey());
+        currentThemeId =
+            themesDoc.themes.some((t) => t.id === saved) ? saved : (themesDoc.default || "classic");
+
         const response = await fetch(`${basePath}src/modules.json`);
         allModules = await response.json();
         
         // On lance le filtre directement pour masquer les "off" d'entrée de jeu
         filterModules(); 
         renderTags();
+        renderThemeSwitcher();
+        await setTheme(currentThemeId);
         
-        // Vérifier si un hash existe dans l'URL et charger le module correspondant
         const hash = window.location.hash.slice(1);
-        if (hash && hash.startsWith('module-')) {
-            const moduleId = hash.replace('module-', '');
-            const moduleExists = allModules.find(m => m.id === moduleId && m.visibility !== 'off');
+        if (hash && hash.startsWith("module-")) {
+            const moduleId = hash.replace("module-", "");
+            const moduleExists = allModules.find((m) => m.id === moduleId && !isModuleHidden(m));
             if (moduleExists) {
-                loadModule(moduleId);
+                if (isDesktopShell() && desktopHandle) {
+                    desktopHandle.openModule(moduleId);
+                } else if (!isDesktopShell()) {
+                    loadModule(moduleId);
+                }
             }
         }
     } catch (e) {
@@ -48,7 +170,13 @@ async function initApp() {
 }
 // --- 2. AFFICHAGE DU MENU ---
 function renderMenu(modules) {
-    moduleList.innerHTML = modules.map(m => `
+    moduleList.innerHTML = `
+        <li class="module-item control-panel-entry">
+            <a onclick="openControlPanel()">
+                <span class="name">🛠️ Panneau de configuration</span>
+            </a>
+        </li>
+    ` + modules.map(m => `
         <li class="module-item" data-id="${m.id}">
             <a onclick="loadModule('${m.id}')">
                 <span class="name">${m.name}</span>
@@ -60,12 +188,15 @@ function renderMenu(modules) {
 }
 
 function renderTags() {
-    // On ne récupère les tags que des modules qui ne sont pas sur "off"
-    const visibleModules = allModules.filter(m => m.visibility !== "off");
-    const tags = [...new Set(visibleModules.flatMap(m => m.tags))];
-    
+    const visible = visibleModules();
+    const tags = [...new Set(visible.flatMap((m) => m.tags || []))];
+    const pruned = [...activeTags].filter((t) => tags.includes(t));
+    if (pruned.length !== activeTags.size) {
+        activeTags = new Set(pruned);
+        filterModules();
+    }
     tagFiltersContainer.innerHTML = tags.map(t => `
-        <button class="tag-btn" onclick="toggleTag('${t}', this)">${t}</button>
+        <button class="tag-btn ${activeTags.has(t) ? 'active' : ''}" onclick="toggleTag('${t}', this)">${t}</button>
     `).join('');
 }
 
@@ -82,7 +213,7 @@ function filterModules() {
     
     const filtered = allModules.filter(m => {
         // Condition 1 : Est-ce que le module est visible ?
-        const isVisible = m.visibility !== "off";
+        const isVisible = !isModuleHidden(m);
         
         // Condition 2 : Correspond-il à la recherche texte ?
         const matchesSearch = m.name.toLowerCase().includes(searchTerm);
@@ -108,7 +239,7 @@ function filterModules() {
 }
 
 function updateModuleCount(count) {
-    const totalModules = allModules.filter(m => m.visibility !== "off").length;
+    const totalModules = visibleModules().length;
     const moduleCountEl = document.getElementById("moduleCount");
     if (moduleCountEl) {
         if (count === totalModules) {
@@ -121,6 +252,11 @@ function updateModuleCount(count) {
 
 // --- 4. CHARGEMENT DYNAMIQUE DU MODULE ---
 async function loadModule(moduleId) {
+    if (isDesktopShell()) {
+        if (!desktopHandle) await setTheme(currentThemeId);
+        desktopHandle?.openModule(moduleId);
+        return;
+    }
     // Éviter le double chargement
     if (isLoadingModule) {
         console.log('Module déjà en cours de chargement, ignore');
@@ -169,7 +305,7 @@ async function loadModule(moduleId) {
         `;
 
         // Chargement JS (ES Modules)
-        const moduleJs = await import(`${path}module.js`);
+        const moduleJs = await import(`${path}module.js?v=54`);
         currentModuleJs = moduleJs;
         if (moduleJs.init) moduleJs.init(moduleContainer);
 
@@ -206,6 +342,72 @@ function goBack() {
     activeModuleId = null;
     moduleContainer.innerHTML = "";
 }
+// --- PANNAU DE CONFIGURATION (visibilité des modules) ---
+function openControlPanel() {
+    let panel = document.getElementById("controlPanel");
+    if (panel) {
+        panel.hidden = !panel.hidden;
+        if (!panel.hidden) renderControlPanel(panel);
+        return;
+    }
+    panel = document.createElement("div");
+    panel.id = "controlPanel";
+    panel.className = "control-panel";
+    document.body.appendChild(panel);
+    panel.addEventListener("click", (e) => {
+        if (e.target === panel) panel.hidden = true;
+    });
+    renderControlPanel(panel);
+}
+
+function renderControlPanel(panel) {
+    panel.innerHTML = `
+        <div class="control-panel-box">
+            <div class="control-panel-header">
+                <h3>Panneau de configuration</h3>
+                <button type="button" onclick="document.getElementById('controlPanel').hidden = true">✕</button>
+            </div>
+            <div class="control-panel-toolbar">
+                <button type="button" id="cpAllOn">Tout activer</button>
+                <button type="button" id="cpAllOff">Tout désactiver</button>
+            </div>
+            <div class="control-panel-list"></div>
+        </div>`;
+    const list = panel.querySelector(".control-panel-list");
+    const applyAll = (hidden) => {
+        for (const m of allModules) {
+            if (m.visibility !== "off") setModuleHidden(m.id, hidden);
+        }
+        filterModules();
+        renderTags();
+        renderControlPanel(panel);
+    };
+    panel.querySelector("#cpAllOn").addEventListener("click", () => applyAll(false));
+    panel.querySelector("#cpAllOff").addEventListener("click", () => applyAll(true));
+    for (const m of allModules) {
+        const isOff = m.visibility === "off";
+        const row = document.createElement("label");
+        row.className = "control-row";
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = !isModuleHidden(m);
+        cb.disabled = isOff;
+        const name = document.createElement("span");
+        name.className = "control-name";
+        name.textContent = m.name;
+        const tags = document.createElement("small");
+        tags.className = "control-tags";
+        tags.textContent = (m.tags || []).map((t) => `#${t}`).join(" ");
+        row.append(cb, name, tags);
+        cb.addEventListener("change", () => {
+            setModuleHidden(m.id, !cb.checked);
+            filterModules();
+            renderTags();
+        });
+        list.appendChild(row);
+    }
+}
+
 // --- GESTION DU THEME ---
 function initTheme() {
     const savedTheme = localStorage.getItem('darkMode');
@@ -230,6 +432,12 @@ function updateThemeIcon(isDark) {
 // Détection des changements de hash (retour/avant navigation)
 window.addEventListener('hashchange', () => {
    const hash = window.location.hash.slice(1);
+   if (isDesktopShell()) {
+       if (hash.startsWith('module-') && desktopHandle) {
+           desktopHandle.openModule(hash.replace('module-', ''));
+       }
+       return;
+   }
    if (!hash) {
        goBack(); // Si le hash disparaît, on revient au menu
    } else if (hash.startsWith('module-')) {
@@ -237,11 +445,17 @@ window.addEventListener('hashchange', () => {
        if (moduleId === activeModuleId) {
            return; // Déjà chargé ou en cours de chargement
        }
-       const moduleExists = allModules.find(m => m.id === moduleId && m.visibility !== 'off');
+       const moduleExists = allModules.find(m => m.id === moduleId && !isModuleHidden(m));
        if (moduleExists) {
            loadModule(moduleId);
        }
    }
+});
+
+window.addEventListener("message", (e) => {
+    if (e.data?.type === "cp-open-module" && e.data.id) {
+        loadModule(e.data.id);
+    }
 });
 
 // Lancement au démarrage

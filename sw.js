@@ -1,4 +1,4 @@
-const CACHE_NAME = 'calculateur-plus-v1';
+const CACHE_NAME = 'calculateur-plus-v54';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
