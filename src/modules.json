@@ -3,77 +3,124 @@
     "id": "standard_calculator",
     "name": "Calculatrice Standard",
     "version": "1.0.0",
-    "tags": ["math"],
+    "tags": [
+      "math"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "arbitrary_and_variable_precision_scientific_calculator",
     "name": "Calculatrice scientifique à précision arbitraire et variable",
     "version": "1.6.0",
-    "tags": ["math", "DX"],
+    "tags": [
+      "math",
+      "DX"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "length",
     "name": "Convertisseur de Longueur",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "length",
+    "config": "length.json"
   },
   {
     "id": "weight",
     "name": "Convertisseur de Poids",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "weight",
+    "config": "weight.json"
   },
   {
     "id": "time",
     "name": "Convertisseur de Temps",
     "version": "1.0.0",
-    "tags": ["conversion", "temps"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "temps"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "time",
+    "config": "time.json"
   },
   {
     "id": "temperature",
     "name": "Convertisseur de Température",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
+    "tags": [
+      "conversion",
+      "physique"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "amount_of_substance",
     "name": "Convertisseur de Quantité de matière",
     "version": "1.1.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "amount_of_substance",
+    "config": "amount_of_substance.json"
   },
   {
     "id": "speed",
     "name": "Convertisseur de Vitesse",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
+    "tags": [
+      "conversion",
+      "physique"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "data",
     "name": "Convertisseur de Données",
     "version": "1.0.0",
-    "tags": ["conversion", "informatique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "informatique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "data",
+    "config": "data.json"
   },
   {
     "id": "data-transfer",
     "name": "Convertisseur de Transfert de données",
     "version": "1.0.0",
-    "tags": ["conversion", "informatique"],
+    "tags": [
+      "conversion",
+      "informatique"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "stopwatch",
     "name": "Chronomètre",
     "version": "1.0.0",
-    "tags": ["temps", "outil"],
+    "tags": [
+      "temps",
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
@@ -81,248 +128,387 @@
     "name": "Plus d'info",
     "visibility": "off",
     "version": "0.0.0",
-    "tags": ["outil"],
+    "tags": [
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "resolution_ratio",
     "name": "Calculateur de Ratio de résolution",
     "version": "1.0.0",
-    "tags": ["math", "informatique"],
+    "tags": [
+      "math",
+      "informatique"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "meteo",
     "name": "Chaîne météo",
     "version": "1.0.0",
-    "tags": ["API", "position"],
+    "tags": [
+      "API",
+      "position"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "meteo_advanced",
     "name": "Chaîne météo avancée",
     "version": "1.1.0",
-    "tags": ["outil", "API", "position", "DX"],
+    "tags": [
+      "outil",
+      "API",
+      "position",
+      "DX"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "area",
     "name": "Convertisseur de Surface",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "area",
+    "config": "area.json"
   },
   {
     "id": "volume",
     "name": "Convertisseur de Volume",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "volume",
+    "config": "volume.json"
   },
   {
     "id": "energy",
     "name": "Convertisseur d'Énergie",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "energy",
+    "config": "energy.json"
   },
   {
     "id": "power",
     "name": "Convertisseur de Puissance",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "power",
+    "config": "power.json"
   },
   {
     "id": "pressure",
     "name": "Convertisseur de Pression",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "pressure",
+    "config": "pressure.json"
   },
   {
     "id": "force",
     "name": "Convertisseur de Force",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "force",
+    "config": "force.json"
   },
   {
     "id": "frequency",
     "name": "Convertisseur de Fréquence",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "frequency",
+    "config": "frequency.json"
   },
   {
     "id": "angle",
     "name": "Convertisseur d'Angle",
     "version": "1.0.0",
-    "tags": ["conversion", "math"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "math"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "angle",
+    "config": "angle.json"
   },
   {
     "id": "luminescence",
     "name": "Convertisseur de Luminescence (Éclairement)",
     "version": "1.0.0",
-    "tags": ["conversion", "physique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "luminescence",
+    "config": "luminescence.json"
   },
   {
-    "id": "base_conv",
-    "name": "Convertisseur de Bases",
-    "version": "1.0.0",
-    "tags": ["conversion", "informatique", "outil"],
-    "author": "PolimassonDev"
-  },
-{
     "id": "password_generator",
     "name": "Générateur de mots de passe",
     "version": "1.0.0",
-    "tags": ["sécurité", "outil"],
+    "tags": [
+      "sécurité",
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "color_converter",
     "name": "Convertisseur de couleurs",
     "version": "1.0.0",
-    "tags": ["conversion", "informatique", "outil"],
+    "tags": [
+      "conversion",
+      "informatique",
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "bmi_calculator",
     "name": "Calculateur d'IMC",
     "version": "1.0.0",
-    "tags": ["santé", "outil"],
+    "tags": [
+      "santé",
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "financial_calculator",
     "name": "Calculateur Financier",
     "version": "1.0.0",
-    "tags": ["finance", "outil"],
+    "tags": [
+      "finance",
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "currency_exchange",
     "name": "Convertisseur de devises",
     "version": "1.0.0",
-    "tags": ["finance", "conversion", "API"],
+    "tags": [
+      "finance",
+      "conversion",
+      "API"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "prayer_times",
     "name": "Horaires de Prière",
     "version": "1.0.0",
-    "tags": ["religion", "outil", "position"],
-    "author": "PolimassonDev"
-  },
-  {
-    "id": "viscosity",
-    "name": "Convertisseur de Viscosité",
-    "version": "1.0.0",
-    "tags": ["conversion", "physique"],
+    "tags": [
+      "religion",
+      "outil",
+      "position"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "inductance",
     "name": "Convertisseur d'Inductance",
     "version": "1.0.0",
-    "tags": ["conversion", "électricité"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "électricité"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "inductance",
+    "config": "inductance.json"
   },
   {
     "id": "capacitance",
     "name": "Convertisseur de Capacité",
     "version": "1.0.0",
-    "tags": ["conversion", "électricité"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "électricité"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "capacitance",
+    "config": "capacitance.json"
   },
   {
     "id": "aes_crypto",
     "name": "Chiffrement AES",
     "version": "1.0.0",
-    "tags": ["sécurité", "cryptographie", "outil", "texte"],
+    "tags": [
+      "sécurité",
+      "cryptographie",
+      "outil",
+      "texte"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "text_diff",
     "name": "Comparateur de Texte",
     "version": "1.0.0",
-    "tags": ["outil", "texte"],
-    "openWith": ["text"],
+    "tags": [
+      "outil",
+      "texte"
+    ],
+    "openWith": [
+      "text"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "datetime_diff",
     "name": "Calculateur de Différence entre Dates",
     "version": "1.0.0",
-    "tags": ["outil", "temps"],
+    "tags": [
+      "outil",
+      "temps"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "file_hash",
     "name": "Vérification de Hash de Fichier",
     "version": "1.0.0",
-    "tags": ["sécurité", "outil", "cryptographie"],
+    "tags": [
+      "sécurité",
+      "outil",
+      "cryptographie"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "text_encoder",
     "name": "Encodeur/Décodeur de Texte",
     "version": "1.0.0",
-    "tags": ["outil", "conversion", "texte"],
-    "openWith": ["text"],
+    "tags": [
+      "outil",
+      "conversion",
+      "texte"
+    ],
+    "openWith": [
+      "text"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "clothing_size",
     "name": "Convertisseur de Tailles de Vêtements",
     "version": "0.5.0",
-    "tags": ["conversion", "outil"],
+    "tags": [
+      "conversion",
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "shoe_size",
     "name": "Convertisseur de Pointures",
     "version": "0.5.0",
-    "tags": ["conversion", "outil"],
+    "tags": [
+      "conversion",
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "kitchen_converter",
     "name": "Convertisseur de Cuisine",
     "version": "1.0.0",
-    "tags": ["conversion", "outil"],
+    "tags": [
+      "conversion",
+      "outil"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "json_tool",
     "name": "Outil JSON",
     "version": "1.0.0",
-    "tags": ["outil", "développement"],
-    "openWith": ["json", "text"],
+    "tags": [
+      "outil",
+      "développement"
+    ],
+    "openWith": [
+      "json",
+      "text"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "torque",
     "name": "Convertisseur de Couple",
     "version": "1.0.0",
-    "tags": ["conversion", "physique", "mécanique"],
-    "author": "PolimassonDev"
+    "tags": [
+      "conversion",
+      "physique",
+      "mécanique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "torque",
+    "config": "torque.json"
   },
   {
     "id": "super-resolution",
     "name": "Super-Résolution IA",
     "version": "1.0.0",
-    "tags": ["AI (Neural Engine)", "image", "wasm", "DX"],
+    "tags": [
+      "AI (Neural Engine)",
+      "image",
+      "wasm",
+      "DX"
+    ],
     "author": "PolimassonDev"
   },
   {
     "id": "tetris",
     "name": "Tetris Ultime (Jeu d'empilement de bloc satisfasant et avec un système de configuration et de jauge addictif)",
     "version": "2.0.0",
-    "tags": ["arcade","DX"],
+    "tags": [
+      "arcade",
+      "DX"
+    ],
     "author": "PolimassonDev"
   },
   {
@@ -330,22 +516,67 @@
     "name": "Gestionnaire de Cache",
     "visibility": "off",
     "version": "1.0.0",
-    "tags": ["outil", "développement", "cache"],
+    "tags": [
+      "outil",
+      "développement",
+      "cache"
+    ],
     "author": "PolimassonDev"
-  }
-  ,
+  },
   {
     "id": "pgcd_ppcm",
     "name": "PGCD / PPCM et décomposition en facteurs premiers",
     "version": "1.0.0",
-    "tags": ["math", "nombre"],
+    "tags": [
+      "math",
+      "nombre"
+    ],
     "author": "PolimassonDev"
   },
-    {
+  {
     "id": "code_generator",
     "name": "Générateur de code (qrcode, code-barres, code-matrix etc...) [bwip-js]",
     "version": "1.0.0",
-    "tags": ["outil", "DX"],
+    "tags": [
+      "outil",
+      "DX"
+    ],
     "author": "PolimassonDev"
+  },
+  {
+    "id": "convertisseur",
+    "name": "Convertisseur universel",
+    "version": "1.0.0",
+    "tags": [
+      "conversion",
+      "outil"
+    ],
+    "author": "PolimassonDev"
+  },
+  {
+    "id": "viscosity-dynamic",
+    "name": "Viscosité dynamique",
+    "version": "1.0.0",
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "viscosity-dynamic",
+    "config": "viscosity-dynamic.json"
+  },
+  {
+    "id": "viscosity-kinematic",
+    "name": "Viscosité cinématique",
+    "version": "1.0.0",
+    "tags": [
+      "conversion",
+      "physique"
+    ],
+    "author": "PolimassonDev",
+    "alias": "convertisseur",
+    "preset": "viscosity-kinematic",
+    "config": "viscosity-kinematic.json"
   }
 ]

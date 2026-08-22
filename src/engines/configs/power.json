@@ -1,0 +1,43 @@
+{
+  "type": "factor",
+  "base": "w",
+  "rates": {
+    "w": "1",
+    "kw": "1000",
+    "mw": "1000000",
+    "gw": "1000000000",
+    "hp": "745.69987158",
+    "hp_m": "735.49875",
+    "btu_h": "0.293071",
+    "tr": "3516.85",
+    "ft_lb_s": "1.355818"
+  },
+  "displayNames": {
+    "w": "Watt (W)",
+    "kw": "Kilowatt (kW)",
+    "mw": "Mégawatt (MW)",
+    "gw": "Gigawatt (GW)",
+    "hp": "Horsepower (hp)",
+    "hp_m": "Cheval-vapeur (cv)",
+    "btu_h": "BTU/h",
+    "tr": "Tonne de réfrigération",
+    "ft_lb_s": "Foot-pound/sec"
+  },
+  "groups": {
+    "Système International": [
+      "w",
+      "kw",
+      "mw",
+      "gw"
+    ],
+    "Mécanique": [
+      "hp",
+      "hp_m",
+      "ft_lb_s"
+    ],
+    "Thermique & Clim": [
+      "btu_h",
+      "tr"
+    ]
+  }
+}

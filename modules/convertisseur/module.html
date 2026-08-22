@@ -1,0 +1,37 @@
+<div class="conv-hub">
+  <div class="conv-hub-header" id="hub-type-row" style="margin-bottom:8px">
+    <label>Convertisseur : <select id="hub-type"></select></label>
+    <span id="hub-locked" style="display:none;font-weight:600"></span>
+  </div>
+  <div class="conv-form">
+    <div id="hub-simple" class="conv-simple">
+      <select id="from"></select>
+      <span>→</span>
+      <select id="to"></select>
+    </div>
+    <div id="hub-compound" class="conv-compound" style="display:none">
+      <select id="fromData"></select> / <select id="fromTime"></select>
+      <span>→</span>
+      <select id="toData"></select> / <select id="toTime"></select>
+    </div>
+    <div id="hub-mach" style="display:none;margin-top:6px">
+      <label>Température air (°C) : <input id="mach-temp" type="number" value="15" step="1" style="width:80px"></label>
+    </div>
+    <div style="margin-top:8px">
+      <input id="input" type="number" placeholder="Valeur" style="width:140px">
+      <input id="precision-input" type="number" value="6" min="0" max="20" style="width:60px" title="Précision">
+      <button id="btn-convert">Convertir</button>
+      <select id="display-mode" style="margin-left:8px">
+        <option value="normal">Normal</option>
+        <option value="vers-tout">Vers tout</option>
+        <option value="tableau">Tableau</option>
+      </select>
+      <label style="margin-left:8px"><input type="checkbox" id="par-temps"> Par temps</label>
+    </div>
+    <p id="result" style="margin-top:8px;font-weight:600"></p>
+    <div id="vers-tout-table" style="display:none;max-height:240px;overflow:auto;margin-top:8px;border:1px solid #888"></div>
+    <div id="hub-time" style="display:none;margin-top:6px">
+      <label>Temps : <select id="time-from"></select> → <select id="time-to"></select></label>
+    </div>
+  </div>
+</div>

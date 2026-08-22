@@ -111,7 +111,7 @@ async function setTheme(id) {
             link.dataset.themeCss = def.id;
             document.head.appendChild(link);
         }
-        const { mountDesktop } = await import(`${basePath}src/shell/desktop.js?v=54`);
+        const { mountDesktop } = await import(`${basePath}src/shell/desktop.js?v=55`);
         desktopHandle = mountDesktop({
             root: desktopRoot,
             modules: visibleModules(),
@@ -274,7 +274,9 @@ async function loadModule(moduleId) {
     currentModuleJs = null;
 
     const meta = allModules.find(m => m.id === moduleId);
-    const path = `${basePath}modules/${moduleId}/`;
+    const effectiveId = meta?.alias || moduleId;
+    const preset = meta?.preset;
+    const path = `${basePath}modules/${effectiveId}/`;
 
     // Mettre à jour l'URL avec le hash du module
     //double chargement
@@ -286,7 +288,7 @@ async function loadModule(moduleId) {
     moduleContainer.innerHTML = "<p>Chargement...</p>";
     try {
         // Chargement CSS
-        const cssId = `css-${moduleId}`;
+        const cssId = `css-${effectiveId}`;
         if (!document.getElementById(cssId)) {
             const link = document.createElement("link");
             link.id = cssId;
@@ -305,9 +307,9 @@ async function loadModule(moduleId) {
         `;
 
         // Chargement JS (ES Modules)
-        const moduleJs = await import(`${path}module.js?v=54`);
+        const moduleJs = await import(`${path}module.js?v=55`);
         currentModuleJs = moduleJs;
-        if (moduleJs.init) moduleJs.init(moduleContainer);
+        if (moduleJs.init) moduleJs.init(moduleContainer, preset ? { preset, locked: !!meta?.alias } : {});
 
     } catch (err) {
         console.error(err);

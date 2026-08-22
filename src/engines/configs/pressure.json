@@ -1,0 +1,37 @@
+{
+  "type": "factor",
+  "base": "pa",
+  "rates": {
+    "pa": "1",
+    "hpa": "100",
+    "kpa": "1000",
+    "mpa": "1000000",
+    "bar": "100000",
+    "mbar": "100",
+    "psi": "6894.757293168361336722673445346890693781",
+    "atm": "101325",
+    "torr": "133.3223684210526315789473684210526315789",
+    "inhg": "3386.389",
+    "mmhg": "133.322387415",
+    "kgf_cm2": "98066.5"
+  },
+  "displayNames": {
+    "pa": "Pascal (Pa)",
+    "hpa": "Hectopascal (hPa)",
+    "kpa": "Kilopascal (kPa)",
+    "mpa": "Mégapascal (MPa)",
+    "bar": "Bar",
+    "mbar": "Millibar (mbar)",
+    "psi": "PSI (lb/in²)",
+    "atm": "Atmosphère (atm)",
+    "torr": "Torr",
+    "inhg": "Pouce de Mercure (inHg)",
+    "mmhg": "Millimètre de Mercure (mmHg)",
+    "kgf_cm2": "kgf/cm²"
+  },
+  "groups": {
+    "Système International": ["pa", "hpa", "kpa", "mpa"],
+    "Atmosphérique": ["bar", "mbar", "atm", "torr", "mmhg", "inhg"],
+    "Industriel": ["psi", "kgf_cm2"]
+  }
+}

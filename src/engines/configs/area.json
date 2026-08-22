@@ -1,0 +1,47 @@
+{
+  "type": "factor",
+  "base": "m2",
+  "rates": {
+    "nm2": "1e-18",
+    "µm2": "1e-12",
+    "mm2": "0.000001",
+    "cm2": "0.0001",
+    "dm2": "0.01",
+    "m2": "1",
+    "dam2": "100",
+    "hm2": "10000",
+    "km2": "1000000",
+    "ca": "1",
+    "a": "100",
+    "ha": "10000",
+    "in2": "0.00064516",
+    "ft2": "0.09290304",
+    "yd2": "0.83612736",
+    "ac": "4046.8564224",
+    "mi2": "2589988.110336"
+  },
+  "displayNames": {
+    "nm2": "Nanomètre carré (nm²)",
+    "µm2": "Micromètre carré (µm²)",
+    "mm2": "Millimètre carré (mm²)",
+    "cm2": "Centimètre carré (cm²)",
+    "dm2": "Décimètre carré (dm²)",
+    "m2": "Mètre carré (m²)",
+    "dam2": "Décamètre carré (dam²)",
+    "hm2": "Hectomètre carré (hm²)",
+    "km2": "Kilomètre carré (km²)",
+    "ca": "Centiare (ca)",
+    "a": "Are (a)",
+    "ha": "Hectare (ha)",
+    "in2": "Pouce carré (in²)",
+    "ft2": "Pied carré (ft²)",
+    "yd2": "Yard carré (yd²)",
+    "ac": "Acre (ac)",
+    "mi2": "Mile carré (mi²)"
+  },
+  "groups": {
+    "Métrique": ["nm2", "µm2", "mm2", "cm2", "dm2", "m2", "dam2", "hm2", "km2"],
+    "Agraire": ["ca", "a", "ha"],
+    "Impérial & US": ["in2", "ft2", "yd2", "ac", "mi2"]
+  }
+}

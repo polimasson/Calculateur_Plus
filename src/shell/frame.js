@@ -22,8 +22,12 @@ async function boot() {
 
     const themesDoc = await fetch("src/themes/themes.json").then((r) => r.json());
     const theme = themesDoc.themes.find((t) => t.id === themeId) || themesDoc.themes[0];
+    const catalog = await fetch("src/modules.json").then((r) => r.json());
+    const meta = catalog.find((m) => m.id === moduleId);
+    const effectiveId = meta?.alias || moduleId;
+    const preset = meta?.preset;
 
-    const path = `modules/${moduleId}/`;
+    const path = `modules/${effectiveId}/`;
     addCss(`${path}module.css`);
     for (const href of theme.frameCss || []) {
         addCss(href);
@@ -37,12 +41,10 @@ async function boot() {
         moduleRoot.innerHTML = html;
         try {
             const mod = await import(`../../${path}module.js`);
-            if (mod.init) await mod.init(moduleRoot);
+            if (mod.init) await mod.init(moduleRoot, preset ? { preset, locked: !!meta?.alias } : {});
         } catch (jsErr) {
             console.warn("Pas de module.js (ou init ignoré)", jsErr);
         }
-        const catalog = await fetch("src/modules.json").then((r) => r.json());
-        const meta = catalog.find((m) => m.id === moduleId);
         document.title = meta?.name || moduleId;
     } catch (err) {
         console.error(err);

@@ -1,0 +1,20 @@
+{
+  "type": "factor",
+  "base": "m",
+  "rates": {
+    "qm": "1e-30", "rm": "1e-27", "ym": "1e-24", "zm": "1e-21", "am": "1e-18", "fm": "1e-15",
+    "pm": "1e-12", "an": "1e-10", "nm": "1e-9", "µm": "1e-6", "dmm": "1e-4", "mm": "1e-3",
+    "cm": "1e-2", "dm": "1e-1", "m": "1", "km": "1e3", "mam": "1e4", "Mm": "1e6",
+    "Gm": "1e9", "Tm": "1e12", "Pm": "1e15", "Em": "1e18", "Zm": "1e21", "Ym": "1e24", "Rm": "1e27", "Qm": "1e30",
+    "in": "0.0254", "ft": "0.3048", "yd": "0.9144", "mi": "1609.344", "nmi": "1852",
+    "AU": "149597870700", "pc": "30856775814913673", "ls": "299792458", "lm": "17987547480", "lh": "1079252848800", "ld": "25902068371200", "ly": "9460730472580800", "lc": "946073047258080000"
+  },
+  "displayNames": {
+    "qm": "Quintamètre (qm)", "rm": "Robamètre (rm)", "ym": "Yoctomètre (ym)", "zm": "Zeptomètre (zm)", "am": "Attamètre (am)", "fm": "Femtomètre (fm)", "pm": "Picomètre (pm)", "an": "Ångström (Å)", "nm": "Nanomètre (nm)", "µm": "Micromètre (µm)", "dmm": "Décimilimètre (dmm)", "mm": "Millimètre (mm)", "cm": "Centimètre (cm)", "dm": "Décimètre (dm)", "m": "Mètre (m)", "km": "Kilomètre (km)", "mam": "Myriamètre (myr)", "Mm": "Mégamètre (Mm)", "Gm": "Gigamètre (Gm)", "Tm": "Téramètre (Tm)", "Pm": "Pétamètre (Pm)", "Em": "Examètre (Em)", "Zm": "Zettamètre (Zm)", "Ym": "Yottamètre (Ym)", "Rm": "Ronnamètre (Rm)", "Qm": "Quettamètre (Qm)", "in": "Pouce (in)", "ft": "Pied (ft)", "yd": "Yard (yd)", "mi": "Mile (mi)", "nmi": "Mille marin (nmi)", "AU": "Unité astronomique (AU)", "pc": "Parsec (pc)", "ls": "Seconde-lumière (ls)", "lm": "Minute-lumière (lm)", "lh": "Heure-lumière (lh)", "ld": "Jour-lumière (ld)", "ly": "Année-lumière (ly)", "lc": "Siècle-lumière (lc)"
+  },
+  "groups": {
+    "Multiples et sous-multiples du mètre": ["qm","rm","ym","zm","am","fm","pm","an","nm","µm","dmm","mm","cm","dm","m","km","mam","Mm","Gm","Tm","Pm","Em","Zm","Ym","Rm","Qm"],
+    "Système impérial & US Customary": ["in","ft","yd","mi","nmi"],
+    "Unités astronomiques": ["AU","pc","ls","lm","lh","ld","ly","lc"]
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "type": "factor",
+  "base": "j",
+  "rates": {
+    "j": "1",
+    "kj": "1000",
+    "mj": "1000000",
+    "gj": "1000000000",
+    "cal": "4.184",
+    "kcal": "4184",
+    "wh": "3600",
+    "kwh": "3600000",
+    "mwh": "3600000000",
+    "btu": "1055.05585262",
+    "ft_lb": "1.355817948",
+    "erg": "1e-7",
+    "ev": "1.602176634e-19",
+    "thm": "105480400"
+  },
+  "displayNames": {
+    "j": "Joule (J)",
+    "kj": "Kilojoule (kJ)",
+    "mj": "Mégajoule (MJ)",
+    "gj": "Gigajoule (GJ)",
+    "cal": "Calorie (cal)",
+    "kcal": "Kilocalorie (kcal)",
+    "wh": "Watt-heure (Wh)",
+    "kwh": "Kilowatt-heure (kWh)",
+    "mwh": "Mégawatt-heure (MWh)",
+    "btu": "BTU International Table",
+    "ft_lb": "Foot-pound",
+    "erg": "Erg",
+    "ev": "Électronvolt (eV)",
+    "thm": "Therm"
+  },
+  "groups": {
+    "Système International": ["j", "kj", "mj", "gj"],
+    "Électricité": ["wh", "kwh", "mwh"],
+    "Thermique": ["cal", "kcal", "btu", "thm"],
+    "Physique & Mécanique": ["ev", "erg", "ft_lb"]
+  }
+}

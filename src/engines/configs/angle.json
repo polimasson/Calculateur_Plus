@@ -1,0 +1,40 @@
+{
+  "type": "factor",
+  "base": "rad",
+  "rates": {
+    "rad": "1",
+    "deg": "0.01745329251994329576923690768488612713443",
+    "grad": "0.01570796326794896619231321691639751442099",
+    "arcmin": "0.0002908882086657215961539484614147687855738",
+    "arcsec": "0.000004848136811095359935899141023579479759563",
+    "rev": "6.283185307179586476925286766559005768394",
+    "sextant": "1.047197551196597746154214461093167628066",
+    "quadrant": "1.570796326794896619231321691639751442099"
+  },
+  "displayNames": {
+    "rad": "Radian (rad)",
+    "deg": "Degré (°)",
+    "grad": "Grade (grad)",
+    "arcmin": "Minute d'arc (')",
+    "arcsec": "Seconde d'arc ('')",
+    "rev": "Révolution (tr)",
+    "sextant": "Sextant",
+    "quadrant": "Quadrant"
+  },
+  "groups": {
+    "Unités Standard": [
+      "deg",
+      "rad",
+      "rev",
+      "grad"
+    ],
+    "Précision / Astronomie": [
+      "arcmin",
+      "arcsec"
+    ],
+    "Navigation": [
+      "sextant",
+      "quadrant"
+    ]
+  }
+}

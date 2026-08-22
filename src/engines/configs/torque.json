@@ -1,0 +1,75 @@
+{
+  "type": "factor",
+  "base": "Nm",
+  "rates": {
+    "Nm": "1",
+    "mNm": "0.001",
+    "uNm": "0.000001",
+    "kNm": "1000",
+    "MNm": "1000000",
+    "Ncm": "0.01",
+    "Nmm": "0.001",
+    "kgfm": "9.80665",
+    "kgfcm": "0.0980665",
+    "kgfmm": "0.00980665",
+    "gfm": "0.00980665",
+    "gfcm": "0.0000980665",
+    "lbfft": "1.3558179483314004",
+    "lbfin": "0.1129848290276167",
+    "ozfin": "0.00706155181422604375",
+    "ozfft": "0.084738621770712525",
+    "pdlft": "0.0421401100938048",
+    "pdlin": "0.0035116758411504",
+    "dynecm": "1e-7"
+  },
+  "displayNames": {
+    "Nm": "Newton-mètre (N·m)",
+    "mNm": "Millinewton-mètre (mN·m)",
+    "uNm": "Micronewton-mètre (µN·m)",
+    "kNm": "Kilonewton-mètre (kN·m)",
+    "MNm": "Méganewton-mètre (MN·m)",
+    "Ncm": "Newton-centimètre (N·cm)",
+    "Nmm": "Newton-millimètre (N·mm)",
+    "kgfm": "Kilogramme-force mètre (kgf·m)",
+    "kgfcm": "Kilogramme-force cm (kgf·cm)",
+    "kgfmm": "Kilogramme-force mm (kgf·mm)",
+    "gfm": "Gramme-force mètre (gf·m)",
+    "gfcm": "Gramme-force cm (gf·cm)",
+    "lbfft": "Livre-force pied (lbf·ft)",
+    "lbfin": "Livre-force pouce (lbf·in)",
+    "ozfin": "Once-force pouce (ozf·in)",
+    "ozfft": "Once-force pied (ozf·ft)",
+    "pdlft": "Poundal-pied (pdl·ft)",
+    "pdlin": "Poundal-pouce (pdl·in)",
+    "dynecm": "Dyne-centimètre (dyn·cm)"
+  },
+  "groups": {
+    "Métrique (SI)": [
+      "Nm",
+      "mNm",
+      "uNm",
+      "kNm",
+      "MNm",
+      "Ncm",
+      "Nmm"
+    ],
+    "Métrique (Gravitationnel)": [
+      "kgfm",
+      "kgfcm",
+      "kgfmm",
+      "gfm",
+      "gfcm"
+    ],
+    "Impérial / US": [
+      "lbfft",
+      "lbfin",
+      "ozfin",
+      "ozfft",
+      "pdlft",
+      "pdlin"
+    ],
+    "CGS": [
+      "dynecm"
+    ]
+  }
+}

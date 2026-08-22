@@ -1,0 +1,35 @@
+{
+  "type": "factor",
+  "base": "n",
+  "rates": {
+    "n": "1",
+    "kn": "1000",
+    "mn": "1000000",
+    "dyn": "0.00001",
+    "lbf": "4.4482216152605",
+    "kgf": "9.80665",
+    "kip": "4448.2216"
+  },
+  "displayNames": {
+    "n": "Newton (N)",
+    "kn": "Kilonewton (kN)",
+    "mn": "Méganewton (MN)",
+    "dyn": "Dyne",
+    "lbf": "Pound-force (lbf)",
+    "kgf": "Kilogramme-force (kgf)",
+    "kip": "Kip"
+  },
+  "groups": {
+    "Système International": [
+      "n",
+      "kn",
+      "mn"
+    ],
+    "Impérial & Autres": [
+      "lbf",
+      "kgf",
+      "dyn",
+      "kip"
+    ]
+  }
+}

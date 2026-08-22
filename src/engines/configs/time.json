@@ -1,0 +1,68 @@
+{
+  "type": "factor",
+  "base": "s",
+  "rates": {
+    "ms": "0.001",
+    "s": "1",
+    "min": "60",
+    "h": "3600",
+    "d": "86400",
+    "week": "604800",
+    "month": "2592000",
+    "year": "31536000",
+    "decade": "315360000",
+    "century": "3153600000",
+    "millennium": "31536000000",
+    "s_d": "86164.0916",
+    "s_week": "603148.6412",
+    "s_month": "2360592.6592",
+    "s_year": "31558149.5388",
+    "s_decade": "315581495.388",
+    "s_century": "3155814953.88",
+    "s_millennium": "31558149538.8"
+  },
+  "displayNames": {
+    "ms": "Milliseconde [ms]",
+    "s": "Seconde [s]",
+    "min": "Minute [min]",
+    "h": "Heure [h]",
+    "d": "Jour (civile)",
+    "week": "Semaine (civile)",
+    "month": "Mois (civile)",
+    "year": "Année (civile)",
+    "decade": "Décennie (civile)",
+    "century": "Siècle (civile)",
+    "millennium": "Millénaire (civile)",
+    "s_d": "Jour (sidéral)",
+    "s_week": "Semaine (sidéral)",
+    "s_month": "Mois (sidéral)",
+    "s_year": "Année (sidéral)",
+    "s_decade": "Décennie (sidéral)",
+    "s_century": "Siècle (sidéral)",
+    "s_millennium": "Millénaire (sidéral)"
+  },
+  "groups": {
+    "Unités de base": [
+      "ms",
+      "s",
+      "min",
+      "h",
+      "d",
+      "week",
+      "month",
+      "year",
+      "decade",
+      "century",
+      "millennium"
+    ],
+    "Unités astronomiques": [
+      "s_d",
+      "s_week",
+      "s_month",
+      "s_year",
+      "s_decade",
+      "s_century",
+      "s_millennium"
+    ]
+  }
+}

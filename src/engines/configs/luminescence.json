@@ -1,0 +1,29 @@
+{
+  "type": "factor",
+  "base": "lx",
+  "rates": {
+    "lx": "1",
+    "fc": "10.7639104167",
+    "ph": "10000",
+    "nx": "0.001",
+    "asb": "0.318309886"
+  },
+  "displayNames": {
+    "lx": "Lux (lx)",
+    "fc": "Foot-candle (fc)",
+    "ph": "Phot (ph)",
+    "nx": "Nox (nx)",
+    "asb": "Apostilb"
+  },
+  "groups": {
+    "Éclairement": [
+      "lx",
+      "fc",
+      "ph",
+      "nx"
+    ],
+    "Luminance perçue": [
+      "asb"
+    ]
+  }
+}

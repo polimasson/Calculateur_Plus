@@ -1,0 +1,33 @@
+{
+  "type": "factor",
+  "base": "m2_s",
+  "rates": {
+    "m2_s": "1",
+    "St": "0.0001",
+    "cSt": "0.000001",
+    "mm2_s": "0.000001",
+    "cm2_s": "0.0001",
+    "ft2_s": "0.09290304",
+    "in2_s": "0.00064516"
+  },
+  "displayNames": {
+    "m2_s": "Mètre carré par seconde (m²/s)",
+    "St": "Stokes (St)",
+    "cSt": "Centistokes (cSt)",
+    "mm2_s": "Millimètre carré par seconde",
+    "cm2_s": "Centimètre carré par seconde",
+    "ft2_s": "Pied carré par seconde",
+    "in2_s": "Pouce carré par seconde"
+  },
+  "groups": {
+    "Cinématique": [
+      "m2_s",
+      "St",
+      "cSt",
+      "mm2_s",
+      "cm2_s",
+      "ft2_s",
+      "in2_s"
+    ]
+  }
+}

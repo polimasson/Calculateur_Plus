@@ -1,0 +1,38 @@
+{
+  "type": "factor",
+  "base": "hz",
+  "rates": {
+    "hz": "1",
+    "khz": "1000",
+    "mhz": "1000000",
+    "ghz": "1000000000",
+    "thz": "1000000000000",
+    "rpm": "0.01666666666666666666666666666666666666667",
+    "deg_s": "0.002777777777777777777777777777777777777778",
+    "rad_s": "0.1591549430918953357688837633725143620345"
+  },
+  "displayNames": {
+    "hz": "Hertz (Hz)",
+    "khz": "Kilohertz (kHz)",
+    "mhz": "Mégahertz (MHz)",
+    "ghz": "Gigahertz (GHz)",
+    "thz": "Térahertz (THz)",
+    "rpm": "Tours par minute (RPM)",
+    "deg_s": "Degré par seconde",
+    "rad_s": "Radian par seconde"
+  },
+  "groups": {
+    "Ondes & Radio": [
+      "hz",
+      "khz",
+      "mhz",
+      "ghz",
+      "thz"
+    ],
+    "Rotation": [
+      "rpm",
+      "deg_s",
+      "rad_s"
+    ]
+  }
+}
