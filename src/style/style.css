@@ -280,33 +280,33 @@ body.dark-mode #themeToggle {
 body.dark-mode #themeToggle:hover {
     background: #0f3460;
 }
-/* Firefox */
-html {
+/* Firefox - scrollbar moderne uniquement en mode catalogue (pas shell-desktop) */
+html:not(:has(body.shell-desktop)) {
     scrollbar-width: thin;
     scrollbar-color: rgba(140,140,140,.65) transparent;
 }
 
-/* Chrome / Edge / Safari */
-::-webkit-scrollbar {
+/* Chrome / Edge / Safari - moderne uniquement hors shell-desktop */
+html:not(:has(body.shell-desktop))::-webkit-scrollbar {
     width: 10px;
 }
 
-::-webkit-scrollbar-track {
+html:not(:has(body.shell-desktop))::-webkit-scrollbar-track {
     background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
+html:not(:has(body.shell-desktop))::-webkit-scrollbar-thumb {
     background: rgba(140,140,140,.65);
     border-radius: 999px;
     border: 3px solid transparent;
     background-clip: padding-box;
 }
 
-::-webkit-scrollbar-thumb:hover {
+html:not(:has(body.shell-desktop))::-webkit-scrollbar-thumb:hover {
     background: rgba(170,170,170,.85);
 }
 
-::-webkit-scrollbar-corner {
+html:not(:has(body.shell-desktop))::-webkit-scrollbar-corner {
     background: transparent;
 }
 

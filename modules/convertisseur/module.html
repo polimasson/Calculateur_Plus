@@ -19,17 +19,22 @@
     </div>
     <div style="margin-top:8px">
       <input id="input" type="number" placeholder="Valeur" style="width:140px">
-      <input id="precision-input" type="number" value="6" min="0" max="20" style="width:60px" title="Précision">
+      <input id="precision-input" type="number" value="6" min="0" max="999" style="width:60px" title="Précision">
       <button id="btn-convert">Convertir</button>
       <select id="display-mode" style="margin-left:8px">
         <option value="normal">Normal</option>
         <option value="vers-tout">Vers tout</option>
         <option value="tableau">Tableau</option>
       </select>
-      <label style="margin-left:8px"><input type="checkbox" id="par-temps"> Par temps</label>
+    </div>
+    <div style="margin-top:6px">
+      <input type="checkbox" id="par-temps"><label for="par-temps">Par temps</label>
+    </div>
+    <div>
+      <input type="checkbox" id="table-grid"><label for="table-grid">Grille</label>
     </div>
     <p id="result" style="margin-top:8px;font-weight:600"></p>
-    <div id="vers-tout-table" style="display:none;max-height:240px;overflow:auto;margin-top:8px;border:1px solid #888"></div>
+    <div id="vers-tout-table" style="display:none;margin-top:8px;border:1px solid #888"></div>
     <div id="hub-time" style="display:none;margin-top:6px">
       <label>Temps : <select id="time-from"></select> → <select id="time-to"></select></label>
     </div>

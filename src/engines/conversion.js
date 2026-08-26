@@ -49,11 +49,17 @@ export function mountConverter(container, config, opts={}) {
     const btn = container.querySelector("#btn-convert");
     const displayMode = container.querySelector("#display-mode");
     const parTemps = container.querySelector("#par-temps");
+    const tableGridCb = container.querySelector("#table-grid");
     const tableDiv = container.querySelector("#vers-tout-table");
     const hubTime = container.querySelector("#hub-time");
     const timeFrom = container.querySelector("#time-from");
     const timeTo = container.querySelector("#time-to");
     const locked = !!opts.locked;
+    if (tableGridCb) {
+        tableGridCb.checked = localStorage.getItem("cp.tableGrid") !== "0";
+        tableGridCb.addEventListener("change", () => localStorage.setItem("cp.tableGrid", tableGridCb.checked ? "1" : "0"));
+    }
+    const useGrid = () => tableGridCb ? tableGridCb.checked : localStorage.getItem("cp.tableGrid") !== "0";
 
     // pour compound : 4 selects (#fromData #fromTime #toData #toTime)
     const isCompound = config.type === "compound";
@@ -85,7 +91,9 @@ export function mountConverter(container, config, opts={}) {
     const updateMode = () => {
         const m = displayMode?.value || "normal";
         const hideTo = m === "vers-tout" || m === "tableau";
+        const hideFrom = m === "tableau";
         if (toSel) toSel.style.display = hideTo ? "none" : "";
+        if (fromSel) fromSel.style.display = hideFrom ? "none" : "";
         const arrow = container.querySelector("#hub-simple span");
         if (arrow) arrow.style.display = hideTo ? "none" : "";
         if (m === "normal") tableDiv.style.display = "none";
@@ -103,12 +111,16 @@ export function mountConverter(container, config, opts={}) {
             if (mode === "tableau" && !isCompound) {
                 const usePT = useParTemps;
                 const tf = usePT ? timeFrom.value : null, tt = usePT ? timeTo.value : null;
-                let html = `<table style="width:100%;font-size:10px;border-collapse:collapse"><tr><th></th>`;
+                const g = useGrid();
+                const tbl = g ? 'width:100%;font-size:10px;border-collapse:collapse;border:1px solid #888' : 'width:100%;font-size:10px;border-collapse:collapse';
+                const th = g ? 'border:1px solid #888;padding:2px 4px;background:#c0c0c0' : 'padding:2px 4px;background:#c0c0c0';
+                const td = g ? 'border:1px solid #888;padding:2px 4px' : 'padding:2px 4px';
+                let html = `<table style="${tbl}"><tr><th style="${th}"></th>`;
                 const units = Object.keys(config.rates || {});
-                units.forEach(u => html += `<th>${u}${usePT?`/${tt}`:""}</th>`);
+                units.forEach(u => html += `<th style="${th}">${u}${usePT?`/${tt}`:""}</th>`);
                 html += `</tr>`;
                 units.forEach(from => {
-                    html += `<tr><th>${from}${usePT?`/${tf}`:""}</th>`;
+                    html += `<tr><th style="${th}">${from}${usePT?`/${tf}`:""}</th>`;
                     units.forEach(to => {
                         let r;
                         if (usePT) {
@@ -116,7 +128,7 @@ export function mountConverter(container, config, opts={}) {
                         } else {
                             r = val.mul(config.rates[from]).div(config.rates[to]);
                         }
-                        html += `<td>${r.toFixed(Math.min(p,4)).replace(/\.?0+$/,'')}</td>`;
+                        html += `<td style="${td}">${r.toFixed(Math.min(p,4)).replace(/\.?0+$/,'')}</td>`;
                     });
                     html += `</tr>`;
                 });
@@ -131,33 +143,41 @@ export function mountConverter(container, config, opts={}) {
                 const rFrom = config.rates[from];
                 const tfRate = timeRates[tf], ttRate = timeRates[tt];
                 if (mode === "vers-tout") {
-                    let html = `<table style="width:100%;font-size:11px;border-collapse:collapse"><tr><th>Unité</th><th>Valeur</th></tr>`;
+                    const g = useGrid();
+                    const tbl = g ? 'width:100%;font-size:11px;border-collapse:collapse;border:1px solid #888' : 'width:100%;font-size:11px;border-collapse:collapse';
+                    const th = g ? 'border:1px solid #888;padding:2px 4px;background:#c0c0c0' : 'padding:2px 4px;background:#c0c0c0';
+                    const td = g ? 'border:1px solid #888;padding:2px 4px' : 'padding:2px 4px';
+                    let html = `<table style="${tbl}"><tr><th style="${th}">Unité</th><th style="${th}">Valeur</th></tr>`;
                     for (const k of Object.keys(config.rates)) {
                         const r = val.mul(rFrom).div(tfRate).mul(ttRate).div(config.rates[k]);
-                        html += `<tr><td>${config.displayNames[k]||k}</td><td>${r.toFixed(p).replace(/\.?0+$/,'')} ${k}/${tt}</td></tr>`;
+                        html += `<tr><td style="${td}">${config.displayNames[k]||k}</td><td style="${td}">${r.toFixed(p).replace(/\.?0+$/,'')} ${k}/${tt}</td></tr>`;
                     }
                     html += `</table>`;
                     tableDiv.innerHTML = html; tableDiv.style.display = "";
-                    result.innerText = `Vers tout depuis ${from}/${tf} : ${Object.keys(config.rates).length} unités`;
+                    result.innerText = `${val} ${from}/${tf} → vers tout en /${tt} : ${Object.keys(config.rates).length} unités`;
                     return;
                 }
                 const to = toSel.value, rTo = config.rates[to];
                 const res = val.mul(rFrom).div(tfRate).mul(ttRate).div(rTo);
                 tableDiv.style.display = "none";
-                result.innerText = `Résultat : ${res.toFixed(p).replace(/\.?0+$/,'')} ${to}/${tt}`;
+                result.innerText = `Résultat : ${val} ${from}/${tf} = ${res.toFixed(p).replace(/\.?0+$/,'')} ${to}/${tt}`;
                 return;
             }
             if (mode === "vers-tout" && !isCompound) {
                 const from = fromSel.value;
                 const rFrom = config.rates[from];
-                let html = `<table style="width:100%;font-size:11px;border-collapse:collapse"><tr><th>Unité</th><th>Valeur</th></tr>`;
+                const g = useGrid();
+                const tbl = g ? 'width:100%;font-size:11px;border-collapse:collapse;border:1px solid #888' : 'width:100%;font-size:11px;border-collapse:collapse';
+                const th = g ? 'border:1px solid #888;padding:2px 4px;background:#c0c0c0' : 'padding:2px 4px;background:#c0c0c0';
+                const td = g ? 'border:1px solid #888;padding:2px 4px' : 'padding:2px 4px';
+                let html = `<table style="${tbl}"><tr><th style="${th}">Unité</th><th style="${th}">Valeur</th></tr>`;
                 for (const k of Object.keys(config.rates)) {
                     const r = val.mul(rFrom).div(config.rates[k]);
-                    html += `<tr><td>${config.displayNames[k]||k}</td><td>${r.toFixed(p).replace(/\.?0+$/,'')} ${k}</td></tr>`;
+                    html += `<tr><td style="${td}">${config.displayNames[k]||k}</td><td style="${td}">${r.toFixed(p).replace(/\.?0+$/,'')} ${k}</td></tr>`;
                 }
                 html += `</table>`;
                 tableDiv.innerHTML = html; tableDiv.style.display = "";
-                result.innerText = `Vers tout depuis ${from} : ${Object.keys(config.rates).length} unités`;
+                result.innerText = `${val} ${from} → vers tout : ${Object.keys(config.rates).length} unités`;
                 return;
             }
             tableDiv && (tableDiv.style.display = "none");

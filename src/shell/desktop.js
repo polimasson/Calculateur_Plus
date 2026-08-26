@@ -45,7 +45,7 @@ const DEFAULTS = {
     leftArrangeAuto: false, leftArrangeGrid: false, leftArrangeFree: false,
     leftSort: true, leftAlign: false, leftViewIcons: true,
     leftControlPanel: false, leftTaskMgr: false, leftRefresh: true,
-    autoFullscreen: true,
+    autoFullscreen: true, tableGrid: true,
 };
 
 function fileSvg() {
@@ -316,6 +316,9 @@ export function mountDesktop(options) {
     let leftControlPanel = _v(LEFT_CONTROLPANEL_KEY, DEFAULTS.leftControlPanel);
     let leftTaskMgr = _v(LEFT_TASKMGR_KEY, DEFAULTS.leftTaskMgr);
     let leftRefresh = _v(LEFT_REFRESH_KEY, DEFAULTS.leftRefresh);
+    const TABLE_GRID_KEY = "cp.tableGrid";
+    let tableGrid = _v(TABLE_GRID_KEY, DEFAULTS.tableGrid);
+    function setTableGrid(v){ tableGrid=v; localStorage.setItem(TABLE_GRID_KEY, v?"1":"0"); }
     if (localStorage.getItem("cp.startExtra") === "1") {
         startExplorer = true;
         startCorbeille = true;
@@ -1681,6 +1684,7 @@ export function mountDesktop(options) {
             localStorage.setItem(LEFT_ARRANGEAUTO_KEY, defaults.leftArrangeAuto?"1":"0"); localStorage.setItem(LEFT_ARRANGEGRID_KEY, defaults.leftArrangeGrid?"1":"0"); localStorage.setItem(LEFT_ARRANGEFREE_KEY, defaults.leftArrangeFree?"1":"0");
             localStorage.setItem(LEFT_SORT_KEY, defaults.leftSort?"1":"0"); localStorage.setItem(LEFT_ALIGN_KEY, defaults.leftAlign?"1":"0"); localStorage.setItem(LEFT_VIEWICONS_KEY, defaults.leftViewIcons?"1":"0");
             localStorage.setItem(LEFT_CONTROLPANEL_KEY, defaults.leftControlPanel?"1":"0"); localStorage.setItem(LEFT_TASKMGR_KEY, defaults.leftTaskMgr?"1":"0"); localStorage.setItem(LEFT_REFRESH_KEY, defaults.leftRefresh?"1":"0");
+            localStorage.setItem(TABLE_GRID_KEY, defaults.tableGrid?"1":"0");
             location.reload();
         };
         btnDefault.addEventListener("click", ()=>applyBase("default"));
@@ -1694,6 +1698,9 @@ export function mountDesktop(options) {
         const fsNow = document.createElement("button"); fsNow.type="button"; fsNow.textContent="Passer en plein écran (F11)"; fsNow.addEventListener("click", toggleFullscreen);
         fsRow.appendChild(fsNow);
         baseGroup.appendChild(fsRow);
+        const gridPrefRow = el("div", "control-row");
+        gridPrefRow.appendChild(makePrefToggle("Grille du tableau (convertisseur)", () => tableGrid, (v) => setTableGrid(v)));
+        baseGroup.appendChild(gridPrefRow);
         container.appendChild(baseGroup);
     }
 

@@ -5,12 +5,17 @@
 - [x] Lecteur vidéo intégré - fait `openVideoPlayer` (`desktop.js:2385`)
 - [x] Visionneuse d'image intégrée - fait `openImageViewer` (`desktop.js:2356`)
 - [ ] CMD / Terminal intégré (à faire)
+- [ ] UI custom pour lecteurs audio/vidéo (remplacer `controls` natifs par UI 98.css + waveform/spectre, speed/loop/PiP) [meme pour image]
 - [x] Bouton téléchargé (l'inverse d'upload) — fait `downloadSelected` + menu `Télécharger` + toolbar + `Ctrl+S` (1 fichier direct, multi en zip store) `desktop.js`
 - [ ] Permetre de voir quel module/service est télécharger
-- Statut de la connexion est affichier une belle erreur win 95 a la place de l'erreur du navigateur quand on tente de chargé un truc qui la requier
+- Statut de la connexion est affichier une belle erreur win 95 a la place de l'erreur du navigateur quand on tente de chargé un truc qui la requier et que y'a pas dans le cache pwa... 
 - Bug Grille
 - Refactor module/service puis on refera leur style
 - Clique gauche dans les dossier sans séléctioné de fichier
 - Souris custom
 - archive support
-- support word/excel....
+- support word/excel...
+- support pdf.
+- affichage dans le panneau de configuration les moteurs qu'il y a
+- moteur calculatrice
+- truc pour activé/désactivée la connexion internet et un centre pour pre-telecharger les module que on a besoin (quand le service woker est actif)

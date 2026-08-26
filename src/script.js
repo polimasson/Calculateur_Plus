@@ -111,7 +111,7 @@ async function setTheme(id) {
             link.dataset.themeCss = def.id;
             document.head.appendChild(link);
         }
-        const { mountDesktop } = await import(`${basePath}src/shell/desktop.js?v=55`);
+        const { mountDesktop } = await import(`${basePath}src/shell/desktop.js?v=58`);
         desktopHandle = mountDesktop({
             root: desktopRoot,
             modules: visibleModules(),
@@ -307,7 +307,7 @@ async function loadModule(moduleId) {
         `;
 
         // Chargement JS (ES Modules)
-        const moduleJs = await import(`${path}module.js?v=55`);
+        const moduleJs = await import(`${path}module.js?v=58`);
         currentModuleJs = moduleJs;
         if (moduleJs.init) moduleJs.init(moduleContainer, preset ? { preset, locked: !!meta?.alias } : {});
 
