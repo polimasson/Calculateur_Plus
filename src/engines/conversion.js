@@ -97,6 +97,8 @@ export function mountConverter(container, config, opts={}) {
         const arrow = container.querySelector("#hub-simple span");
         if (arrow) arrow.style.display = hideTo ? "none" : "";
         if (m === "normal") tableDiv.style.display = "none";
+        const gridRow = tableGridCb?.closest("div") || tableGridCb?.parentElement;
+        if (gridRow) gridRow.style.display = m === "normal" ? "none" : "";
     };
     if (displayMode) displayMode.addEventListener("change", updateMode);
 

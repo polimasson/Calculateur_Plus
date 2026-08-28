@@ -1,5 +1,5 @@
 # TODO - OS
-
+- [x] Découper le truc (pas un mega fichier) — desktop.js réduit à ~583 lignes façade (ctx + composition). Modules: `icons.js` (SVG), `constants.js`, `utils.js`, `window.js` (WM), `selection.js` (icônes/clipboard/drag), `desktop-grid.js` (rendu bureau), `explorer.js` (explorateur), `viewers.js` (lecteurs/props/download), `chrome.js` (taskbar/startmenu/panneau/taskmgr). Testé OK.
 - [ ] Épingler des trucs barre des tâches (drag & drop / menu "Épingler", `cp.pinnedTaskbar`)
 - [x] Lecteur audio intégré - fait `openAudioPlayer` (`desktop.js:2368`)
 - [x] Lecteur vidéo intégré - fait `openVideoPlayer` (`desktop.js:2385`)
@@ -9,7 +9,7 @@
 - [x] Bouton téléchargé (l'inverse d'upload) — fait `downloadSelected` + menu `Télécharger` + toolbar + `Ctrl+S` (1 fichier direct, multi en zip store) `desktop.js`
 - [ ] Permetre de voir quel module/service est télécharger
 - Statut de la connexion est affichier une belle erreur win 95 a la place de l'erreur du navigateur quand on tente de chargé un truc qui la requier et que y'a pas dans le cache pwa... 
-- Bug Grille
+- Bug Grille (desktop)
 - Refactor module/service puis on refera leur style
 - Clique gauche dans les dossier sans séléctioné de fichier
 - Souris custom
@@ -17,5 +17,5 @@
 - support word/excel...
 - support pdf.
 - affichage dans le panneau de configuration les moteurs qu'il y a
-- moteur calculatrice
+- moteur calculatrice (je laisse le miens ou bien jutilise math.js)
 - truc pour activé/désactivée la connexion internet et un centre pour pre-telecharger les module que on a besoin (quand le service woker est actif)
